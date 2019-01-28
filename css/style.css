@@ -5,6 +5,30 @@ body {
 
 }
 
+.row
+{
+    margin:0!important;
+}
+
+.menu-hover
+{   display: inline-block;
+    visibility: hidden;
+    position: absolute;
+    bottom:-20%;
+    left:1%;
+    height: 3px;
+    width: 100%;
+    background-color: rgb(73, 144, 226);
+    transition: all 0.3s ;
+    
+}
+
+.menu-header:hover .menu-hover
+{
+    visibility: visible;
+    transition: all 0.3s ;
+    
+}
 
 .banner-inner {
     height: 55px;
@@ -189,6 +213,116 @@ margin: 0;
     width: 130px;
 }
 
+
+.search-details
+{
+    width: 200%;
+    max-width: 750px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    top: calc(100% + 10px);
+    left: 2%;
+    position: absolute;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(51, 76, 103, 0.17) 0px 4px 11px 0px;
+    visibility: visible;
+    opacity: 1;
+    border-width: 2px;
+    border-style: solid;
+    border-image: initial;
+    border-radius: 4px;
+    transition: opacity 0.2s ease 0s;
+    border-color: transparent;
+    z-index: 100;
+    border : 2px solid rgb(73, 144, 226);
+    padding:15px;
+}
+
+
+.search-details ul{
+
+
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.search-details a
+
+{
+    font-size: 13px;
+    display: block;
+    cursor: pointer;
+    font-weight: 600;
+    color: rgb(74, 74, 74);
+    margin-top: 8px;
+    text-decoration: none;
+    padding: 0 10px 10px 0;
+}
+
+.search-details h6
+
+{
+    font-size: 13px;
+    font-weight: 400;
+    color: rgb(58, 115, 180);
+    margin: 0px 0px 9px;
+    
+}
+.image-container
+{
+    text-align: center;
+    transition: box-shadow 0.4s ease 0s;
+    
+}
+
+.nopadding
+{
+    padding: 0px;
+}
+.image-container h6
+{
+    height: 2rem;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    line-height: 1.3;
+    opacity: 0.72;
+    color: rgb(62, 65, 69);
+    margin: 15px 10px;
+    overflow: hidden;
+
+} 
+.image-container a
+{
+    transition: box-shadow 0.4s ease 0s;
+}
+.image-container a:hover
+{
+   
+        box-shadow: rgb(51, 76, 103) 0px 4px 12px -5px;
+        transition: box-shadow 0.4s ease 0s;
+         
+}
+.image-container p
+{
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    color: rgb(62, 66, 69);
+    margin-bottom: 0;
+    margin-left: 10px;
+    
+}
+.search-details img
+{
+height: 112px;
+width: 112px;
+}
+
 .row
 {
     margin:10px 0;
@@ -276,6 +410,53 @@ color: black;
     border-bottom: 1px solid #f1f5f8;
 }
 
+.wrapper-underline ul
+{
+   list-style-type: none;
+   text-decoration: none;
+   display:inline;
+   
+}
+
+.wrapper-underline li
+{
+    font-size: 12px;
+    display:inline;
+    color:black;
+    min-width: 100px;
+
+   
+}
+.row-menu
+{
+    margin: 0;
+}
+
+.row-menu a
+{
+color:black;
+}
+
+.row-menu a:hover
+{
+text-decoration:none;
+
+}
+.menu-main
+{
+    margin: 20px 0;
+}
+
+.main-li
+{
+    position: relative;
+}
+.menu-header
+{
+    display:inline-block;
+    max-width: 100px;
+    
+}
 .img-center img
 {
     margin: auto;
