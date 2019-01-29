@@ -26,9 +26,7 @@ $(document).ready(function(){
       $(".popular").owlCarousel({
         items:5,
         nav:true,
-        autoplay:true,
-        autoplayTimeout:2000,
-        rewind:true,
+      
         
 
       });

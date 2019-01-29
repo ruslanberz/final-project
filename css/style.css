@@ -521,6 +521,7 @@ text-decoration:none;
 .menu-main
 {
     margin: 20px 0;
+    padding-left: 0px;
 }
 
 .main-li
@@ -883,3 +884,5 @@ text-decoration:none;
     color: rgb(255, 255, 255);
     padding: 5px;
 }
+  
+
