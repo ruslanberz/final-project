@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="css/b5.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
@@ -51,8 +51,8 @@
                     <form>
                         <div class="form-row align-items-center">
                             <div class="col-lg-9">
-                                <label class="sr-only" for="inlineFormInput"></label>
-                                <input type="text" class="form-control mb-2 search-input search-text" id="inlineFormInput"
+                                <label class="sr-only" for="searchinput"></label>
+                                <input type="text" class="form-control mb-2 search-input search-text" id="searchinput"
                                     placeholder="Minlərlə mağaza arasında ən ucuz qiyməti tapın!">
                             </div>
 
@@ -64,130 +64,237 @@
                     </form>
 
                     <div class="search-details">
-                         <div class="row">
-                             <div class="col-lg-5">
-                                 <h6>POPULYAR KATEGORIYALAR</h6>
-                                 <ul>
-                                     <li><a href="">Mobil telefonlar</a></li>
-                                     <li><a href="">Televizorlar</a> </li>
-                                     <li><a href=""> Idman ayaqqabıları</a></li>
-                                     <li><a href="">Qol saatları</a> </li>
-                                     <li><a href="">Tozsoranlar</a> </li>
-                                     <li><a href="">Soyuducular</a> </li>
-                                     <li><a href="">Paltaryuyan maşınları</a> </li>
-                                     <li> <a href="">Maşın təkərləri</a> </li>
-                                     <li><a href="">Kondisionerlər</a> </li>
-                                 </ul>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <h6>POPULYAR KATEGORIYALAR</h6>
+                                <ul>
+                                    <li><a href="">Mobil telefonlar</a></li>
+                                    <li><a href="">Televizorlar</a> </li>
+                                    <li><a href=""> Idman ayaqqabıları</a></li>
+                                    <li><a href="">Qol saatları</a> </li>
+                                    <li><a href="">Tozsoranlar</a> </li>
+                                    <li><a href="">Soyuducular</a> </li>
+                                    <li><a href="">Paltaryuyan maşınları</a> </li>
+                                    <li> <a href="">Maşın təkərləri</a> </li>
+                                    <li><a href="">Kondisionerlər</a> </li>
+                                </ul>
 
-                             </div>
-                             <div class="col-lg-7">
-                                 <div class="row text-center">
-                                     <div class="col-lg-4 nopadding">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="row text-center">
+                                    <div class="col-lg-4 nopadding">
                                         <div class="image-container">
                                             <a href="">
-                                                <img src="img/search/1.jpg" alt=""> 
+                                                <img src="img/search/1.jpg" alt="">
                                                 <h6> Apple Watch Series 4 40 mm</h6>
                                                 <p>185,00 ₼</p>
-                                               </a>
+                                            </a>
                                         </div>
-                                     </div>
-                                     <div class="col-lg-4 nopadding">
+                                    </div>
+                                    <div class="col-lg-4 nopadding">
                                         <div class="image-container">
                                             <a href="">
-                                                <img src="img/search/2.jpg" alt=""> 
+                                                <img src="img/search/2.jpg" alt="">
                                                 <h6> Apple Watch Series 4 40 mm</h6>
                                                 <p>185,00 ₼</p>
-                                               </a>
+                                            </a>
                                         </div>
-                                     </div>
-                                     <div class="col-lg-4 nopadding">
+                                    </div>
+                                    <div class="col-lg-4 nopadding">
                                         <div class="image-container">
                                             <a href="">
-                                                <img src="img/search/3.jpg" alt=""> 
+                                                <img src="img/search/3.jpg" alt="">
                                                 <h6> Apple Watch Series 4 40 mm</h6>
                                                 <p>185,00 ₼</p>
-                                               </a>
+                                            </a>
                                         </div>
-                                     </div>
-                                     <div class="col-lg-4 nopadding">
+                                    </div>
+                                    <div class="col-lg-4 nopadding">
                                         <div class="image-container">
                                             <a href="">
-                                                <img src="img/search/3.jpg" alt=""> 
+                                                <img src="img/search/3.jpg" alt="">
                                                 <h6> Apple Watch Series 4 40 mm</h6>
                                                 <p>185,00 ₼</p>
-                                               </a>
+                                            </a>
                                         </div>
-                                     </div>
-                                     <div class="col-lg-4 nopadding">
+                                    </div>
+                                    <div class="col-lg-4 nopadding">
                                         <div class="image-container">
                                             <a href="">
-                                                <img src="img/search/1.jpg" alt=""> 
+                                                <img src="img/search/1.jpg" alt="">
                                                 <h6> Apple Watch Series 4 40 mm</h6>
                                                 <p>185,00 ₼</p>
-                                               </a>
+                                            </a>
                                         </div>
-                                     </div>
-                                     <div class="col-lg-4 nopadding"><div class="image-container">
-                                        <a href="">
-                                            <img src="img/search/2.jpg" alt=""> 
-                                            <h6> Apple Watch Series 4 40 mm</h6>
-                                            <p>185,00 ₼</p>
-                                           </a>
-                                    </div></div>
-                                 </div>
-                             </div>
-                         </div>
+                                    </div>
+                                    <div class="col-lg-4 nopadding">
+                                        <div class="image-container">
+                                            <a href="">
+                                                <img src="img/search/2.jpg" alt="">
+                                                <h6> Apple Watch Series 4 40 mm</h6>
+                                                <p>185,00 ₼</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <a class="menu-topcat" href=""><i class="fas fa-gamepad"></i> Konsol oyunları</a>
                 </div>
                 <div class="col-lg-2">
-                    <a class="menu-topcat"href=""><i class="fas fa-bell"></i>Aksiyalar</a>
+                    <a class="menu-topcat" href=""><i class="fas fa-bell"></i>Aksiyalar</a>
                 </div>
             </div>
-           
+
         </div>
 
         <div class="wrapper-underline">
-                <div class="container ">
-                        <div class="row " style="margin: 5px 0!important;">
-                                <div class="col-lg-6 offset-lg-2  d-flex justify-content-between ">
-                                    <a class="text-small" href=""><span>Lastikler</span></a>
-                                    <a class="text-small" href=""><span>iPhone 7 Plus</span></a>
-                                    <a class="text-small" href=""><span>Galaxy Note 9</span></a>
-                                    <a class="text-small" href=""><span>Kobmiler</span></a>
-                                    <a class="text-small" href=""><span>Kombilər</span></a>
-                                    <a class="text-small" href=""><span>Bebek Mamaları</span></a>
-                                    <a class="text-small" href=""><span>Ütülər</span></a>
-                
+            <div class="container ">
+                <div class="row " style="margin: 5px 0!important;">
+                    <div class="col-lg-6 offset-lg-2  d-flex justify-content-between ">
+                        <a class="text-small" href=""><span>Lastikler</span></a>
+                        <a class="text-small" href=""><span>iPhone 7 Plus</span></a>
+                        <a class="text-small" href=""><span>Galaxy Note 9</span></a>
+                        <a class="text-small" href=""><span>Kobmiler</span></a>
+                        <a class="text-small" href=""><span>Kombilər</span></a>
+                        <a class="text-small" href=""><span>Bebek Mamaları</span></a>
+                        <a class="text-small" href=""><span>Ütülər</span></a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="wrapper-underline for-menu-disappear">
+            <div class="container">
+                <div class="row row-menu">
+                    <div class="col-lg-12">
+                        <ul class="text-center menu-main d-flex justify-content-between align-items-between">
+                            <li class="main-li"><a class="menu-header" href="">ELEKTRONIK, CEP TELEFONU <span class="menu-hover"></span></a>
+                            </li>
+                            <li class="main-li"><a class="menu-header" href="">EV, YAŞAM OFİS, KIRTASİYE <span class="menu-hover"></span></a></li>
+                            <li class="main-li"><a class="menu-header" href="">ANNE, BEBEK, OYUNCAK <span class="menu-hover"></span></a></li>
+                            <li class="main-li"><a class="menu-header" href="">SAAT, MODA, TAKI, AYAKKABI <span class="menu-hover"></span></a></li>
+                            <li class="main-li"><a class="menu-header" href="">KİTAP, MÜZİK, HOBİ <span class="menu-hover"></span></a></li>
+                            <li class="main-li"><a class="menu-header" href="">SPOR, OUTDOOR <span class="menu-hover"></span></a></li>
+                            <li class="main-li"><a class="menu-header" href="">SAĞLIK, BAKIM, KOZMETİK <span class="menu-hover"></span></a></li>
+                            <li class="main-li"><a class="menu-header" href="">OTO, BAHÇE, YAPI MARKET <span class="menu-hover"></span></a></li>
+                            <li class="main-li"><a class="menu-header" href="">SÜPERMARKET, PETSHOP <span class="menu-hover"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row menu-cat-hover">
+                    <div class="col-lg-7">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="category-wrap popular-cat">
+                                    <h6>Mobil telefonlar</h6>
+                                    <a href="">
+                                        <p>Mobil telefonlar, Mobil Telefon Aksesuarları, Blueetooth qarnitura, Mobil
+                                            telefonun maşın aksesuarları </p>
+                                    </a>
+                                </div>
+                                <div class="category-wrap popular-cat">
+                                    <h6>Məişət texnikası</h6>
+                                    <a href="">
+                                        <p> Soyuducular, Paltaryuyan maşınları, Tozsoranlar </p>
+                                    </a>
+                                </div>
+                                <div class="category-wrap popular-cat">
+                                    <h6>İStilik sistemləri</h6>
+                                    <p>Konsisionerlər, Kombilər, Termostatlar</p>
+                                </div>
+                                <div class="category-wrap popular-cat">
+                                    <h6>Elektrik Mətbəx Alətlər </h6>
+                                    <a href="">
+                                        <p>Qəhvədanlar, Çayniklər, Blenderlər, Mikserlər, Qızdırıcılar </p>
+                                    </a>
                                 </div>
                             </div>
-                            
-                </div>
-        </div>
-
-        <div class="wrapper-underline">
-            <div class="container">
-                    <div class="row row-menu">
-                            <div class="col-lg-12 ">
-                                <ul class="text-center menu-main d-flex justify-content-between align-items-between">
-                                    <li class="main-li"><a class="menu-header" href="">ELEKTRONIK, CEP TELEFONU <span class="menu-hover"></span></a> </li>
-                                    <li class="main-li"><a class="menu-header" href="">EV, YAŞAM OFİS, KIRTASİYE <span class="menu-hover"></span></a></li>
-                                    <li class="main-li"><a class="menu-header" href="">ANNE, BEBEK, OYUNCAK <span class="menu-hover"></span></a></li>
-                                    <li class="main-li"><a class="menu-header" href="">SAAT, MODA, TAKI, AYAKKABI <span class="menu-hover"></span></a></li>
-                                    <li class="main-li"><a class="menu-header" href="">KİTAP, MÜZİK, HOBİ <span class="menu-hover"></span></a></li>
-                                    <li class="main-li"><a class="menu-header" href="">SPOR, OUTDOOR <span class="menu-hover"></span></a></li>
-                                    <li class="main-li"><a class="menu-header" href="">SAĞLIK, BAKIM, KOZMETİK <span class="menu-hover"></span></a></li>
-                                    <li class="main-li"><a class="menu-header" href="">OTO, BAHÇE, YAPI MARKET <span class="menu-hover"></span></a></li>
-                                    <li class="main-li"><a class="menu-header" href="">SÜPERMARKET, PETSHOP <span class="menu-hover"></span></a></li>
-                                </ul>
+                            <div class="col-lg-6">
+                                <div class="category-wrap popular-cat">
+                                    <h6>Mobil telefonlar</h6>
+                                    <a href="">
+                                        <p>Mobil telefonlar, Mobil Telefon Aksesuarları, Blueetooth qarnitura, Mobil
+                                            telefonun maşın aksesuarları </p>
+                                    </a>
+                                </div>
+                                <div class="category-wrap popular-cat">
+                                    <h6>Məişət texnikası</h6>
+                                    <a href="">
+                                        <p> Soyuducular, Paltaryuyan maşınları, Tozsoranlar </p>
+                                    </a>
+                                </div>
+                                <div class="category-wrap popular-cat">
+                                    <h6>İStilik sistemləri</h6>
+                                    <p>Konsisionerlər, Kombilər, Termostatlar</p>
+                                </div>
+                                <div class="category-wrap popular-cat">
+                                    <h6>Elektrik Mətbəx Alətlər </h6>
+                                    <a href="">
+                                        <p>Qəhvədanlar, Çayniklər, Blenderlər, Mikserlər, Qızdırıcılar </p>
+                                    </a>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="row">
+                            <div class="col-lg-6 popular-cat">
+                                <h6>Populyar kategoriyarlar</h6>
+                                <a href="">
+                                    <p>Mobil telefonlar</p>
+                                </a>
+                                <a href="">
+                                    <p>Televizorlar</p>
+                                </a>
+                                <a href="">
+                                    <p>Soyuducular</p>
+                                </a>
+                                <a href="">
+                                    <p>Noutbuklar</p>
+                                </a>
+                                <a href="">
+                                    <p>Kondisionelər</p>
+                                </a>
+                                <a href="">
+                                    <p>Paltaryuyan maşınları</p>
+                                </a>
+                                <a href="">
+                                    <p>Oyun konsolları</p>
+                                </a>
+                                <a href="">
+                                    <p>Planşetlər</p>
+                                </a>
+                                <a href="">
+                                    <p>Kombilər</p>
+                                </a>
+                                <a href="">
+                                    <p>Bas gedsin</p>
+                                </a>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <a href=""><img class="popular-img" src="img/category-menu-promo/1.png" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <a href=""><img class="popular-img" src="img/category-menu-promo/2.png" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-      
+
     </section>
     <section id="body" style="background-color: #f1f5f8">
         <div class="container">
@@ -196,9 +303,9 @@
                 <div class="col-lg-7 " style="padding-left:0px;  ">
                     <div class="owl-carousel1 owl-carousel" style="min-height:470px">
                         <div><img style="height: 440px;" src="img/carousel/1546436433142.png" alt=""></div>
-                        <div><img  style="height: 440px;" src="img/carousel/1546436508689.png" alt=""></div>
+                        <div><img style="height: 440px;" src="img/carousel/1546436508689.png" alt=""></div>
                         <div><img style="height: 440px;" src="img/carousel/1547841430887.png" alt=""></div>
-                        <div><img style="height: 440px;"  src="img/carousel/1548077361182.png" alt=""></div>
+                        <div><img style="height: 440px;" src="img/carousel/1548077361182.png" alt=""></div>
                         <div><img style="height: 440px;" src="img/carousel/1548404162584.png" alt=""></div>
                     </div>
                 </div>
@@ -212,14 +319,14 @@
 
                     <div class="row two ">
                         <div class="col-lg-12 " style="padding-left:0;">
-                            <a href=""><img style="" src="img/carousel/3/component_Ui1eI2019-01-24.jpg" alt=""></a>
+                            <a href=""><img  src="img/carousel/3/component_Ui1eI2019-01-24.jpg" alt=""></a>
                         </div>
                     </div>
 
                 </div>
                 <div class="col-lg-2 daily-sale " style="height: 440px;">
 
-                    <div class="owl-carousel1 owl-carousel">
+                    <div class="owl-carousel2 owl-carousel">
                         <div>
                             <a href="" class="daily-sale-a ">
                                 <p class="text-center">Günün endirimləri</span>
@@ -298,15 +405,36 @@
 
             <div class="row">
                 <div class="col-lg-12" style="padding: 0">
-                    <div class="wrapper-categories d-flex justify-content-between">
-                        <span>Samsung telefonları</span>
-                        <span>Bosch paltaryuyan maşınları</span>
-                        <span>LG televizorları</span>
-                        <span>LG telefonları</span>
-                        <span>Baha mallar</span>
-                        <span>Sox gedsin</span>
-                        <span>Az qalib</span>
-                        <span>Axirinci</span>
+                    <div class="wrapper-categories owl-carousel  text-center">
+                        <div> <a href="">Samsung telefonları</a> </div>
+                        <div><a href="">Bosch paltaryuyan maşınları</a> </div>
+                        <div> <a href="">LG televizorları</a> </div>
+                        <div> <a href=""> LG telefonları</a></div>
+                        <div> <a href="">Baha mallar</a> </div>
+                        <div> <a href="">Sox gedsin</a></div>
+                        <div> <a href=""> Az qalib</a> </div>
+                        <div> <a href="">Axirinci</a> </div>
+                        <div> <a href="">Samsung telefonları</a> </div>
+                        <div><a href="">Bosch paltaryuyan maşınları</a> </div>
+                        <div> <a href="">LG televizorları</a> </div>
+                        <div> <a href=""> LG telefonları</a></div>
+                        <div> <a href="">Baha mallar</a> </div>
+                        <div> <a href="">Sox gedsin</a></div>
+                        <div> <a href=""> Az qalib</a> </div>
+                        <div> <a href="">LG televizorları</a> </div>
+                        <div> <a href=""> LG telefonları</a></div>
+                        <div> <a href="">Baha mallar</a> </div>
+                        <div> <a href="">Sox gedsin</a></div>
+                        <div> <a href="">LG televizorları</a> </div>
+                        <div> <a href=""> LG telefonları</a></div>
+                        <div> <a href="">Baha mallar</a> </div>
+                        <div> <a href="">Sox gedsin</a></div>
+                        <div> <a href="">LG televizorları</a> </div>
+                        <div> <a href=""> LG telefonları</a></div>
+                        <div> <a href="">Baha mallar</a> </div>
+                        <div> <a href="">Sox gedsin</a></div>
+                      
+
                     </div>
                 </div>
             </div>
@@ -1034,7 +1162,7 @@
                 </ul>
             </div>
             <div class="col-lg-2">
-                    <p class="footer-header mt-3"></p>
+                <p class="footer-header mt-3"></p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Kondisionerlər</a></li>
                     <li><a href="">Parfumeriya</a></li>
@@ -1054,7 +1182,7 @@
                 </ul>
             </div>
             <div class="col-lg-2">
-                    <p class="footer-header mt-3"></p>
+                <p class="footer-header mt-3"></p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Nike İdman Ayaqqabıları</a></li>
                     <li><a href="">Samsung Mobil Telefonları</a></li>
@@ -1064,7 +1192,7 @@
                 </ul>
             </div>
             <div class="col-lg-2">
-                
+
                 <p class="footer-header mt-3">Korporativ</p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Haqqımızda</a></li>
@@ -1081,7 +1209,7 @@
         </div>
         <div class="row d-flex justify-content-between">
             <div class="col-lg-4">
-               <img src="img/logo-dark.JPG" alt="">
+                <img src="img/logo-dark.JPG" alt="">
             </div>
             <div class="col-lg-4 text-center">
                 <div class="row">

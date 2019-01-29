@@ -1,7 +1,23 @@
+@media (min-width: 1200px) {
+
+    .container 
+    {
+        width: 1170px;
+    }
+}
+
+
 body {
 
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'Roboto', sans-serif;
+
+}
+
+.container
+{
+    
+  width: 1200px;
 
 }
 
@@ -228,7 +244,7 @@ margin: 0;
     overflow-y: hidden;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(51, 76, 103, 0.17) 0px 4px 11px 0px;
-    visibility: visible;
+    visibility: hidden;
     opacity: 1;
     border-width: 2px;
     border-style: solid;
@@ -259,9 +275,69 @@ margin: 0;
     color: rgb(74, 74, 74);
     margin-top: 8px;
     text-decoration: none;
-    padding: 0 10px 10px 0;
+    transition: all 0.5s ease 0s;
+    padding: 5px;
 }
 
+.search-details a:hover
+{
+    color: rgb(73, 144, 226);
+    background-color: rgb(241, 245, 248);
+
+    transition: all 0.5s all 0.3s;
+}
+
+.popular-img
+{
+    max-height:150px;
+    max-width: 250px;
+}
+
+.popular-cat p
+{
+font-size:14px;
+margin-bottom: 5px;
+color: rgb(133, 133, 133);
+}
+
+.popular-cat p:hover
+{
+
+color: black;
+text-decoration: underline;
+}
+
+.menu-cat-hover
+{
+    display: none;
+    transition: all 0.3s ease 0s;
+}
+
+.wrapper-categories a
+{
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    font-size: 11px;
+    text-align: left;
+    color: rgb(132, 134, 137);
+    margin: 0px 5px 0px 0px;
+    flex: 0 0 auto;
+    border-radius: 4px;
+    padding: 10px 6px 6px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(238, 238, 238);
+    border-image: initial;
+    text-decoration: none;
+    outline: 0px;
+}
+
+.popular-cat h6
+{
+    font-size: 16px;
+    color: rgb(73, 144, 226);
+    font-weight: 500;
+}
 .search-details h6
 
 {
