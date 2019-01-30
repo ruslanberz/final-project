@@ -11,6 +11,14 @@ $(document).ready(function(){
       });
 
 
+      var delay = ( function() {
+        var timer = 0;
+        return function(callback, ms) {
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+
       $('.main-carousel2').flickity({
         // options
         // cellAlign: 'left',
@@ -52,6 +60,18 @@ $(document).ready(function(){
 
       });
 
+
+       $(".categories-carousel").owlCarousel({
+
+        items:4,
+        nav:true,
+        autoplay:false,
+        dots:false,
+        
+      
+
+      });
+
       
       $(".owl-carousel2").owlCarousel({
         items:1,
@@ -80,8 +100,8 @@ $(document).ready(function(){
 
       $(".menu-main").hover(function(){
 
-
-        $(".menu-cat-hover").css("display","inline-flex");
+        
+         $(".menu-cat-hover").css("display","inline-flex");
         
       });
 

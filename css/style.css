@@ -1,8 +1,6 @@
 @media (min-width: 1200px) {
-
-    .container 
-    {
-        width: 1170px;
+    .container{
+        max-width: 1200px;
     }
 }
 
@@ -43,6 +41,7 @@ body {
 {
     visibility: visible;
     transition: all 0.3s ;
+    transition-delay: s;
     
 }
 
@@ -564,7 +563,7 @@ text-decoration:none;
 .more-offers
 {
     position: absolute!important;
-    bottom:5%;
+    bottom:2%;
     left: 5%;
     font-size: 11px;
     text-align: left;
