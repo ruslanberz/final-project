@@ -179,6 +179,7 @@ color: rgb(255, 255, 255);
   .nav-box
   {
     padding: 20px;
+    border-bottom: 1px solid rgb(207, 207, 207);
   }
 
   .nav-box h1
@@ -273,3 +274,82 @@ color: rgb(255, 255, 255);
   max-width: 80PX;
 }
 
+.promo2-wrapper
+{
+  height: 260px;
+  background-color: white;
+  width: 100%
+}
+
+
+.faq-h
+{
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.faq-p
+{
+color: rgb(132, 134, 137);
+font-size: 13px;
+text-align: left;
+margin-bottom: 0.4em;
+    margin-top: 0px;
+}
+
+.paging i
+{
+  font-size: 30px;
+  margin: 0 40px;
+  color: black;
+}
+
+.paging
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paging .active-page
+{
+  height: 40px;
+    width: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgb(73, 144, 226);
+    color: rgb(255, 255, 255);
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    display: flex !important;
+    border-radius: 4px;
+    padding: 0px;
+    margin: 0px 10px;
+    text-decoration: none;
+}
+
+.paging .page
+
+{
+  height: 40px;
+  width: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(62, 65, 69);
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  display: flex !important;
+  border-radius: 4px;
+  padding: 0px;
+  margin: 0px 10px;
+  text-decoration: none;
+}

@@ -67,6 +67,12 @@ body {
 
 }
 
+.banner-navbox
+{
+    width: 100%;
+    height: 150px;
+}
+
 .banner-btn:hover {
 
     border: 1px solid white;
