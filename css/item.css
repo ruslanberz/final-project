@@ -1,0 +1,33 @@
+
+
+.item-slider img
+{
+    max-height: 240px;
+    max-width: 240px;
+}
+
+.item-slider
+{
+    height: 240px;
+    width: 240px;
+    display: flex;
+    align-items: center;
+    align-self: center;
+}
+
+
+.left-wrapper
+{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    
+}
+
+.slider-wrapper
+{
+    height: 260px;
+    widows: 240px;
+    display: flex;
+    align-items: center;
+}

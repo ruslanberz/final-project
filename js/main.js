@@ -61,6 +61,18 @@ $(document).ready(function(){
       });
 
 
+     
+
+      $(".item-slider").owlCarousel({
+        items:1,
+        nav:true,
+        autoplay:false,
+        rewind:true,
+       
+
+      });
+
+
        $(".categories-carousel").owlCarousel({
 
         items:4,
