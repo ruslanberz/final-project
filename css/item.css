@@ -1,4 +1,7 @@
+.left{
 
+    padding-left: 0;
+}
 
 .item-slider img
 {
@@ -75,9 +78,10 @@
     font-size: 12px;
 }
 
-.left
+.white
 {
     background-color: white;
+    margin-top: 10px!important ;
 }
 
 .other-price
@@ -107,4 +111,378 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.promo-price-thin span
+{
+    font-size: 11px;
+    font-weight: 400;
+    overflow: hidden;
+    flex: 1 1 0%;
+    padding-left: 5px;
+}
+
+
+.promo-price-thin img
+{
+    max-width: 65px;
+}
+
+.promo-price-thin
+{
+    height: 50px;
+    max-width: 310px;
+   
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: inherit;
+    position: relative;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(238, 238, 238);
+    border-image: initial;
+    text-decoration: none;
+    padding: 10px 10px;
+}
+
+.promo-price-thin i
+{   padding-left: 5px;
+    color: rgb(204, 204, 204);
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.ads-left1
+{
+    
+    width: 300px;
+    height: 250px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+}
+
+.item-specs-header h1
+{
+    font-size: 17px;
+    font-weight: 700;
+    text-align: left;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.tag
+{
+    background-color: rgb(255, 255, 255);
+    font-size: 12px;
+    text-align: left;
+    color: rgb(132, 134, 137);
+    display: inline-block;
+    border-radius: 4px;
+    padding: 4px 6px;
+    margin: 5px 5px 0px 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(238, 238, 238);
+    border-image: initial;
+}
+
+
+.item-specs-header
+{
+    background-color: rgb(255, 255, 255);
+    margin-left: 0px;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    padding: 24px;
+}
+
+.item-navigation{
+    
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 600;
+    color: rgb(62, 65, 69);
+    cursor: pointer;
+    border-right: 1px solid rgb(238, 238, 238);
+}
+
+.item-navigation-wraper
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.item-navigation-wraper a:hover
+{
+    text-decoration: none;
+    
+    color: rgb(62, 65, 69);
+}
+
+.item-navigation-wraper a
+{
+    text-decoration: none;
+    
+    color: rgb(62, 65, 69);
+}
+
+.blue
+{
+    color: rgb(73, 144, 226)!important;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.carrier 
+{
+    max-width: 110px;
+    margin-top: auto;
+    margin-bottom: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 5px;
+    overflow: hidden;
+    font-size: 11px;
+    user-select: none;
+    line-height: 15px;
+    text-align: left;
+    color: rgb(62, 65, 69);
+    cursor: pointer;
+}
+
+.carrier-count
+{
+    max-width: 110px;
+    margin-top: auto;
+    margin-bottom: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 5px;
+    overflow: hidden;
+    font-size: 11px;
+    user-select: none;
+    line-height: 15px;
+    text-align: left;
+    color: rgb(62, 65, 69);
+    cursor: pointer;
+}
+
+.price-count
+{
+  
+   
+   
+    
+    margin-right: 5px;
+    overflow: hidden;
+    font-size: 11px;
+    user-select: none;
+    line-height: 15px;
+    text-align: left;
+    color: rgb(62, 65, 69);
+    cursor: pointer;
+}
+
+.offers h2
+{
+    width: 100%;
+    max-width: 345px;
+    font-size: 13px;
+    line-height: 1.38;
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: rgb(62, 65, 69);
+}
+
+.merch-details
+{
+    width: 100%;
+    max-width: 345px;
+    font-size: 13px;
+    line-height: 1.38;
+    font-weight: 600;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    color: rgb(62, 65, 69);
+}
+
+.offer
+{
+    padding: 30px;
+}
+
+.offers a
+{
+    text-decoration: none;
+}
+.offers 
+{
+    width: 100%;
+    
+
+}
+
+.offers td
+{
+    border-bottom: 1px solid #eee;
+}
+
+.offers a:hover
+{
+    text-decoration: none;
+}
+.offers img
+{
+    max-width: 90px;
+  
+}
+
+.offert1
+{
+  width: 177px;  
+}
+.offert1 a{
+    padding-left: 30px;
+}
+.offert2
+{
+   width: 350px;
+}
+.offert3
+{
+    width: 123px;
+}
+.offert4
+{
+width: 150px;
+text-align: right;
+padding-right: 30px; 
+}
+
+.offer
+{
+    padding: 30px;
+}
+
+.special-tag
+{
+    display: block;
+}
+.merchant-price
+{
+    display: block; 
+}
+
+.offertablerow
+{
+    background-color: rgb(255, 250, 237);
+    height: 115px;
+    padding-left: 30px;
+    transition: all 0.4s ease 0s;
+    overflow: hidden;
+}
+.merch-goto
+{
+    display: inline-block;
+    position: relative;
+    height: 30px;
+    font-size: 13px;
+    white-space: nowrap;
+    text-align: left;
+    cursor: pointer;
+    background-color: rgb(73, 144, 226);
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    padding: 5px 15px;
+    outline: none;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(73, 144, 226);
+    border-image: initial;
+}
+
+.sponsor
+{
+    color: rgb(255, 255, 255);
+    background-color: rgb(245, 166, 35);
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: 600;
+    text-align: center;
+    width: 59px;
+    height: 16px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0px 7px;
+    border-radius: 2px;
+}
+
+.merchant-price
+{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: bold;
+    position: relative;
+    min-width: 87px;
+    text-align: right;
+    white-space: nowrap;
+    display: flow-root;
+    height: 30px;
+    color: rgb(62, 65, 69);
+    padding: 6px 0px;
+}
+
+.merch-other-details
+{
+    max-width: 345px;
+    font-size: 13px;
+    line-height: 1.38;
+    margin-bottom: 3px;
+    color: rgb(62, 65, 69);
+}
+
+.btn-more-offers
+{
+    height: 30px;
+    font-size: 13px;
+    white-space: nowrap;
+    cursor: pointer;
+    color: rgb(62, 65, 69);
+    background-color: transparent;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    padding: 5px 15px;
+    outline: none;
+    transition: all 0.3s ease 0s;
+}
+
+
+.btn-more-offers i
+{
+    height: 22px;
+    width: 22px;
+    transform: translateY(-10%);
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 24px;
 }

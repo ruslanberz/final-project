@@ -68,6 +68,7 @@ $(document).ready(function(){
         nav:true,
         autoplay:false,
         rewind:true,
+        dots:false,
        
 
       });
@@ -125,5 +126,15 @@ $(document).ready(function(){
 
           $(".menu-cat-hover").fadeOut();
 
+      });
+
+      $(".btn-more-offers").click(function(){
+        console.log($(this).parent());
+        $(this).parent().removeClass("mt-2");
+        $(".btn-more-offers").removeClass("d-flex"); 
+        $(".btn-more-offers").addClass("d-none"); 
+        $( ".offertablerow" ).each(function( index ) {
+         $(this).removeClass("d-none");
+        });
       });
 });
