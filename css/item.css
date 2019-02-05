@@ -486,3 +486,226 @@ padding-right: 30px;
     font-size: 14px;
     line-height: 24px;
 }
+
+.customh2
+{
+    font-size: 16px;
+    line-height: 58px;
+    font-weight: bold;
+    color: rgb(62, 65, 69);
+    margin: 0px;
+    padding: 0px 29px;
+}
+
+.phone-name
+{
+    display: block;
+
+}
+
+.compare-item
+{
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    width: 26%;
+    position: relative;
+    padding: 22px 14px 17px;
+    border-left: 0.5px solid rgb(184, 193, 203);
+    border-top: 0.5px solid rgb(184, 193, 203);
+}
+
+.compare-item:last-child
+{
+    border-right: 0.5px solid rgb(184, 193, 203);
+}
+.compare-item:first-child
+{
+    width: 22%;
+    background: rgb(241, 245, 248);
+}
+.comparison
+{
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    padding: 0px 29px;
+}
+
+.compare-wrapper
+{
+    flex: 1 1 auto;
+}
+
+.comparison a
+{
+text-decoration: none;
+color: rgb(73, 144, 226);
+}
+.comparison a:hover
+{
+text-decoration: none;
+color: rgb(73, 144, 226);
+}
+
+.compare-item-wrapper
+{
+    margin-left: 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 130px;
+}
+
+.compare-item-wrapper h5
+{
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin: 0px 0px 17px;
+    padding: 0px;
+}
+
+.compare-wrapper
+{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;  
+}
+
+.remove
+{
+    position: absolute;
+    right: 16px;
+    top: 17px;
+    background-color: rgb(74, 144, 226);
+    cursor: pointer;
+    width: 19px;
+    height: 18px;
+    border-radius: 2px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial; 
+}
+
+.remove::after{
+    width: 11px;
+    height: 2px;
+    background-color: rgb(255, 255, 255);
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1.5px;
+}
+
+.compare-body td
+{
+    color: rgb(74, 74, 74);
+    font-size: 13px;
+    font-weight: 600;
+    height: 44px;
+    padding: 0px 14px;
+    border-left: 0.5px solid rgb(184, 193, 203);
+    border-top: 0.5px solid rgb(184, 193, 203);
+}
+
+.compare-body td:last-child
+{
+    
+    border-right: 0.5px solid rgb(184, 193, 203);
+   
+}
+
+.first
+{
+    color: rgb(0, 10, 18);
+    background: rgb(241, 245, 248);
+}
+
+.compare-body tr:hover .full
+{
+    background: rgb(241, 245, 248);
+}
+
+.compare-body tr:hover .empty
+{
+    background: rgb(241, 245, 248);
+}
+.compare-body tr:hover .first
+{
+    background: rgb(212, 218, 224);
+}
+
+
+.full
+{
+    color: rgb(74, 74, 74);
+    font-size: 13px;
+    height: 44px;
+    font-weight: 700;
+    padding: 0px 14px;
+    background: rgb(255, 251, 240);
+    border-left: 0.5px solid rgb(184, 193, 203);
+    border-top: 0.5px solid rgb(184, 193, 203);
+    
+}
+
+.compare-table
+{
+    width: 100%;
+}
+
+.compare-footer td:last-child
+{
+    
+    border-right: 0.5px solid rgb(184, 193, 203);
+   
+}
+
+.compare-footer
+{
+    margin: 0px 20px;
+}
+.compare-footer td
+{
+    color: rgb(74, 74, 74);
+    font-size: 13px;
+    font-weight: 600;
+    height: 44px;
+    padding: 0px 14px;
+    border-left: 0.5px solid rgb(184, 193, 203);
+    border-top: 0.5px solid rgb(184, 193, 203);
+    border-bottom: 0.5px solid rgb(184, 193, 203);
+}
+
+.gotoitem
+{
+    background-color: rgb(74, 144, 226);
+    color: rgb(255, 255, 255)!important;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 36px;
+    display: block;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.merch-price-c
+{
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(62, 65, 69);  
+}
+.link-merch-c i
+{
+float: right;
+color:rgb(74, 144, 226); 
+}

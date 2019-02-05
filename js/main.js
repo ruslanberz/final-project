@@ -137,4 +137,10 @@ $(document).ready(function(){
          $(this).removeClass("d-none");
         });
       });
+
+      $(".remove").click(function(ex){
+         ex.preventDefault();
+         var col = $(this).parent().parent().parent().children().index($(this).parent().parent());
+         $('table tr').find("td:eq("+col+"),th:eq("+col+")").remove();
+      });
 });
