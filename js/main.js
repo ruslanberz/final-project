@@ -143,4 +143,13 @@ $(document).ready(function(){
          var col = $(this).parent().parent().parent().children().index($(this).parent().parent());
          $('table tr').find("td:eq("+col+"),th:eq("+col+")").remove();
       });
+
+
+      $(".stars").starRating({
+        starSize: 15,
+        ratedColor: 'orange',
+        callback: function(currentRating, $el){
+            // make a server call here
+        }
+    });
 });
