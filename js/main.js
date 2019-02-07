@@ -137,7 +137,15 @@ $(document).ready(function(){
          $(this).removeClass("d-none");
         });
       });
-
+      $(".btn-more-comments").click(function(){
+      
+        $(this).parent().removeClass("mt-2");
+        $(this).parent().removeClass("d-flex"); 
+        $(this).parent().addClass("d-none"); 
+        $( ".comment" ).each(function( index ) {
+         $(this).removeClass("d-none");
+        });
+      });
       $(".remove").click(function(ex){
          ex.preventDefault();
          var col = $(this).parent().parent().parent().children().index($(this).parent().parent());
@@ -152,4 +160,15 @@ $(document).ready(function(){
             // make a server call here
         }
     });
+
+    $('.progress').jsRapBar({
+     
+        position: .7,
+        width: '40%',
+          height: '12px',
+          barColor: '#fec56f',
+        enabled:false,
+
+      });
+      
 });
