@@ -21,8 +21,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
-
-
+   <script src="js/jquery.star-rating-svg.min.js"></script>
+  <script src="js/jsRapBar.js"></script>
     <script src="js/main.js"></script>
 </head>
 
@@ -31,7 +31,7 @@
     <section id="banner">
         <a href="">
             <div class="banner-inner d-flex align-items-center">
-                <button class="btn  banner-btn">Göstər</button>
+                <button class="btn  banner-btn disappear-mobile">Göstər</button>
             </div>
 
         </a>
@@ -141,10 +141,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 " style="float:right">
-                    <a class="menu-topcat" href=""><i class="fas fa-gamepad"></i> Konsol oyunları</a>
-                </div>
-                <div class="col-lg-2 d-flex align-items-end" style="float:right">
+                <div class="col-lg-4 d-flex justify-content-end">
+                    <a class="menu-topcat" style="margin-right: 30px;" href=""><i class="fas fa-gamepad"></i> Konsol
+                        oyunları</a>
+
                     <a class="menu-topcat" href=""><i class="fas fa-bell"></i>Aksiyalar</a>
                 </div>
             </div>
@@ -154,7 +154,7 @@
         <div class="wrapper-underline">
             <div class="container ">
                 <div class="row " style="margin: 5px 0!important;">
-                    <div class="col-lg-6 offset-lg-2  d-flex justify-content-between ">
+                    <div class="col-lg-6 col-md-12 offset-lg-2  d-flex justify-content-between ">
                         <a class="text-small" href=""><span>Lastikler</span></a>
                         <a class="text-small" href=""><span>iPhone 7 Plus</span></a>
                         <a class="text-small" href=""><span>Galaxy Note 9</span></a>
@@ -171,7 +171,7 @@
 
         <div class="wrapper-underline for-menu-disappear">
             <div class="container">
-                <div class="row row-menu">
+                <div class="row row-menu disappear-mobile">
                     <div class="col-lg-12">
                         <ul class="text-center menu-main d-flex justify-content-between align-items-between">
                             <li class="main-li"><a class="menu-header" href="">ELEKTRONIK, CEP TELEFONU <span class="menu-hover"></span></a>
@@ -296,10 +296,68 @@
 
 
     </section>
-    <section id="body" style="background-color: #f1f5f8">
+    <section id="mobile-menu">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="img/logo.JPG" alt=""></a>
+            
+            <a href="navbar-brand"> <i class="far fa-bell"></i> </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <h6>Bütün kategoriyalar</h6>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">ELEKTRONİK,
+                            CEP TELEFONU<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">EV, YAŞAM
+                            OFİS, KIRTASİYE<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">ANNE, BEBEK,
+                            OYUNCAK<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">SAAT, MODA,
+                            TAKI, AYAKKABI<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">KİTAP,
+                            MÜZİK, HOBİ<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">SPOR,
+                            OUTDOOR<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">SAĞLIK, BAKIM,
+                            KOZMETİK<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">OTO, BAHÇE,
+                            YAPI MARKET<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">SÜPERMARKET,
+                            PETSHOP<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <div class="mobile-search">
+            <input type="text" id="typewriter" value="Ən ucuz nəyi almaq istəyirsiniz?" autofocus="" class="typewriter">
+            <i class="fas fa-search"></i>
+        </div>
+    </section>
+    <section id="body" class="disappear-mobile" style="background-color: #f1f5f8">
         <div class="container">
             <!-- Here are promo adverts located -->
-            <div class="row" style="padding: 20px 0 0 0;">
+            <div class="row disappear-mobile" style="padding: 20px 0 0 0;">
                 <div class="col-lg-7 " style="padding-left:0px;  ">
                     <div class="owl-carousel1 owl-carousel" style="min-height:470px">
                         <div><img style="height: 440px;" src="img/carousel/1546436433142.png" alt=""></div>
@@ -319,7 +377,7 @@
 
                     <div class="row two ">
                         <div class="col-lg-12 " style="padding-left:0;">
-                            <a href=""><img  src="img/carousel/3/component_Ui1eI2019-01-24.jpg" alt=""></a>
+                            <a href=""><img src="img/carousel/3/component_Ui1eI2019-01-24.jpg" alt=""></a>
                         </div>
                     </div>
 
@@ -379,7 +437,7 @@
 
             </div>
             <!-- Merch icons -->
-            <div class="row merch-div">
+            <div class="row merch-div disappear-mobile">
                 <div class="col-lg-12 merch">
                     <ol>
                         <li><img src="img/merch1/component_0IcjP2018-11-27..png" alt=""></li>
@@ -402,9 +460,10 @@
                 </div>
             </div>
             <!--  Popular categories names -->
-
-            <div class="row">
-                <div class="col-lg-12" style="padding: 0">
+            <br>
+            <br>
+            <div class="row disappear-mobile">
+                <div class="col-lg-12 col-sm-12 col-md-12 col-12" style="padding: 0">
                     <div class="wrapper-categories owl-carousel  text-center">
                         <div> <a href="">Samsung telefonları</a> </div>
                         <div><a href="">Bosch paltaryuyan maşınları</a> </div>
@@ -433,15 +492,15 @@
                         <div> <a href=""> LG telefonları</a></div>
                         <div> <a href="">Baha mallar</a> </div>
                         <div> <a href="">Sox gedsin</a></div>
-                      
+
 
                     </div>
                 </div>
             </div>
             <!-- Category 1 -->
 
-            <div class="row">
-                <div class="col-lg-5ths">
+            <div class="row d-flex justify-content-between m-white ">
+                <div class="custom5 disappear-mobile">
                     <div class="card card-item">
                         <img src="img/items/0.jpg" class="card-img-top image-category-more" alt="...">
                         <div class="card-body">
@@ -453,7 +512,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/2.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -468,7 +527,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/3.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -483,7 +542,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/4.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -498,7 +557,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item" style="margin-right:0;">
                         <img src="img/items/1.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -519,8 +578,8 @@
             </div>
 
             <!-- Category 2 -->
-            <div class="row">
-                <div class="col-lg-5ths">
+            <div class="row row-items">
+                <div class="custom5 disappear-mobile">
                     <div class="card card-item">
                         <img src="img/items/0.jpg" class="card-img-top image-category-more" alt="...">
                         <div class="card-body">
@@ -532,7 +591,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/2.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -547,7 +606,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/3.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -562,7 +621,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/4.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -577,7 +636,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item" style="margin-right:0;">
                         <img src="img/items/1.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -599,7 +658,7 @@
 
             <!-- Top category images -->
 
-            <div class="row ">
+            <div class="row disappear-mobile ">
                 <div class="col-lg-4 categories-adv">
                     <a href=""><img src="img/categories-adv/1.jpg" alt=""></a>
                 </div>
@@ -617,11 +676,11 @@
                 </div>
             </div>
             <!-- Pupular items 1 carousel -->
-            <div class="row">
+            <div class="row row-items">
 
 
-                <div class="owl-carousel popular">
-                    <div style="width:226px">
+                <div class="owl-carousel popular d-flex justify-content-between">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/2.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -637,7 +696,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/1.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -654,7 +713,7 @@
                     </div>
 
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/4.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -670,7 +729,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/2.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -686,7 +745,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/3.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -702,7 +761,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/1.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -721,8 +780,8 @@
 
             </div>
 
-            <div class="row">
-                <div class="col-lg-5ths">
+            <div class="row row-items">
+                <div class="custom5 disappear-mobile">
                     <div class="card card-item">
                         <img src="img/items/0.jpg" class="card-img-top image-category-more" alt="...">
                         <div class="card-body">
@@ -734,7 +793,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/2.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -749,7 +808,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/3.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -764,7 +823,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/4.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -779,7 +838,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item" style="margin-right:0;">
                         <img src="img/items/1.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -801,8 +860,8 @@
 
 
             <!-- Pupular items 3 -->
-            <div class="row">
-                <div class="col-lg-5ths">
+            <div class="row row-items">
+                <div class="custom5 disappear-mobile">
                     <div class="card card-item">
                         <img src="img/items/0.jpg" class="card-img-top image-category-more" alt="...">
                         <div class="card-body">
@@ -814,7 +873,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/2.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -829,7 +888,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/3.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -844,7 +903,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item">
                         <img src="img/items/4.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -859,7 +918,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-5ths">
+                <div class="custom5">
                     <div class="card card-item" style="margin-right:0;">
                         <img src="img/items/1.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -879,12 +938,10 @@
                 </div>
             </div>
 
-
-
             <!-- Merch icons -->
 
 
-            <div class="row merch-div">
+            <div class="row merch-div disappear-mobile">
                 <div class="col-lg-12 merch">
                     <ol>
                         <li><img src="img/merch2/1.jpg" alt=""></li>
@@ -921,7 +978,7 @@
 
 
                 <div class="owl-carousel popular">
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/2.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -937,7 +994,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/1.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -954,7 +1011,7 @@
                     </div>
 
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/4.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -970,7 +1027,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/2.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -986,7 +1043,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/3.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -1002,7 +1059,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/1.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -1033,7 +1090,7 @@
 
 
                 <div class="owl-carousel popular">
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/2.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -1049,7 +1106,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/1.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -1066,7 +1123,7 @@
                     </div>
 
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/4.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -1082,7 +1139,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/2.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -1098,7 +1155,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/3.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -1114,7 +1171,7 @@
                         </div>
                     </div>
 
-                    <div style="width:226px">
+                    <div style="width:234px">
                         <div class="card card-item">
                             <img src="img/items/1.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -1132,26 +1189,432 @@
                 </div>
 
             </div>
-
-
-
-        </div>
-
-
-
-
-
+<div class="row hide-desktop">
+        <i class="fas fa-angle-up"></i> 
+    <a class="return-up" href="">ƏVVƏLƏ QAYID</a>
+</div>
 
 
         </div>
+      
+    </section>
+
+    <section id="mobile-body">
+            <form id="search-form" method="GET" action="" class="" >
+                    <div class="search-mobile-area">
+                            <i class="fas fa-arrow-left hide-mobile-search" >
+                                
+                            </i>
+                            <input id="search-input" name="q" autocapitalize="off" autocorrect="off" placeholder="Ən ucuz nəyi almaq istəyirsiniz?" class="">
+                    </div>
+                        <ul id="search-results" class="">
+                           <li>
+                               <h3>SON AXTARDIĞINIZ</h3>
+                               <ul>
+                                   <li><a href="">ruslan</a></li>
+                                   <li><a href="">cyber-z</a></li>
+                               </ul>
+                           </li>
+                        </ul>
+             </form>
+             <div class="container">
+                 <div class="row m-white">
+                          
+                 </div>
+                 
+                 <div class="row m-white">
+                        <h3 style="padding-left:10px;" class="section-header">Mobil telefonlar </h3>  
+                        <br>
+                            <div class="custom5">
+                                    <div class="card card-item">
+                                        <img src="img/items/2.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                                            <a class="link-merch" href="">
+                                                <div class="source">amazon.com.tr</div>
+                                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                                            </a>
+                                            <a href=""></a>
+                                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                                <div class="custom5">
+                                    <div class="card card-item">
+                                        <img src="img/items/3.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                                            <a class="link-merch" href="">
+                                                <div class="source">amazon.com.tr</div>
+                                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                                            </a>
+                                            <a href=""></a>
+                                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                                <div class="custom5">
+                                    <div class="card card-item">
+                                        <img src="img/items/4.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                                            <a class="link-merch" href="">
+                                                <div class="source">amazon.com.tr</div>
+                                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                                            </a>
+                                            <a class="link-merch" href=""></a>
+                                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                                <div class="custom5">
+                                    <div class="card card-item" style="margin-right:0;">
+                                        <img src="img/items/1.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                                            <a class="link-merch" href="">
+                                                <div class="source">amazon.com.tr</div>
+                                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                                            </a>
+                                            <a class="link-merch" href="">
+                                                <div class="source">amazon.com.tr</div>
+                                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                                            </a>
+                                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                                <div class="gotocat d-flex justify-content-end">
+                                        <a href="" class="link-to-category">Bütün Məhsullara bax <i class="fas fa-angle-right"></i></a>
+                                        
+                                   </div>
+                                   
+                               
+                 </div>
+                 <div class="row m-white">
+                       
+                        <div class="col-12">
+                             <h3 style="padding-left:10px;" class="section-header text-center">Populyar mağazalar</h3>  
+                            <div class="m-merch-popular owl-carousel">
+                                <div style="margin: 0 44px 0 0;">
+                                    <a href="">
+                                        <img src="img/merch1/component_0IcjP2018-11-27..png" alt="">
+                                    </a>
+                                </div>
+                                <div>
+                                     <a href="">
+                                         <img src="img/merch1/component_6UNnu2018-04-17..png" alt="">
+                                     </a>
+                                 </div>
+                                 <div>
+                                         <a href="">
+                                             <img src="img/merch1/component_A5xT22018-07-18..png" alt="">
+                                         </a>
+                                     </div>
+                                     <div>
+                                             <a href="">
+                                                 <img src="img/merch1/component_IDR2m2018-10-19..png" alt="">
+                                             </a>
+                                         </div>
+                                         <div>
+                                                 <a href="">
+                                                     <img src="img/merch1/component_Ub1QC2018-03-29..png" alt="">
+                                                 </a>
+                                             </div>
+                                             <div>
+                                                     <a href="">
+                                                         <img src="img/merch1/component_eTUlw2018-05-25..png" alt="">
+                                                     </a>
+                                                 </div>
+                                                 <div>
+                                                         <a href="">
+                                                             <img src="img/merch1/component_gL8N62018-03-29..png" alt="">
+                                                         </a>
+                                                     </div>
+                                                     <div>
+                                                             <a href="">
+                                                                 <img src="img/merch1/component_jC7vQ2018-03-29..png" alt="">
+                                                             </a>
+                                                         </div>
+                                                         <div>
+                                                                 <a href="">
+                                                                     <img src="img/merch1/component_6UNnu2018-04-17..png" alt="">
+                                                                 </a>
+                                                             </div>
+                                                             <div>
+                                                                     <a href="">
+                                                                         <img src="img/merch1/component_0IcjP2018-11-27..png" alt="">
+                                                                     </a>
+                                                                 </div>
+                                                                 <div>
+                                                                         <a href="">
+                                                                             <img src="img/merch1/component_6UNnu2018-04-17..png" alt="">
+                                                                         </a>
+                                                                     </div>
+                                                                     <div>
+                                                                             <a href="">
+                                                                                 <img src="img/merch1/component_A5xT22018-07-18..png" alt="">
+                                                                             </a>
+                                                                         </div>
+ 
+                             <div>
+ 
+                             </div>
+                            </div>
+                        </div>
+                    </div>  
+                 <div class="row m-white">
+                        <h3 style="padding-left:10px;" class="section-header">Mobil telefonlar </h3>  
+                        <br>
+                            <div class="custom5">
+                                    <div class="card card-item">
+                                        <img src="img/items/2.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                                            <a class="link-merch" href="">
+                                                <div class="source">amazon.com.tr</div>
+                                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                                            </a>
+                                            <a href=""></a>
+                                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                                <div class="custom5">
+                                    <div class="card card-item">
+                                        <img src="img/items/3.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                                            <a class="link-merch" href="">
+                                                <div class="source">amazon.com.tr</div>
+                                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                                            </a>
+                                            <a href=""></a>
+                                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                                <div class="custom5">
+                                    <div class="card card-item">
+                                        <img src="img/items/4.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                                            <a class="link-merch" href="">
+                                                <div class="source">amazon.com.tr</div>
+                                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                                            </a>
+                                            <a class="link-merch" href=""></a>
+                                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                                <div class="custom5">
+                                    <div class="card card-item" style="margin-right:0;">
+                                        <img src="img/items/1.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                                            <a class="link-merch" href="">
+                                                <div class="source">amazon.com.tr</div>
+                                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                                            </a>
+                                            <a class="link-merch" href="">
+                                                <div class="source">amazon.com.tr</div>
+                                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                                            </a>
+                                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                                <div class="gotocat d-flex justify-content-end">
+                                        <a href="" class="link-to-category">Bütün Məhsullara bax <i class="fas fa-angle-right"></i></a>
+                                        
+                                   </div>
+                                   
+                               
+                 </div>
+                   <div class="row m-white">
+                       
+                       <div class="col-12">
+                            <h3 style="padding-left:10px;" class="section-header text-center">Populyar mağazalar</h3>  
+                           <div class="m-merch-popular owl-carousel">
+                               <div style="margin: 0 44px 0 0;">
+                                   <a href="">
+                                       <img src="img/merch1/component_0IcjP2018-11-27..png" alt="">
+                                   </a>
+                               </div>
+                               <div>
+                                    <a href="">
+                                        <img src="img/merch1/component_6UNnu2018-04-17..png" alt="">
+                                    </a>
+                                </div>
+                                <div>
+                                        <a href="">
+                                            <img src="img/merch1/component_A5xT22018-07-18..png" alt="">
+                                        </a>
+                                    </div>
+                                    <div>
+                                            <a href="">
+                                                <img src="img/merch1/component_IDR2m2018-10-19..png" alt="">
+                                            </a>
+                                        </div>
+                                        <div>
+                                                <a href="">
+                                                    <img src="img/merch1/component_Ub1QC2018-03-29..png" alt="">
+                                                </a>
+                                            </div>
+                                            <div>
+                                                    <a href="">
+                                                        <img src="img/merch1/component_eTUlw2018-05-25..png" alt="">
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                        <a href="">
+                                                            <img src="img/merch1/component_gL8N62018-03-29..png" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div>
+                                                            <a href="">
+                                                                <img src="img/merch1/component_jC7vQ2018-03-29..png" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                                <a href="">
+                                                                    <img src="img/merch1/component_6UNnu2018-04-17..png" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div>
+                                                                    <a href="">
+                                                                        <img src="img/merch1/component_0IcjP2018-11-27..png" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                        <a href="">
+                                                                            <img src="img/merch1/component_6UNnu2018-04-17..png" alt="">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div>
+                                                                            <a href="">
+                                                                                <img src="img/merch1/component_A5xT22018-07-18..png" alt="">
+                                                                            </a>
+                                                                        </div>
+
+                            <div>
+
+                            </div>
+                           </div>
+                       </div>
+                   </div>  
+                 <div class="row m-white ">
+                        <h3 style="padding-left:10px;" class="section-header text-center">İnternetdə Ən Yaxşı Qiymətləri Siyahıya Aldıq</h3>  
+                        <div class="custom5">
+                         <a href="">
+                                <div class="subheader">Tozsoranlar</div>
+                            <img class="promo-mobile-img"  src="img/mobile/index/1.png" alt="">
+                         </a>
+                        </div>
+                        <div class="custom5">
+                                <a href="">
+                                       <div class="subheader">Tozsoranlar</div>
+                                   <img class="promo-mobile-img" src="img/mobile/index/2.png" alt="">
+                                </a>
+                               </div>
+                               <div class="custom5">
+                                    <a href="">
+                                           <div class="subheader">Tozsoranlar</div>
+                                       <img class="promo-mobile-img"  src="img/mobile/index/3.png" alt="">
+                                    </a>
+                                   </div>
+                                   <div class="custom5">
+                                        <a href="">
+                                               <div class="subheader">Tozsoranlar</div>
+                                           <img class="promo-mobile-img"  src="img/mobile/index/4.png" alt="">
+                                        </a>
+                                       </div>
+                 </div>
+                 <div class="row m-white m-cat-adv">
+                      <a href=""><img src="img/categories-adv/1.jpg" alt=""></a>
+                      <a href=""><img src="img/categories-adv/2.jpg" alt=""></a>
+                      <a href=""><img src="img/categories-adv/3.jpg" alt=""></a>
+                 </div>
+                 <div class="row m-white">
+                        <h3 style="padding-left:10px;" class="section-header text-center">Saytın Seçimi</h3> 
+                        <div class="col-12">
+                            <a href="" class="link-to-site-select">
+                                <img class="m-site-select-img" src="img/mobile/index/site-select/1.jpg" alt="">
+                                <div class="m-site-select ">
+                                    <div class="m-site-select-title">Oppo RX17 Pro 128GB</div>
+                                    <h2>
+                                            4.999,
+                                        <small>00 TL</small>
+                                        <i class="fas fa-angle-right"></i>
+                                    </h2>
+                                </div>
+                            </a>
+                        </div> 
+                        <div class="col-12">
+                                <a href="" class="link-to-site-select">
+                                    <img class="m-site-select-img" src="img/mobile/index/site-select/2.jpg" alt="">
+                                    <div class="m-site-select">
+                                        <div class="m-site-select-title">Alcatel 1C 2019 8GB</div>
+                                      <span>En Ucuz Fiyatlarla Yakında Cimri.com'da   <i class="fas fa-angle-right"></i> </span>
+                                    </div>
+                                </a>
+                            </div> 
+
+                            <div class="col-12">
+                                    <a href="" class="link-to-site-select">
+                                        <img class="m-site-select-img" src="img/mobile/index/site-select/3.jpg" alt="">
+                                        <div class="m-site-select">
+                                            <div class="m-site-select-title">Lenovo Z5 Pro GT 128GB 6.39 iNÇ Çift Hatlı 16MP Akıllı Cep Telefonu Siyah</div>
+                                          <span>En Ucuz Fiyatlarla Yakında Cimri.com'da   <i class="fas fa-angle-right"></i> </span>
+                                        </div>
+                                    </a>
+                                </div> 
+                 </div>
+                 <div class="row m-white ">
+                        <h3 style="padding-left:10px;" class="section-header text-center">İnternetdə Ən Yaxşı Qiymətləri Siyahıya Aldıq</h3>  
+                        <div class="custom5">
+                         <a href="">
+                                <div class="subheader">Tozsoranlar</div>
+                            <img class="promo-mobile-img"  src="img/mobile/index/1.png" alt="">
+                         </a>
+                        </div>
+                        <div class="custom5">
+                                <a href="">
+                                       <div class="subheader">Tozsoranlar</div>
+                                   <img class="promo-mobile-img" src="img/mobile/index/2.png" alt="">
+                                </a>
+                               </div>
+                               <div class="custom5">
+                                    <a href="">
+                                           <div class="subheader">Tozsoranlar</div>
+                                       <img class="promo-mobile-img"  src="img/mobile/index/3.png" alt="">
+                                    </a>
+                                   </div>
+                                   <div class="custom5">
+                                        <a href="">
+                                               <div class="subheader">Tozsoranlar</div>
+                                           <img class="promo-mobile-img"  src="img/mobile/index/4.png" alt="">
+                                        </a>
+                                       </div>
+                 </div>
+             </div>
     </section>
 </body>
 
 
 <footer class="footer">
-    <div class="container">
-        <div class="row d-flex justify-content-between">
-            <div class="col-lg-2">
+    <div class="container container-footer"> 
+        <div class="row d-flex justify-content-between ">
+            <div class="col-lg-2 col-md-6 col-6">
                 <p class="footer-header mt-3">Populyar Kategoriyalar</p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Mobil telefonları</a></li>
@@ -1161,7 +1624,7 @@
                     <li><a href="">İstilik sistemləri</a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-md-6 col-6">
                 <p class="footer-header mt-3"></p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Kondisionerlər</a></li>
@@ -1171,7 +1634,7 @@
                     <li><a href="">Velosipedlər</a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-md-6 col-6">
                 <p class="footer-header mt-3">Xüsusi məhsullar</p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Apple iPhone X 64 GB</a></li>
@@ -1181,7 +1644,7 @@
                     <li><a href="">Huawei Mate 10 Lite 64 GB</a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-md-6 col-6">
                 <p class="footer-header mt-3"></p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Nike İdman Ayaqqabıları</a></li>
@@ -1191,7 +1654,7 @@
                     <li><a href="">Bosch Paltaryuyan Maşınları</a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-md-6 col-6">
 
                 <p class="footer-header mt-3">Korporativ</p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
@@ -1208,10 +1671,10 @@
             </div>
         </div>
         <div class="row d-flex justify-content-between">
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-12 m-center">
                 <img src="img/logo-dark.JPG" alt="">
             </div>
-            <div class="col-lg-4 text-center">
+            <div class="col-lg-4 col-12 text-center m-center">
                 <div class="row">
                     <div class="col-lg-12 social">
                         <p class="footer-header">Bizi izləyin</p>
@@ -1226,7 +1689,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 d-flex justify-content-end">
+            <div class="col-lg-4  col-12 d-flex justify-content-end m-center">
                 <img src="img/app-store-badge-hemenindirin.svg" alt="">
                 <img src="img/google-play-badge-hemenindirin.svg" alt="">
             </div>
