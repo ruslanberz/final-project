@@ -92,7 +92,7 @@ $(document).ready(function(){
       $(".m-merch-popular").owlCarousel({
         
         nav:false,
-        autoplay:false,
+        autoplay:true,
         autoplayTimeout:5000,
         rewind:true,
         nav:false,
@@ -126,6 +126,19 @@ $(document).ready(function(){
 
       });
 
+
+      $(".m-popular-search-requests").owlCarousel
+      ({
+       
+        nav:false,
+        autoplay:true,
+        dots:false,
+        autoplayTimeout:3000,
+        autoWidth:true,
+        rewind:true,
+
+
+      });
 
       $(".owl-carousel2").owlCarousel({
         items:1,
