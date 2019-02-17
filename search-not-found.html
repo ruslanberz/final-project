@@ -27,8 +27,6 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jsRapBar.js"></script>
     <script src="js/jquery.star-rating-svg.min.js"></script>
-
-
     <script src="js/main.js"></script>
 </head>
 
@@ -46,7 +44,7 @@
         </div>
     </section>
 
-    <section id="menu">
+    <section id="menu" class="disappear-mobile">
         <div class="container">
             <!-- Logo&search -->
             <div class="row d-flex justify-content-center align-items-center pt-2">
@@ -302,8 +300,63 @@
 
 
     </section>
+    <section id="mobile-menu">
+        <nav id="stickynavbar" class="stickynavbar navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="img/logo.JPG" alt=""></a>
+            
+            <a href="navbar-brand" class="search-icon"> <i class="fas fa-search"></i></a>
+            <a href="navbar-brand"> <i class="far fa-bell"></i> </a>
 
-    <section id="search-404">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <h6>Bütün kategoriyalar</h6>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">ELEKTRONİK,
+                            CEP TELEFONU<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">EV, YAŞAM
+                            OFİS, KIRTASİYE<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">ANNE, BEBEK,
+                            OYUNCAK<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">SAAT, MODA,
+                            TAKI, AYAKKABI<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">KİTAP,
+                            MÜZİK, HOBİ<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">SPOR,
+                            OUTDOOR<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">SAĞLIK, BAKIM,
+                            KOZMETİK<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">OTO, BAHÇE,
+                            YAPI MARKET<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">SÜPERMARKET,
+                            PETSHOP<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+       
+    </section>
+    <section id="search-404" class="disappear-mobile">
         <div class="container ">
             <div class="row search-row">
                 <div class="col-lg-4 d-flex justify-content-end">
@@ -416,11 +469,91 @@
         </div>
     </section>
 
+    <div class="m-search-404">
+        <div class="container">
+            <div class="row">
+                <div class="wrapper-404">
+                    <span class="sorry">¯\_(ツ)_/¯</span>
+                    <div class="result-text">
+                        <span>sadhsdsd</span> <span>ilə bağlı</span>
+                        <p>heç bir nəticə tapılmadı</p>
+
+                    </div>
+                </div>
+            </div>
+             <!-- REcent viewed -->
+            <div class="row m-white">
+                <div class="col-12">
+                    <h3 style="padding-left:10px;" class="section-header">Son axtardığınız</h3>  
+                </div>
+                <div class="col-12">
+                    <div class="m-recent-wrapper">
+                      <a href="" class="d-flex justify-content-around">
+                          <img src="img/mobile/index/site-select/1.jpg" alt="">
+                          <b>Xiaomi Redmi Note 6 Pro 64GB 6.26 inç 12MP Çift Hatlı Akıllı Cep Telefonu Siyah</b>
+                      </a>  
+                      <a href="" class="d-flex justify-content-around">
+                        <img src="img/mobile/index/site-select/2.jpg" alt="">
+                        <b>Xiaomi Redmi Note 6 Pro 64GB 6.26 inç 12MP Çift Hatlı Akıllı Cep Telefonu Siyah</b>
+                    </a>  
+                    <a href="" class="d-flex justify-content-around">
+                        <img src="img/mobile/index/site-select/3.jpg" alt="">
+                        <b>Xiaomi Redmi Note 6 Pro 64GB 6.26 inç 12MP Çift Hatlı Akıllı Cep Telefonu Siyah</b>
+                    </a>  
+                    </div>
+                </div>
+             </div>
+           <!-- SAytin secimi -->
+           <div class="row m-white" style="margin-bottom:0%!important">
+            <h3 style="padding-left:10px;" class="section-header text-center">Saytın Seçimi</h3> 
+            <div class="col-12">
+                <a href="" class="link-to-site-select">
+                    <img class="m-site-select-img" src="img/mobile/index/site-select/1.jpg" alt="">
+                    <div class="m-site-select ">
+                        <div class="m-site-select-title">Oppo RX17 Pro 128GB</div>
+                        <h2>
+                                4.999,
+                            <small>00 TL</small>
+                            <i class="fas fa-angle-right"></i>
+                        </h2>
+                    </div>
+                </a>
+            </div> 
+            <div class="col-12">
+                    <a href="" class="link-to-site-select">
+                        <img class="m-site-select-img" src="img/mobile/index/site-select/2.jpg" alt="">
+                        <div class="m-site-select">
+                            <div class="m-site-select-title">Alcatel 1C 2019 8GB</div>
+                          <span>En Ucuz Fiyatlarla Yakında Cimri.com'da   <i class="fas fa-angle-right"></i> </span>
+                        </div>
+                    </a>
+                </div> 
+
+                <div class="col-12">
+                        <a href="" class="link-to-site-select">
+                            <img class="m-site-select-img" src="img/mobile/index/site-select/3.jpg" alt="">
+                            <div class="m-site-select">
+                                <div class="m-site-select-title">Lenovo Z5 Pro GT 128GB 6.39 iNÇ Çift Hatlı 16MP Akıllı Cep Telefonu Siyah</div>
+                              <span>En Ucuz Fiyatlarla Yakında Cimri.com'da   <i class="fas fa-angle-right"></i> </span>
+                            </div>
+                        </a>
+                    </div> 
+           </div>
+           <div class="row bottom m-white">
+               <a href="" class="back-to-top">
+                <i class="fas fa-angle-up"></i>
+                Əvvələ qayıd
+               </a>
+           </div>
+        </div>
+    </div>
+
 </body>
+
 <footer class="footer">
-    <div class="container">
-        <div class="row d-flex justify-content-between">
-            <div class="col-lg-2">
+    <div class="container container-footer"> 
+        <div class="row d-flex justify-content-between ">
+            <div class="col-lg-2 col-md-6 col-6">
                 <p class="footer-header mt-3">Populyar Kategoriyalar</p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Mobil telefonları</a></li>
@@ -430,7 +563,7 @@
                     <li><a href="">İstilik sistemləri</a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-md-6 col-6">
                 <p class="footer-header mt-3"></p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Kondisionerlər</a></li>
@@ -440,7 +573,7 @@
                     <li><a href="">Velosipedlər</a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-md-6 col-6">
                 <p class="footer-header mt-3">Xüsusi məhsullar</p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Apple iPhone X 64 GB</a></li>
@@ -450,7 +583,7 @@
                     <li><a href="">Huawei Mate 10 Lite 64 GB</a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-md-6 col-6">
                 <p class="footer-header mt-3"></p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                     <li><a href="">Nike İdman Ayaqqabıları</a></li>
@@ -460,7 +593,7 @@
                     <li><a href="">Bosch Paltaryuyan Maşınları</a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-md-6 col-6">
 
                 <p class="footer-header mt-3">Korporativ</p>
                 <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
@@ -477,10 +610,10 @@
             </div>
         </div>
         <div class="row d-flex justify-content-between">
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-12 m-center">
                 <img src="img/logo-dark.JPG" alt="">
             </div>
-            <div class="col-lg-4 text-center">
+            <div class="col-lg-4 col-12 text-center m-center">
                 <div class="row">
                     <div class="col-lg-12 social">
                         <p class="footer-header">Bizi izləyin</p>
@@ -495,7 +628,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 d-flex justify-content-end">
+            <div class="col-lg-4  col-12 d-flex justify-content-end m-center">
                 <img src="img/app-store-badge-hemenindirin.svg" alt="">
                 <img src="img/google-play-badge-hemenindirin.svg" alt="">
             </div>
@@ -510,5 +643,4 @@
 
     </div>
 </footer>
-
 </html>

@@ -1,3 +1,59 @@
+@media only screen and (max-width: 1200px) {
+   
+    .m-search-404
+{
+    display: block!important;          
+}
+
+.bottom{
+    height: 50px;
+}
+
+    .disappear-mobile
+    {
+        display: none!important;
+    }
+
+    .footer .container
+    {
+        background-color:  rgb(62, 65, 69);
+    }
+    .wrapper-404
+    {
+        width: 100%;
+        padding-top: 36px;
+    }
+    .sorry
+    {
+        font-size: 28px;
+    padding: 3px;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    }
+
+    .result-text
+    {
+        color: black;
+        font-weight: 600;
+        text-align: center;
+        padding: 26px 10px 36px;
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .row
+{
+    margin:10px 0!important;
+}
+
+
+.bottom{
+    margin: 0px!important;
+
+}
+
+}
 .search-phrase
 {
    color : rgb(73, 144, 226);
@@ -72,3 +128,9 @@
 
     box-shadow: rgba(51, 76, 103, 0.17) 0px 4px 11px 0px;
 }
+
+.m-search-404
+{
+    display: none;          
+}
+

@@ -17,6 +17,11 @@ body {
 }
 
 
+#mobile-body
+{
+    display: none;
+}
+
 #mobile-menu
 {
     display: none;
@@ -25,6 +30,8 @@ body {
 {
     margin:0!important;
 }
+
+
 
 .menu-hover
 {   display: inline-block;
@@ -325,6 +332,7 @@ text-decoration: underline;
 {
     display: none;
     transition: all .3s ease 0s;
+    
 }
 
 .wrapper-categories a
@@ -951,8 +959,12 @@ transition: opacity 0.2s linear;
     {
         display: none!important;
     }
-
-
+      
+    #mobile-body
+    {
+        display: block;
+    }
+   
     .custom5
     {
         display: block;
@@ -1609,5 +1621,192 @@ transition: opacity 0.2s linear;
     width: 72px;
     min-height: 30px;
 }
+
+.sale-gotomerch
+{
+    text-align: center;
+    margin-top: 10px;
+    padding: 7px 0 8px;
+    background: #4a90e2;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    display: block;
+}
+
+.sale-price
+{
+    font-weight: bold;
+    font-size: 17px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.sale-price i
+ 
+{
+   display: flex;
+   
+}
+
+.old-price
+{
+    color: #b7b7b7;
+    font-size: 12px;
+    -webkit-letter-spacing: -0.3px;
+    -moz-letter-spacing: -0.3px;
+    -ms-letter-spacing: -0.3px;
+    letter-spacing: -0.3px;
+    -webkit-text-decoration: line-through;
+    text-decoration: line-through;
+}
+
+.m-sale-pricing
+{
+     background-color: #f5f5f5;
+}
+
+.sale{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 2px;
+    left: 17px;
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    background: #ff0000;
+    justify-content: center;
+    border-radius: 2px;
+    width: 40px;
+    margin-top: 5px;
+    text-align: center;
+    height: 25px;
+    line-height: 24px;
+}
+
+.m-sale-li
+{
+    position: relative;
+    z-index: 0;
+    background-color: #fff;
+    margin-bottom: 1px;
+    border-bottom: 1px solid #eeeeee;
+    padding: 18px 18px 18px 0;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.m-menu-element img
+{
+border-radius: 50%;
+width: 50px;
+    height: 50px;
+}
+
+.m-menu-element figure
+{
+
+    width: 76px;
+    height: 76px;
+    border: solid 1.5px #dbe7f0;
+    border-radius: 38px;
+    position: relative;
+    margin: auto;
+    padding: 10px;
+}
+
+.orange
+{
+      background-color: #f4a73c;
+
+}
+
+.m-menu-element figcaption
+{
+    position: absolute;
+    z-index: 1;
+    font-size: 12px;
+    text-align: center;
+    color: #4a90e2;
+    top: 110%;
+    left: -25%;
+    width: 150%;
+    white-space: pre-line;
+}
+
+.m-categories-wrapper
+{
+    padding: 15px 0 18px 9px;
+    background-color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-height: 140px;
+    margin-bottom: 10px;    
+}
+
+.custom-row-categories
+{
+
+    margin-top: 0px!important;
+}
+
+
+.m-categories-wrapper a
+{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    min-width: 27%;
+    -webkit-transform: translateX(-10%);
+    -ms-transform: translateX(-10%);
+    transform: translateX(-10%);
+}
+
+
+.search-icon
+{
+    display: none;
+}
+
+
+.back-to-top
+{
+    text-align: center;
+    background-color: black;
+    color: white;
+    display: inline-block;
+    width: 100%;
+    padding:10px 5px;
+    
+}
+.back-to-top i
+{
+    display: block;
+}
+
+.back-to-top:hover{
+    color: white;
+    text-decoration: none;
+}   
+
 
   }
