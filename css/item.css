@@ -137,6 +137,10 @@
             font-size: 18px;
         }
 
+        #banner{
+            display: none!important;
+        }
+
         .m-show-all-specs
         {
             font-size: 13px;
@@ -147,7 +151,139 @@
             margin: 13px 0 0 auto;
             text-align: center;
             line-height: 30px;
+            margin: 15px;
+            padding: 10px 0;
+        }
+
+        .rating-mark-word {
+            width: 40px!important;
+            margin: 0px!important;
+        }
+
+        .m-comment-count
+        {
+            padding: 0;
+    border: 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: #4a90e2;
+    outline: 0;
+    background: #fff;
+        }
+
+        .link-to-upcat
+        {
+            color: inherit;
+            -webkit-text-decoration: none;
+            text-decoration: none;
+            display: inline-block;
+            color: #4a90e2;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 0;
+            margin: 0;
+            line-height: 27px;
+        }
+
+        .m-main-title
+        {
+            font-size: 16px;
+    font-weight: 900;
+    display: block;
+    line-height: 22.5px;
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0 15px;
+        }
+
+        .m-other-choises-h
+        {
+            line-height: 14px;
+            font-size: 12px;
+            font-weight: 400;
+            color: #3e4245;
+            margin: 0 0 6px;
+        }
+
+        .m-other-wrapper
+        {
+            border-radius: 4px;
+            border: 1px solid #e2e2e2;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 57px;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 15px;
+            -webkit-text-decoration: none;
+            text-decoration: none;
+            position: relative;
+            margin: 15px;
+        
+        }
+
+        .m-other-wrapper img
+        {
+            height: 45px;
+    width: 45px;
+    margin: 0 5px;
+        }
+
+        .angle-down
+        { margin-left: auto;
+            margin-right: 16px;
+        }
+
+        .m-best-price
+        {
+            flex: 1 0 30%;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: right;
+            padding-right: 15px;
+        }
+
+        .best-deal    
+        {
             margin: 0 15px;
+            flex: 0 1 auto;
+            color: #000;
+            font-size: 12px;
+            line-height: 19px;
+        }
+
+        .price-wrapper
+        {
+            padding: 20px 0;
+        }
+
+
+        .link-best-deal
+        {
+            color: #4a90e2;
+            line-height: 17px;
+            margin: 0;
+        }
+
+        .test
+        {
+            display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 0 11px;
+
         }
 }
  

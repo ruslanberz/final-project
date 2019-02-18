@@ -71,6 +71,15 @@ $(document).ready(function(){
 
       });
 
+      $(".m-carousel-item-photo").owlCarousel({
+        items:1,
+        rewind:true,
+        dots:true
+
+
+      });
+      
+
       $(".m-merch-popular").owlCarousel({
         
         nav:false,
@@ -207,9 +216,16 @@ $(document).ready(function(){
       $(".stars").starRating({
         starSize: 15,
         ratedColor: 'orange',
+        
         callback: function(currentRating, $el){
             // make a server call here
         }
+    });
+
+    //set all star ratings to read only
+    $(".stars").each(function(){
+      $(this).starRating('setReadOnly', true);
+      $(this).starRating('setRating',$(this).attr("data-rating"));
     });
 
     $('.progress').jsRapBar({
