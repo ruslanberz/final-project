@@ -28,7 +28,7 @@ body {
 }
 .row
 {
-    margin:0!important;
+    margin:0;
 }
 
 
@@ -1086,10 +1086,7 @@ transition: opacity 0.2s linear;
         word-break: break-word;
     }
 
-    .row
-    {
-        
-    }
+  
 
     .card-body
     {

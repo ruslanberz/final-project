@@ -79,7 +79,7 @@
     
     .col-12
     {
-        padding: 0px;
+        padding: 0px 15px;
     }
 
     .m-link-to-vendor
@@ -232,8 +232,8 @@
         .m-other-wrapper img
         {
             height: 45px;
-    width: 45px;
-    margin: 0 5px;
+           width: 45px;
+          margin: 0 5px;
         }
 
         .angle-down
@@ -285,6 +285,143 @@
     margin: 0 0 11px;
 
         }
+
+
+        .m-offer-wrapper-1 
+        {
+            height:80px ;
+        }
+
+        .m-offer-wrapper-3
+        {
+            display: flex;
+            justify-content: space-between;
+            margin :10px 0;
+        }
+        .m-offer-wrapper-1 .left
+        {
+            width: 35%;
+            float: left;
+            padding: 11px 2px;
+            border: 1px solid #eeeeee;
+        }
+        .m-offer-wrapper-1 img
+        {
+            height: 38px;
+            width: 90px;
+            margin:   0 auto;
+        }
+
+        .m-offer-wrapper-1 .right
+        {
+            width: 65%; float: right;;
+        }
+
+        .right h2
+        {
+            line-height: 21px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: right;
+            color: #4a90e2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            word-break: break-word;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            /* height: 63px; */
+        }
+
+        .right p
+        {
+            margin-top: 3px;
+            line-height: 14px;
+            font-size: 12px;
+            text-align: right;
+            color: #4a4a4a;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-bottom: 4px;
+        }
+        .m-offer-wrapper-2
+        {
+            height: 26px;
+        }
+
+        .m-offer-wrapper-3 span
+        {
+            float: right;
+        }
+        .published-by
+        {
+            text-align: left;
+            word-break: break-word;
+            padding: 3px 0;
+            color: #4a90e2;
+            font-weight: 400;
+            font-size: 12px;
+        }
+
+        .merch-offer-price 
+        {
+            font-size: 20px;
+            font-weight: bold;      
+            color: #000000;
+            float: right;
+        }
+
+        .go-button
+        {
+            width: 126px;
+            display: block;
+            color: #fff;
+            height: 30px;
+            border-radius: 4px;
+            background-color: #4a90e2;
+            margin: 0 0 0 auto;
+            content: 'Mağazaya Git';
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: center;
+    display: block;
+        }
+         
+        .shipping
+        {
+            font-weight: 500;
+              color: #4a4a4a;
+              font-size: 12px;
+              line-height: 40px;
+        }
+        .shipping i
+        {
+            color: rgb(182, 182, 182);
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+       .cheapest
+       {
+        position: absolute;
+        top: 18px;
+        right: 17px;
+        width: 53px;
+        line-height: 16px;
+        font-size: 10px;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 2px;
+        color: #fff;
+        background: #3aa03a;
+       }
+
+       .m-offerr
+       {
+           border-bottom: 1px solid rgb(182, 182, 182);
+       }
 }
  
 /* End of mobile  */

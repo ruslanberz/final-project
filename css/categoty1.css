@@ -4,7 +4,67 @@
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
  /*------------------------------------------------------------ CATEGORY1------------------------------------------------------------------- */
 
-  .path li{
+ @media only screen and (max-width: 1200px) 
+ {
+ 
+   #mainarea {
+     display: none;
+   }
+   #m-mainarea
+    {
+        background-color: #e8edf1!important;
+    }
+    .row
+    {
+        margin: 10px 0!important;
+    }   
+    .bottom{
+      margin:0px!important;
+    }
+    
+    .m-show-more
+    {
+      border-top:1px solid #eeeeee;
+      width: 100%;
+      margin: 10px;
+    }
+    .m-show-more a
+     {
+      margin-left: auto;
+      margin-right: 15px;
+      display: table;
+      font-size: 13px;
+      font-weight: 900;
+      text-align: left;
+      color: rgb(73, 144, 226);
+      padding-top: 10px;
+      letter-spacing: 1px;
+     }
+
+     .m-show-more i
+     {
+       margin-left: 5px;
+       
+     }
+
+     .no-m
+     {
+       margin: 0!important;
+     }
+
+     .m-categoty-promo h2
+     {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 21px;
+      color: #3e4245;
+      padding: 12px 0 12px 12px;
+      border-bottom: 1px solid #eeeeee;
+      text-align: left;
+     }
+ } 
+ 
+ .path li{
     display: inline;
 
   }
