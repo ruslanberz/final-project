@@ -4,9 +4,13 @@
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
  /*------------------------------------------------------------ CATEGORY1------------------------------------------------------------------- */
 
- @media only screen and (max-width: 1200px) 
+ @media only screen and (max-width: 1200px)
  {
- 
+
+
+  .no-margin {
+    margin: 0px!important;
+}
    #mainarea {
      display: none;
    }
@@ -14,14 +18,14 @@
     {
         background-color: #e8edf1!important;
     }
-    .row
+    /* .row
     {
         margin: 10px 0!important;
-    }   
+    } */
     .bottom{
       margin:0px!important;
     }
-    
+
     .m-show-more
     {
       border-top:1px solid #eeeeee;
@@ -44,7 +48,7 @@
      .m-show-more i
      {
        margin-left: 5px;
-       
+
      }
 
      .no-m
@@ -100,8 +104,8 @@
     max-width: 100%;
     white-space: nowrap;
      }
- } 
- 
+ }
+
  .path li{
     display: inline;
 
@@ -491,7 +495,7 @@ margin-bottom: 0.4em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin-right: 5px;
-  overflow: hidden;   
+  overflow: hidden;
    position: relative;
    font-size: 15px!important;
   user-select: none;

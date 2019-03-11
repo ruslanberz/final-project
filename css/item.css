@@ -26,6 +26,7 @@
     outline: 0px;
 }
 
+
 .custom5
     {
         display: block;
@@ -68,10 +69,7 @@
         padding: 10px 15px!important;
     }
 
-    .row
-    {
-        margin: 10px 0!important;
-    }
+  
     .m-mainarea
     {
         background-color: #e8edf1!important;
@@ -422,6 +420,9 @@
        {
            border-bottom: 1px solid rgb(182, 182, 182);
        }
+       .no-margin {
+        margin: 0px!important;
+    }
 }
  
 /* End of mobile  */
