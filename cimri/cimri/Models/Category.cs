@@ -23,6 +23,5 @@ namespace cimri.Models
         public virtual ICollection<SiteRecommend> SiteRecommends { get; set; }
         public virtual ICollection<CategorieSub> CategorieSubs { get; set; }
         public virtual ICollection<Item> Items { get; set; }
-        public virtual ICollection<Brand> Brands { get; set; }
     }
 }

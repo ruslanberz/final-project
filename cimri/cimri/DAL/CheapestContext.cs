@@ -35,5 +35,6 @@ namespace cimri.DAL
         public DbSet<IndexUnderSearchLink> indexUnderSearchLinks { get; set; }
         public DbSet<IndexUpperPromo> indexUpperPromos { get; set; }
         public DbSet<CategoryIDIndex> CategoryIDIndexes { get; set; }
+        public DbSet<Brand> Brands { get; set;   }
     }
 }

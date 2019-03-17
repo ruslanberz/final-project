@@ -15,6 +15,7 @@ namespace cimri.Models
         public Static Static { get; set; }
         public List<VwCategoryIndex> CategoryIndexes { get; set; }
         public List<CategoryIDIndex> CategoryIDIndexes { get; set; }
+        public List<Brand> Brands { get; set; }
         public int TESTITEMCOUNT { get; set; }
 
     }

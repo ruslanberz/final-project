@@ -10,7 +10,6 @@ namespace cimri.Models
         public int id { get; set; }
         public int CategoryID { get; set; }
         public int SubcategoryID { get; set; }
-
         public virtual Category Category { get; set; }
     }
 }

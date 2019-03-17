@@ -7,22 +7,27 @@ using System.Web.Helpers;
 using cimri.DAL;
 using cimri.Models;
 using System.Data.Entity;
+using System.Globalization;
 
 namespace cimri.Controllers
 {
     public class HomeController : BaseController
     {
-
+        public TextInfo UsaTextInfo = new CultureInfo("en-US", false).TextInfo;
         private readonly CheapestContext db = new CheapestContext();
         public int cnt = 0;
-       public int CalculateItems(Category cat)
+        public VwItemsAndAllCount ItemsAndAllCount = new VwItemsAndAllCount();
+        
+       public VwItemsAndAllCount CalculateItems(Category cat)
         {   
             cnt += cat.Items.Count();
             foreach (var child in cat.Children)
             {
+                ItemsAndAllCount.Items.AddRange(child.Items);
                 CalculateItems(child);
             }
-            return cnt;
+            ItemsAndAllCount.count = cnt;
+            return ItemsAndAllCount;
         }
 
         [HttpGet]
@@ -42,60 +47,8 @@ namespace cimri.Controllers
             all.SeaarchTags = db.SeaarchTags.OrderByDescending(x => x.SearchCount).Take(20).ToList();
             all.CategoryIndexes = new List<VwCategoryIndex>();
             all.CategoryIDIndexes = db.CategoryIDIndexes.Where(x => x.IsActive == true).ToList();
+            all.Brands = db.Brands.OrderByDescending(x => x.Rating).Take(8).ToList();
 
-            int count = 0;
-            //List<Category> allCategories = db.Categories.Include(a => a.Children).ToList();
-            Category loop = db.Categories.Find(12);
-            count=CalculateItems(loop);
-            cnt = 0;
-            //do
-            //{
-
-            //    foreach (var item in loop)
-            //    {
-            //        count += db.Items.Where(x => x.CategoryID == item.id).Count();
-            //        subloop=item.Children.ToList(); 
-            //    }
-
-            //    loop=subloop;
-
-
-            //} while (loop.Count!=0);
-
-
-            //foreach (var item in loop)
-            //{
-            //    List<Category> subloop = new List<Category>();
-            //    foreach (var item2 in item.Children)
-            //    {
-            //        count+=item2.Items.Count;
-            //        subloop.Add(item2);
-            //    }
-
-            //    loop = subloop;
-
-
-
-            //}
-
-            //for (int i = 0; i < loop.Count; i++)
-            //{
-            //    List<Category> subloop = new List<Category>();
-            //    foreach (var item2 in loop[i].Children)
-            //    {
-            //        count += item2.Items.Count;
-            //        subloop.Add(item2);
-            //    }
-            //    if (subloop.Count!=0)
-            //    {
-            //        i = 0;
-            //    }
-            //    loop = subloop;
-            //}
-
-
-            all.TESTITEMCOUNT = count;
-            
             foreach (var item in all.CategoryIDIndexes)
             {
                 VwCategoryIndex tmp = new VwCategoryIndex();
@@ -121,9 +74,50 @@ namespace cimri.Controllers
             return View();
         }
 
-        public ActionResult Category()
+        public ActionResult Category( int? id, int? pageId)
         {
-            return View();
+            ItemsAndAllCount.Items = new List<Item>();
+            if (id!=null)
+            {
+                VwCategory current = new VwCategory();
+                current.Category = db.Categories.Find(id);
+                // Category visit increment
+                using (var db = new CheapestContext())
+                {
+                    var result = db.Categories.SingleOrDefault(b => b.id == id);
+                    if (result != null)
+                    {
+                        result.ClickCount++;
+                        db.SaveChanges();
+                    }
+                }
+                current.Category.Name = UsaTextInfo.ToTitleCase(current.Category.Name);
+                current.CategotyItemCount = CalculateItems(current.Category).count;
+                current.Subcategories = new List<VwSubcategory>();
+                current.Items = new List<Item>();
+                cnt = 0;
+                foreach (var item in current.Category.Children)
+                {
+                    VwSubcategory temp = new VwSubcategory();
+                    temp.SubCategory = item;
+                    temp.ItemsCount = CalculateItems(item).count;
+                
+                    cnt = 0;
+                    current.Subcategories.Add(temp);
+                   
+                    ItemsAndAllCount.count = 0;
+                    ItemsAndAllCount.Items.Clear();
+
+                }
+                current.Items.AddRange(CalculateItems(current.Category).Items);
+                current.Items = current.Items.Take(36).OrderByDescending(x => x.ClickCount).ToList();
+                return View(current);
+            }
+
+            else
+            {
+                return RedirectToAction("/notfound");
+            }
         }
 
         public ActionResult CategoryFilter()

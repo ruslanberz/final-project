@@ -200,6 +200,18 @@
     <Compile Include="Migrations\201903160956061_DbAddCategoryIndexesv2.Designer.cs">
       <DependentUpon>201903160956061_DbAddCategoryIndexesv2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903171748269_BrandDbFix2.cs" />
+    <Compile Include="Migrations\201903171748269_BrandDbFix2.Designer.cs">
+      <DependentUpon>201903171748269_BrandDbFix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903171753006_BrandDbFix3.cs" />
+    <Compile Include="Migrations\201903171753006_BrandDbFix3.Designer.cs">
+      <DependentUpon>201903171753006_BrandDbFix3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903171801234_dbfix4.cs" />
+    <Compile Include="Migrations\201903171801234_dbfix4.Designer.cs">
+      <DependentUpon>201903171801234_dbfix4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseController.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -208,6 +220,7 @@
     <Compile Include="Models\CategoryFilter.cs" />
     <Compile Include="Models\CategoryFilterValue.cs" />
     <Compile Include="Models\CategoryIDIndex.cs" />
+    <Compile Include="Models\VwCategory.cs" />
     <Compile Include="Models\VwCategoryIndex.cs" />
     <Compile Include="Models\CategoryPhoto.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -230,6 +243,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\VwIndex.cs" />
+    <Compile Include="Models\VwItemsAndAllCount.cs" />
+    <Compile Include="Models\VwSubcategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -422,6 +437,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903160956061_DbAddCategoryIndexesv2.resx">
       <DependentUpon>201903160956061_DbAddCategoryIndexesv2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903171748269_BrandDbFix2.resx">
+      <DependentUpon>201903171748269_BrandDbFix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903171753006_BrandDbFix3.resx">
+      <DependentUpon>201903171753006_BrandDbFix3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903171801234_dbfix4.resx">
+      <DependentUpon>201903171801234_dbfix4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,6 +12,8 @@ namespace cimri.Models
     {
         public CheapestContext dbs = new CheapestContext();
         public List<Category> AllCategoriesClild = new List<Category>();
+        public List<Category> FooterCat = new List<Category>();
+        public List<Item> FooterItems =new List<Item>();
         public BaseController()
             {
 
@@ -28,8 +30,13 @@ namespace cimri.Models
 
             }
               AllCategoriesClild= Categories;
+            FooterCat = dbs.Categories.OrderByDescending(x => x.ClickCount).Take(10).ToList();
+            FooterItems = dbs.Items.OrderByDescending(x => x.ClickCount).Take(10).ToList();
             ViewBag.Categories = Categories;
-            
+            ViewBag.FooterCat = FooterCat;
+            ViewBag.FooterItems = FooterItems;
+
+
         }
 
         

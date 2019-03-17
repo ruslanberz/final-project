@@ -17,7 +17,8 @@ namespace cimri.Models
         public string Feature2 { get; set; }
         public string Feature3 { get; set; }
         public string Feature4 { get; set; }
-
+        
+        public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<ItemPhoto> ItemPhotos { get; set; }

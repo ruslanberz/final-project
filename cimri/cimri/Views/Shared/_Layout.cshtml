@@ -2,8 +2,9 @@
 
 @{
     List<Category> Categories = ViewBag.Categories as List <Category>;
-  
-}
+    List<Category> FooterCat = ViewBag.FooterCat as List<Category>;
+    List<Item> FooterItems = ViewBag.FooterItems as List<Item>;
+ }
 
 
 <!DOCTYPE html>
@@ -336,41 +337,37 @@
                 <div class="col-lg-2 col-md-6 col-6">
                     <p class="footer-header mt-3">Populyar Kategoriyalar</p>
                     <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
-                        <li><a href="">Mobil telefonları</a></li>
-                        <li><a href="">Soyuducular</a></li>
-                        <li><a href="">Televizorlar</a></li>
-                        <li><a href="">Tozsoranlar</a></li>
-                        <li><a href="">İstilik sistemləri</a></li>
+                        @foreach (var item in FooterCat.Take(5))
+                        {
+                            <li><a href="@Url.Action("Category","Home",new { id=item.id})" data-id="@item.id">@item.Name</a></li>
+                        }
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 col-6">
                     <p class="footer-header mt-3"></p>
                     <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
-                        <li><a href="">Kondisionerlər</a></li>
-                        <li><a href="">Parfumeriya</a></li>
-                        <li><a href="">Ofis və dəftərxana lavəzəmatları</a></li>
-                        <li><a href="">Kiçik məişət texnikası</a></li>
-                        <li><a href="">Velosipedlər</a></li>
+                        @foreach (var item in FooterCat.Skip(5).Take(5))
+                        {
+                            <li><a href="@Url.Action("Category","Home",new { id=item.id})" data-id="@item.id">@item.Name</a></li>
+                        }
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 col-6">
                     <p class="footer-header mt-3">Xüsusi məhsullar</p>
                     <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
-                        <li><a href="">Apple iPhone X 64 GB</a></li>
-                        <li><a href="">iPhone 8 64 GB</a></li>
-                        <li><a href="">S9 Plus 64 GB</a></li>
-                        <li><a href="">Samsung Galaxy S9 Plus</a></li>
-                        <li><a href="">Huawei Mate 10 Lite 64 GB</a></li>
+                        @foreach (var item in FooterItems.Take(5))
+                        {
+                            <li><a href="" data-id="@item.id">@item.Name</a></li>
+                        }
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 col-6">
                     <p class="footer-header mt-3"></p>
                     <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
-                        <li><a href="">Nike İdman Ayaqqabıları</a></li>
-                        <li><a href="">Samsung Mobil Telefonları</a></li>
-                        <li><a href="">Vestel Televizorları</a></li>
-                        <li><a href="">Barbie Oyuncaqları</a></li>
-                        <li><a href="">Bosch Paltaryuyan Maşınları</a></li>
+                        @foreach (var item in FooterItems.Skip(5).Take(5))
+                        {
+                            <li><a href="" data-id="@item.id">@item.Name</a></li>
+                        }
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 col-6">

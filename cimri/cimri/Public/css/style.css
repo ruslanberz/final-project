@@ -8,7 +8,6 @@
 
 }
 
-
 body {
 
     /* font-family: 'Open Sans', sans-serif; */
@@ -331,6 +330,17 @@ font-size:14px;
 margin-bottom: 5px;
 color: rgb(133, 133, 133);
 }
+
+    .popular-cat span {
+        font-size: 14px;
+  
+        color: rgb(133, 133, 133);
+    }
+
+        .popular-cat span:hover {
+        
+        color:black;
+        }
 
 .popular-cat p:hover
 {

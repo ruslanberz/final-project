@@ -11,8 +11,6 @@ namespace cimri.Models
         public string Name { get; set; }
         public string Logo { get; set; }
         public int Rating { get; set; }
-        public int CategoryID { get; set; }
-
-        public virtual Category Category { get; set; }
+        public ICollection<Item> Items { get; set; }
     }
 }

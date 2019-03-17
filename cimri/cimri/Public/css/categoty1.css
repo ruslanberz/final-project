@@ -303,17 +303,17 @@ color: rgb(255, 255, 255);
     letter-spacing: 1px;
   }
 
-.nav-box h2{
-  font-size: 12px;
-  text-align: left;
-  color: rgb(132, 134, 137);
-  font-weight: 600;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin: 0px 0px 15px;
-  overflow: hidden;
-  letter-spacing: 1px;
-}
+    .nav-box h2 {
+        font-size: 12px;
+        text-align: left;
+        color: rgb(132, 134, 137);
+        font-weight: 600;
+        line-height: 18px;
+        text-overflow: ellipsis;
+        margin: 0px 0px 15px;
+        overflow: hidden;
+        letter-spacing: 1px;
+    }
 
 .nav-box span
 {
@@ -344,19 +344,18 @@ color: rgb(255, 255, 255);
 
 }
 
-.ml-text
-{
-  font-size: 13px!important;
-  line-height: 18px;
-  cursor: pointer;
-  margin-bottom: 4px;
-  /* color: rgb(62, 65, 69); */
-  display: inline-flex;
-  text-decoration: none;
-  flex: 1 1 auto;
-  color:black!important;
-  display: inline-block;
-  max-width: 120px;
+.ml-text {
+    font-size: 12px !important;
+    line-height: 18px;
+    cursor: pointer;
+    margin-bottom: 10px;
+     color: rgb(62, 65, 69) !important;
+    display: inline-flex;
+    text-decoration: none;
+    flex: 1 1 auto;
+    /*color: black !important;*/
+    display: inline-block;
+    max-width: 125px;
 }
 
 .nav-box a:hover
@@ -526,16 +525,16 @@ float: right;
   margin-bottom: 5px;
 }
 
-.filter
-{
-  padding: 0px;
-  margin-right: -15px;
-  max-height: 350px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin-bottom: 0px;
-  padding: 0px 15px 0px 0px;
-  list-style: none;
+.filter {
+    padding: 0px;
+    max-height: 350px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 0px;
+    padding: 13px 0px 0px 0px;
+    list-style: none;
+    height: 50px;
+   
 }
 
 .tags{
