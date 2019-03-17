@@ -1,0 +1,136 @@
+@media only screen and (max-width: 1200px) {
+   
+    .m-search-404
+{
+    display: block!important;          
+}
+
+.bottom{
+    height: 50px;
+}
+
+    .disappear-mobile
+    {
+        display: none!important;
+    }
+
+    .footer .container
+    {
+        background-color:  rgb(62, 65, 69);
+    }
+    .wrapper-404
+    {
+        width: 100%;
+        padding-top: 36px;
+    }
+    .sorry
+    {
+        font-size: 28px;
+    padding: 3px;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    }
+
+    .result-text
+    {
+        color: black;
+        font-weight: 600;
+        text-align: center;
+        padding: 26px 10px 36px;
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .row
+{
+    margin:10px 0!important;
+}
+
+
+.bottom{
+    margin: 0px!important;
+
+}
+
+}
+.search-phrase
+{
+   color : rgb(73, 144, 226);
+}
+
+.rabbit
+{
+    margin-top: 17px;
+    margin-right: 77px;
+}
+.search-phrase-all h3
+{
+    color: rgb(62, 65, 69);
+    text-align: left;
+    font-size: 30px;
+    line-height: 42px;
+    font-weight: 600;
+    padding: 0px;
+    margin: 0px 0px 17px;
+}
+
+.search-phrase-all p
+{
+    color: rgb(62, 65, 69);
+    font-size: 15px;
+    line-height: 2.07;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+.search-row
+{
+    padding:100px!important;
+}
+
+#search-404
+{
+    background-color: #f1f5f8;
+    
+}
+
+.category-offer-wrapper {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    cursor: pointer;
+    height: 202px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    transition: box-shadow 0.4s ease 0s;
+    margin: 5px;
+    
+}
+
+.category-offer-wrapper span
+{
+
+    position: absolute;
+    bottom: 1.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(73, 144, 226);
+    letter-spacing: 1.5px;
+}
+
+
+.category-offer-wrapper:hover {
+
+    box-shadow: rgba(51, 76, 103, 0.17) 0px 4px 11px 0px;
+}
+
+.m-search-404
+{
+    display: none;          
+}
+

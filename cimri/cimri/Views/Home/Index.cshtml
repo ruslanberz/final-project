@@ -1,0 +1,1308 @@
+﻿@model cimri.Models.VwIndex
+
+<section id="body" class="disappear-mobile" style="background-color: #f1f5f8">
+    <div class="container">
+
+        <div>@Model.TESTITEMCOUNT</div>
+        <!-- Here are promo adverts located -->
+        <div class="row disappear-mobile" style="padding: 20px 0 0 0;">
+            <div class="col-lg-7 " style="padding-left:0px;  ">
+                <div class="owl-carousel1 owl-carousel" style="min-height:470px">
+                    @foreach (var item in Model.indexSliderBigItems)
+                    {
+                        <a href="@item.Link"><div><img style="height: 440px;" src="~/Public/img/content/index/carousel-main/@item.Image" alt=""></div>  </a>
+                    }
+
+                </div>
+            </div>
+            <div class="col-lg-3 daily-category d-flex justify-content-between align-items-end" style="flex-direction:column; height: 440px;">
+                <div class="row one">
+                    <div class="col-lg-12 " style="padding-left:0;">
+                        <a href="@Model.indexUpperPromo.Link"><img src="~/Public/img/content/index/up/@Model.indexUpperPromo.Image" alt=""></a>
+                    </div>
+                </div>
+                <div class="row two ">
+                    <div class="col-lg-12 " style="padding-left:0;">
+                        <a href="@Model.IndexDownPromo.Link"><img src="~/Public/img/content/index/down/@Model.IndexDownPromo.Image" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 daily-sale " style="height: 440px;">
+                <div class="owl-carousel2 owl-carousel">
+                    <div>
+                        <a href="" class="daily-sale-a ">
+                            <p class="text-center">
+                                Günün endirimləri
+                            </p>
+                            <img style="margin-top:20px;" src="~/Public/img/daily_sale/bosphoruspembepetekdesenlilbanyoaksesuar-kampanya.jpg"
+                                 alt="">
+                            <p class="text-center daily-sale-font-normal">
+                                Petlas Full Grip PT925 225/70R15C
+                                112/110R 8PR
+                            </p>
+                            <div class="pricing-fursetler text-center">
+                                <div class="price-old daily-sale-font-normal" style="color:gray; text-decoration: line-through;">500</div>
+                                <span class="sale-percent">%12</span>
+                                <div class="price-sale daily-sale-price " style="display:inline; "> 400</div>
+                            </div>
+                            <br>
+                            <div class="img-center d-flex align-items-center">
+                                <img src="~/Public/img/daily_sale/10370.png" alt="">
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="" class="daily-sale-a ">
+                            <p class="text-center">
+                                Günün endirimləri
+                            </p>
+                            <img style="margin-top:20px;" src="~/Public/img/daily_sale/petlassnowmasterwrh-kampanya.jpg"
+                                 alt="">
+                            <p class="text-center daily-sale-font-normal">
+                                Petlas Full Grip PT925 225/70R15C
+                                112/110R 8PR
+                            </p>
+                            <div class="pricing-fursetler text-center">
+                                <div class="price-old daily-sale-font-normal" style="color:gray; text-decoration: line-through;">500</div>
+                                <span class="sale-percent">%12</span>
+                                <div class="price-sale daily-sale-price " style="display:inline; "> 400</div>
+                            </div>
+                            <br>
+                            <div class="img-center d-flex align-items-center">
+                                <img src="~/Public/img/daily_sale/5599.png" alt="">
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Merch icons -->
+        <div class="row merch-div disappear-mobile">
+            <div class="col-lg-12 merch">
+                <ol>
+                    @foreach (var item in Model.Merches)
+                    {
+                        <a href="@item.Link">  <li><img src="~/Public/img/content/merch/@item.İmage" alt=""></li> </a>
+                    }
+                </ol>
+
+
+
+
+            </div>
+        </div>
+        <!--  Popular categories names -->
+        <br>
+        <br>
+        <div class="row disappear-mobile">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12" style="padding: 0">
+                <div class="wrapper-categories owl-carousel  text-center">
+                    @foreach (var item in Model.SeaarchTags)
+                    {
+                        <div> <a href="#">@item.Text</a> </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <!-- Category 1 -->
+        <div class="row d-flex justify-content-between m-white ">
+            <div class="custom5 disappear-mobile" >
+                <div class="card card-item" style="margin-right:0;" >
+                    <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.FirstOrDefault().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.CategoryIndexes.FirstOrDefault().Category.DescriptionShort</h5>
+                        <p class="card-sale-text">
+                            @Model.CategoryIndexes.FirstOrDefault().Category.DescriptionShort
+                        </p>
+                        <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.FirstOrDefault().Category.id">Bütün məhsullara bax</a>
+                    </div>
+                </div>
+            </div>
+            @foreach (var item in Model.CategoryIndexes.FirstOrDefault().Items)
+            {
+                <div class="custom5">
+                    <div class="card card-item" style="margin-right:0;">
+                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal))
+                            {
+                                <a class="link-merch" href="">
+                                    <div class="source">@merch.Merch.Link</div>
+                                    <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                </a>
+
+                            }
+                            <a href="#" class="btn btn-primary more-offers" data-item-id="@item.id">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- Category 2 -->
+
+        <div class="row d-flex justify-content-between m-white ">
+            <div class="custom5 disappear-mobile">
+                <div class="card card-item" style="margin-right:0;">
+                    <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(1).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.CategoryIndexes.Skip(1).First().Category.DescriptionShort</h5>
+                        <p class="card-sale-text">
+                            @Model.CategoryIndexes.Skip(1).First().Category.DescriptionShort
+                        </p>
+                        <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(1).First().Category.id">Bütün məhsullara bax</a>
+                    </div>
+                </div>
+            </div>
+            @foreach (var item in Model.CategoryIndexes.Skip(1).First().Items)
+            {
+                <div class="custom5">
+                    <div class="card card-item" style="margin-right:0;">
+                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal))
+                            {
+                                <a class="link-merch" href="">
+                                    <div class="source">@merch.Merch.Link</div>
+                                    <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                </a>
+
+                            }
+                            <a href="#" class="btn btn-primary more-offers" data-item-id="@item.id">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+
+        <!-- Top category images -->
+        <div class="row disappear-mobile ">
+            <div class="col-lg-4 categories-adv">
+                <a href=""><img src="~/Public/img/categories-adv/1.jpg" alt=""></a>
+            </div>
+            <div class="col-lg-4 categories-adv">
+                <a href=""> <img src="~/Public/img/categories-adv/2.jpg" alt=""></a>
+            </div>
+            <div class="col-lg-4 categories-adv">
+                <a href=""><img src="~/Public/img/categories-adv/3.jpg" alt=""></a>
+            </div>
+        </div>
+        <!-- Header of category -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="section-header">Həftənin populyar məhsulları</h3>
+            </div>
+        </div>
+        <!-- Pupular items 1 carousel -->
+        <div class="row row-items">
+
+            <div class="owl-carousel popular d-flex justify-content-between">
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/4.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 3 -->
+
+        <div class="row d-flex justify-content-between m-white ">
+            <div class="custom5 disappear-mobile">
+                <div class="card card-item" style="margin-right:0;">
+                    <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(2).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.CategoryIndexes.Skip(2).First().Category.DescriptionShort</h5>
+                        <p class="card-sale-text">
+                            @Model.CategoryIndexes.Skip(2).First().Category.DescriptionShort
+                        </p>
+                        <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(2).First().Category.id">Bütün məhsullara bax</a>
+                    </div>
+                </div>
+            </div>
+            @foreach (var item in Model.CategoryIndexes.Skip(2).First().Items)
+            {
+                <div class="custom5">
+                    <div class="card card-item" style="margin-right:0;">
+                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal))
+                            {
+                                <a class="link-merch" href="">
+                                    <div class="source">@merch.Merch.Link</div>
+                                    <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                </a>
+
+                            }
+                            <a href="#" class="btn btn-primary more-offers" data-item-id="@item.id">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <!-- Category 4 -->
+
+        <div class="row d-flex justify-content-between m-white ">
+            <div class="custom5 disappear-mobile">
+                <div class="card card-item" style="margin-right:0;">
+                    <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(3).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.CategoryIndexes.Skip(3).First().Category.DescriptionShort</h5>
+                        <p class="card-sale-text">
+                            @Model.CategoryIndexes.Skip(3).First().Category.DescriptionShort
+                        </p>
+                        <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(3).First().Category.id">Bütün məhsullara bax</a>
+                    </div>
+                </div>
+            </div>
+            @foreach (var item in Model.CategoryIndexes.Skip(3).First().Items)
+            {
+                <div class="custom5">
+                    <div class="card card-item" style="margin-right:0;">
+                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal))
+                            {
+                                <a class="link-merch" href="">
+                                    <div class="source">@merch.Merch.Link</div>
+                                    <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                </a>
+
+                            }
+                            <a href="#" class="btn btn-primary more-offers" data-item-id="@item.id">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Merch icons -->
+
+        <div class="row merch-div disappear-mobile">
+            <div class="col-lg-12 merch">
+                <ol>
+                    <li><img src="~/Public/img/merch2/1.jpg" alt=""></li>
+                    <li><img src="~/Public/img/merch2/2.jpg" alt=""></li>
+                    <li><img src="~/Public/img/merch2/3.jpg" alt=""></li>
+                    <li><img src="~/Public/img/merch2/4.jpg" alt=""></li>
+                    <li> <img src="~/Public/img/merch2/5.jpg" alt=""></li>
+                    <li><img src="~/Public/img/merch2/6.jpg" alt=""></li>
+                    <li><img src="~/Public/img/merch2/7.jpg" alt=""></li>
+                    <li><img src="~/Public/img/merch2/8.jpg" alt=""></li>
+                </ol>
+
+
+
+
+            </div>
+        </div>
+        <!-- Pupular items 2 -->
+        <!-- Category 5 -->
+
+        <div class="row d-flex justify-content-between m-white ">
+            <div class="custom5 disappear-mobile">
+                <div class="card card-item" style="margin-right:0;">
+                    <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(4).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.CategoryIndexes.Skip(4).First().Category.DescriptionShort</h5>
+                        <p class="card-sale-text">
+                            @Model.CategoryIndexes.Skip(4).First().Category.DescriptionShort
+                        </p>
+                        <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(4).First().Category.id">Bütün məhsullara bax</a>
+                    </div>
+                </div>
+            </div>
+            @foreach (var item in Model.CategoryIndexes.Skip(4).First().Items)
+            {
+                <div class="custom5">
+                    <div class="card card-item" style="margin-right:0;">
+                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal))
+                            {
+                                <a class="link-merch" href="">
+                                    <div class="source">@merch.Merch.Link</div>
+                                    <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                </a>
+
+                            }
+                            <a href="#" class="btn btn-primary more-offers" data-item-id="@item.id">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- Header of category -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="section-header">Cimrinin seçimi </h3>
+            </div>
+        </div>
+        <!-- Our selection slider -->
+        <div class="row">
+
+            <div class="owl-carousel popular">
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/4.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header of category -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="section-header">Son baxdığınız məhsullar </h3>
+            </div>
+        </div>
+        <!-- Rewiewed by user recently slider -->
+        <div class="row">
+
+            <div class="owl-carousel popular">
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/4.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:234px">
+                    <div class="card card-item">
+                        <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                            <a class="link-merch" href="">
+                                <div class="source">amazon.com.tr</div>
+                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                            </a>
+                            <a href=""></a>
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+        <div class="row hide-desktop">
+            <i class="fas fa-angle-up"></i>
+            <a class="return-up" href="">ƏVVƏLƏ QAYID</a>
+        </div>
+
+    </div>
+
+</section>
+<section id="mobile-body">
+    <form id="search-form" method="GET" action="" class="">
+        <div class="search-mobile-area">
+            <i class="fas fa-arrow-left hide-mobile-search">
+
+            </i>
+            <input id="search-input" name="q" autocapitalize="off" autocorrect="off" placeholder="Ən ucuz nəyi almaq istəyirsiniz?" class="">
+        </div>
+        <ul id="search-results" class="">
+            <li>
+                <h3>SON AXTARDIĞINIZ</h3>
+                <ul>
+                    <li><a href="">ruslan</a></li>
+                    <li><a href="">cyber-z</a></li>
+                </ul>
+            </li>
+        </ul>
+    </form>
+    <div class="container">
+        <div class="row m-white">
+
+        </div>
+        <div class=" custom-row-categories  m-white ">
+            <div class="m-categories-wrapper">
+                <a href="" class="m-menu-element">
+                    <figure class="orange">
+                        <img src="~/Public/img/mobile/index/menu/1.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="" class="m-menu-element">
+                    <figure>
+                        <img src="~/Public/img/mobile/index/menu/1.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="" class="m-menu-element">
+                    <figure>
+                        <img src="~/Public/img/mobile/index/menu/2.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="" class="m-menu-element">
+                    <figure>
+                        <img src="~/Public/img/mobile/index/menu/3.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="" class="m-menu-element">
+                    <figure>
+                        <img src="~/Public/img/mobile/index/menu/4.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="" class="m-menu-element">
+                    <figure>
+                        <img src="~/Public/img/mobile/index/menu/5.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="" class="m-menu-element">
+                    <figure>
+                        <img src="~/Public/img/mobile/index/menu/6.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="" class="m-menu-element">
+                    <figure>
+                        <img src="~/Public/img/mobile/index/menu/7.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="" class="m-menu-element">
+                    <figure>
+                        <img src="~/Public/img/mobile/index/menu/8.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="" class="m-menu-element">
+                    <figure>
+                        <img src="~/Public/img/mobile/index/menu/9.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="" class="m-menu-element">
+                    <figure>
+                        <img src="~/Public/img/mobile/index/menu/10.png" alt="">
+                        <figcaption>
+                            Iphone XS
+                            Kazan!
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>
+        </div>
+        <!-- Gunun fursetleri -->
+        <div class="row m-white">
+            <div class="col-12">
+                <h3 style="padding-left:10px;" class="section-header">Çox axtarılan sorğular</h3>
+            </div>
+            <div class="col-12">
+                <ul class="m-daily-sale">
+                    <li class="m-sale-li">
+                        <a href="" class=" link ">
+                            <div class="furset-container d-flex justify-content-between">
+                                <div class="image">
+                                    <img class="item-image" src="~/Public/img/mobile/index/sale/1.jpg" alt="">
+                                    <div class="sale">%24</div>
+                                </div>
+                                <div class="sale-text-wrapper">
+                                    <span>Petlas Full Grip PT935 215/75R16C 116R 10PR</span>
+                                    <img src="~/Public/img/mobile/index/sale/merch/1.png" alt="">
+                                    <div class="m-sale-pricing">
+                                        <div class="old-price">607,42 AZN</div>
+                                        <div class="sale-price">459,99 AZN <i class="fas fa-angle-right"></i></div>
+                                    </div>
+
+                                    <a href="" class="sale-gotomerch">Mağazaya keç</a>
+                                </div>
+
+                            </div>
+                        </a>
+                    </li>
+                    <li class="m-sale-li">
+                        <a href="" class=" link ">
+                            <div class="furset-container d-flex justify-content-between">
+                                <div class="image">
+                                    <img class="item-image" src="~/Public/img/mobile/index/sale/1.jpg" alt="">
+                                    <div class="sale">%24</div>
+                                </div>
+                                <div class="sale-text-wrapper">
+                                    <span>Petlas Full Grip PT935 215/75R16C 116R 10PR</span>
+                                    <img src="~/Public/img/mobile/index/sale/merch/1.png" alt="">
+                                    <div class="m-sale-pricing">
+                                        <div class="old-price">607,42 AZN</div>
+                                        <div class="sale-price">459,99 AZN <i class="fas fa-angle-right"></i></div>
+                                    </div>
+
+                                    <a href="" class="sale-gotomerch">Mağazaya keç</a>
+                                </div>
+
+                            </div>
+                        </a>
+                    </li>
+                    <li class="m-sale-li">
+                        <a href="" class=" link ">
+                            <div class="furset-container d-flex justify-content-between">
+                                <div class="image">
+                                    <img class="item-image" src="~/Public/img/mobile/index/sale/1.jpg" alt="">
+                                    <div class="sale">%24</div>
+                                </div>
+                                <div class="sale-text-wrapper">
+                                    <span>Petlas Full Grip PT935 215/75R16C 116R 10PR</span>
+                                    <img src="~/Public/img/mobile/index/sale/merch/1.png" alt="">
+                                    <div class="m-sale-pricing">
+                                        <div class="old-price">607,42 AZN</div>
+                                        <div class="sale-price">459,99 AZN <i class="fas fa-angle-right"></i></div>
+                                    </div>
+
+                                    <a href="" class="sale-gotomerch">Mağazaya keç</a>
+                                </div>
+
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row m-white">
+            <div class="col-12">
+                <h3 style="padding-left:10px;" class="section-header">Çox axtarılan sorğular</h3>
+            </div>
+            <div class="col-12">
+                <div class="m-popular-search-requests owl-carousel">
+                    <div>
+                        <a href="">Samsung Cep Telefonları</a>
+                    </div>
+                    <div>
+                        <a href="">Nike Spor Ayakkabı</a>
+                    </div>
+                    <div>
+                        <a href="">Arçelik Buzdolapları</a>
+                    </div>
+                    <div>
+                        <a href="">Arçelik Kahve Makineleri</a>
+                    </div>
+                    <div>
+                        <a href="">Uğur Derin Dondurucular</a>
+                    </div>
+                    <div>
+                        <a href="">Arçelik Televizyonlar</a>
+                    </div>
+                    <div>
+                        <a href="">Xiaomi Cep Telefonları</a>
+                    </div>
+                    <div>
+                        <a href="">Apple Cep Telefonları</a>
+                    </div>
+                    <div>
+                        <a href="">Arçelik Çamaşır Makineleri</a>
+                    </div>
+                    <div>
+                        <a href="">Karaca Yemek Takımı</a>
+                    </div>
+                    <div>
+                        <a href="">Samsung Cep Telefonları</a>
+                    </div>
+                    <div>
+                        <a href="">Nike Spor Ayakkabı</a>
+                    </div>
+                    <div>
+                        <a href="">Arçelik Buzdolapları</a>
+                    </div>
+                    <div>
+                        <a href="">Arçelik Kahve Makineleri</a>
+                    </div>
+                    <div>
+                        <a href="">Uğur Derin Dondurucular</a>
+                    </div>
+                    <div>
+                        <a href="">Arçelik Televizyonlar</a>
+                    </div>
+                    <div>
+                        <a href="">Xiaomi Cep Telefonları</a>
+                    </div>
+                    <div>
+                        <a href="">Apple Cep Telefonları</a>
+                    </div>
+                    <div>
+                        <a href="">Arçelik Çamaşır Makineleri</a>
+                    </div>
+                    <div>
+                        <a href="">Karaca Yemek Takımı</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-white">
+            <div class="col-12">
+                <h3 style="padding-left:10px;" class="section-header">Son axtardığınız</h3>
+            </div>
+            <div class="col-12">
+                <div class="m-recent-wrapper">
+                    <a href="" class="d-flex justify-content-around">
+                        <img src="~/Public/img/mobile/index/site-select/1.jpg" alt="">
+                        <b>Xiaomi Redmi Note 6 Pro 64GB 6.26 inç 12MP Çift Hatlı Akıllı Cep Telefonu Siyah</b>
+                    </a>
+                    <a href="" class="d-flex justify-content-around">
+                        <img src="~/Public/img/mobile/index/site-select/2.jpg" alt="">
+                        <b>Xiaomi Redmi Note 6 Pro 64GB 6.26 inç 12MP Çift Hatlı Akıllı Cep Telefonu Siyah</b>
+                    </a>
+                    <a href="" class="d-flex justify-content-around">
+                        <img src="~/Public/img/mobile/index/site-select/3.jpg" alt="">
+                        <b>Xiaomi Redmi Note 6 Pro 64GB 6.26 inç 12MP Çift Hatlı Akıllı Cep Telefonu Siyah</b>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row m-white">
+            <h3 style="padding-left:10px;" class="section-header">Mobil telefonlar </h3>
+            <br>
+            <div class="custom5">
+                <div class="card card-item">
+                    <img src="~/Public/img/items/2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                        <a class="link-merch" href="">
+                            <div class="source">amazon.com.tr</div>
+                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                        </a>
+                        <a href=""></a>
+                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="custom5">
+                <div class="card card-item">
+                    <img src="~/Public/img/items/3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                        <a class="link-merch" href="">
+                            <div class="source">amazon.com.tr</div>
+                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                        </a>
+                        <a href=""></a>
+                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="custom5">
+                <div class="card card-item">
+                    <img src="~/Public/img/items/4.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                        <a class="link-merch" href="">
+                            <div class="source">amazon.com.tr</div>
+                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                        </a>
+                        <a class="link-merch" href=""></a>
+                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="custom5">
+                <div class="card card-item" style="margin-right:0;">
+                    <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                        <a class="link-merch" href="">
+                            <div class="source">amazon.com.tr</div>
+                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                        </a>
+                        <a class="link-merch" href="">
+                            <div class="source">amazon.com.tr</div>
+                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                        </a>
+                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="gotocat d-flex justify-content-end">
+                <a href="" class="link-to-category">Bütün Məhsullara bax <i class="fas fa-angle-right"></i></a>
+
+            </div>
+
+
+        </div>
+        <div class="row m-white">
+
+            <div class="col-12">
+                <h3 style="padding-left:10px;" class="section-header text-center">Populyar mağazalar</h3>
+                <div class="m-merch-popular owl-carousel">
+                    <div style="margin: 0 44px 0 0;">
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_0IcjP2018-11-27..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_6UNnu2018-04-17..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_A5xT22018-07-18..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_Ub1QC2018-03-29..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_eTUlw2018-05-25..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_gL8N62018-03-29..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_jC7vQ2018-03-29..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_6UNnu2018-04-17..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_0IcjP2018-11-27..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_6UNnu2018-04-17..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_A5xT22018-07-18..png" alt="">
+                        </a>
+                    </div>
+
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-white">
+            <h3 style="padding-left:10px;" class="section-header">Mobil telefonlar </h3>
+            <br>
+            <div class="custom5">
+                <div class="card card-item">
+                    <img src="~/Public/img/items/2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                        <a class="link-merch" href="">
+                            <div class="source">amazon.com.tr</div>
+                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                        </a>
+                        <a href=""></a>
+                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="custom5">
+                <div class="card card-item">
+                    <img src="~/Public/img/items/3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                        <a class="link-merch" href="">
+                            <div class="source">amazon.com.tr</div>
+                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                        </a>
+                        <a href=""></a>
+                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="custom5">
+                <div class="card card-item">
+                    <img src="~/Public/img/items/4.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                        <a class="link-merch" href="">
+                            <div class="source">amazon.com.tr</div>
+                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                        </a>
+                        <a class="link-merch" href=""></a>
+                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="custom5">
+                <div class="card card-item" style="margin-right:0;">
+                    <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
+                        <a class="link-merch" href="">
+                            <div class="source">amazon.com.tr</div>
+                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                        </a>
+                        <a class="link-merch" href="">
+                            <div class="source">amazon.com.tr</div>
+                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
+                        </a>
+                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="gotocat d-flex justify-content-end">
+                <a href="" class="link-to-category">Bütün Məhsullara bax <i class="fas fa-angle-right"></i></a>
+
+            </div>
+
+
+        </div>
+        <div class="row m-white">
+
+            <div class="col-12">
+                <h3 style="padding-left:10px;" class="section-header text-center">Populyar mağazalar</h3>
+                <div class="m-merch-popular owl-carousel">
+                    <div style="margin: 0 44px 0 0;">
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_0IcjP2018-11-27..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_6UNnu2018-04-17..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_A5xT22018-07-18..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_Ub1QC2018-03-29..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_eTUlw2018-05-25..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_gL8N62018-03-29..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_jC7vQ2018-03-29..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_6UNnu2018-04-17..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_0IcjP2018-11-27..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_6UNnu2018-04-17..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <img src="~/Public/img/merch1/component_A5xT22018-07-18..png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-white ">
+            <h3 style="padding-left:10px;" class="section-header text-center">İnternetdə Ən Yaxşı Qiymətləri Siyahıya Aldıq</h3>
+            <div class="custom5">
+                <a href="">
+                    <div class="subheader">Tozsoranlar</div>
+                    <img class="promo-mobile-img" src="~/Public/img/mobile/index/1.png" alt="">
+                </a>
+            </div>
+            <div class="custom5">
+                <a href="">
+                    <div class="subheader">Tozsoranlar</div>
+                    <img class="promo-mobile-img" src="~/Public/img/mobile/index/2.png" alt="">
+                </a>
+            </div>
+            <div class="custom5">
+                <a href="">
+                    <div class="subheader">Tozsoranlar</div>
+                    <img class="promo-mobile-img" src="~/Public/img/mobile/index/3.png" alt="">
+                </a>
+            </div>
+            <div class="custom5">
+                <a href="">
+                    <div class="subheader">Tozsoranlar</div>
+                    <img class="promo-mobile-img" src="~/Public/img/mobile/index/4.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="row m-white m-cat-adv">
+            <a href=""><img src="~/Public/img/categories-adv/1.jpg" alt=""></a>
+            <a href=""><img src="~/Public/img/categories-adv/2.jpg" alt=""></a>
+            <a href=""><img src="~/Public/img/categories-adv/3.jpg" alt=""></a>
+        </div>
+        <div class="row m-white">
+            <h3 style="padding-left:10px;" class="section-header text-center">Saytın Seçimi</h3>
+            <div class="col-12">
+                <a href="" class="link-to-site-select">
+                    <img class="m-site-select-img" src="~/Public/img/mobile/index/site-select/1.jpg" alt="">
+                    <div class="m-site-select ">
+                        <div class="m-site-select-title">Oppo RX17 Pro 128GB</div>
+                        <h2>
+                            4.999,
+                            <small>00 TL</small>
+                            <i class="fas fa-angle-right"></i>
+                        </h2>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12">
+                <a href="" class="link-to-site-select">
+                    <img class="m-site-select-img" src="~/Public/img/mobile/index/site-select/2.jpg" alt="">
+                    <div class="m-site-select">
+                        <div class="m-site-select-title">Alcatel 1C 2019 8GB</div>
+                        <span>En Ucuz Fiyatlarla Yakında Cimri.com'da   <i class="fas fa-angle-right"></i> </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12">
+                <a href="" class="link-to-site-select">
+                    <img class="m-site-select-img" src="~/Public/img/mobile/index/site-select/3.jpg" alt="">
+                    <div class="m-site-select">
+                        <div class="m-site-select-title">Lenovo Z5 Pro GT 128GB 6.39 iNÇ Çift Hatlı 16MP Akıllı Cep Telefonu Siyah</div>
+                        <span>En Ucuz Fiyatlarla Yakında Cimri.com'da   <i class="fas fa-angle-right"></i> </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row m-white ">
+            <h3 style="padding-left:10px;" class="section-header text-center">İnternetdə Ən Yaxşı Qiymətləri Siyahıya Aldıq</h3>
+            <div class="custom5">
+                <a href="">
+                    <div class="subheader">Tozsoranlar</div>
+                    <img class="promo-mobile-img" src="~/Public/img/mobile/index/1.png" alt="">
+                </a>
+            </div>
+            <div class="custom5">
+                <a href="">
+                    <div class="subheader">Tozsoranlar</div>
+                    <img class="promo-mobile-img" src="~/Public/img/mobile/index/2.png" alt="">
+                </a>
+            </div>
+            <div class="custom5">
+                <a href="">
+                    <div class="subheader">Tozsoranlar</div>
+                    <img class="promo-mobile-img" src="~/Public/img/mobile/index/3.png" alt="">
+                </a>
+            </div>
+            <div class="custom5">
+                <a href="">
+                    <div class="subheader">Tozsoranlar</div>
+                    <img class="promo-mobile-img" src="~/Public/img/mobile/index/4.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row bottom m-white" style="margin-bottom:0px!important">
+        <a href="" class="back-to-top">
+            <i class="fas fa-angle-up"></i>
+            Əvvələ qayıd
+        </a>
+    </div>
+</section>
+
+
