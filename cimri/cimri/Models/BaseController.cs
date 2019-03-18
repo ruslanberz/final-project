@@ -14,6 +14,7 @@ namespace cimri.Models
         public List<Category> AllCategoriesClild = new List<Category>();
         public List<Category> FooterCat = new List<Category>();
         public List<Item> FooterItems =new List<Item>();
+        public Static Static = new Static();
         public BaseController()
             {
 
@@ -32,9 +33,11 @@ namespace cimri.Models
               AllCategoriesClild= Categories;
             FooterCat = dbs.Categories.OrderByDescending(x => x.ClickCount).Take(10).ToList();
             FooterItems = dbs.Items.OrderByDescending(x => x.ClickCount).Take(10).ToList();
+            Static = dbs.Statics.FirstOrDefault();
             ViewBag.Categories = Categories;
             ViewBag.FooterCat = FooterCat;
             ViewBag.FooterItems = FooterItems;
+            ViewBag.Static = Static;
 
 
         }

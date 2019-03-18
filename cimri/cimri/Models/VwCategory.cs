@@ -11,5 +11,8 @@ namespace cimri.Models
         public int CategotyItemCount { get; set; }
         public List<VwSubcategory> Subcategories { get; set; }
         public List<Item> Items { get; set; }
+        public int ItemsCount { get; set; }
+        public int PagesCount { get; set; }
+        public int CurrentPage { get; set; }
     }
 }

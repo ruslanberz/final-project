@@ -171,12 +171,13 @@ body {
     padding: 0;
 }
 
-.daily-category .row {
-
-position: absolute;
-height: 47%;
-margin: 0;
-}
+    .daily-category .row {
+        position: absolute;
+        height: 47%;
+        margin: 0;
+        top: 0px;
+        left: 0px;
+    }
 
 .main-wrapper-cat {
 
@@ -332,7 +333,7 @@ color: rgb(133, 133, 133);
 }
 
     .popular-cat span {
-        font-size: 14px;
+        font-size: 12px;
   
         color: rgb(133, 133, 133);
     }
@@ -386,9 +387,8 @@ text-decoration: underline;
     outline: 0px;
 }
 
-.popular-cat h6
-{
-    font-size: 16px;
+.popular-cat h6 {
+    font-size: 14px;
     color: rgb(73, 144, 226);
     font-weight: 500;
 }

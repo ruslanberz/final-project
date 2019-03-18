@@ -110,13 +110,31 @@ namespace cimri.Controllers
 
                 }
                 current.Items.AddRange(CalculateItems(current.Category).Items);
-                current.Items = current.Items.Take(36).OrderByDescending(x => x.ClickCount).ToList();
+                current.ItemsCount = current.Items.Count();
+                current.PagesCount =(current.Items.Count-1)/36+1;
+                int itemstoskip = 0;
+                if (pageId!=null)
+                {
+                    itemstoskip = (pageId-1)*36 ?? default(int); 
+                    current.CurrentPage=pageId ?? default(int);
+                    
+                }
+                else
+                {
+                    current.CurrentPage = 1;
+                }
+                current.Items = current.Items.Skip(itemstoskip).Take(36).OrderByDescending(x => x.ClickCount).ToList();
+
+                if (current.Items.Count==0)
+                {
+                    return RedirectToAction("/NotFound");
+                }
                 return View(current);
             }
 
             else
             {
-                return RedirectToAction("/notfound");
+                return RedirectToAction("/NotFound");
             }
         }
 
