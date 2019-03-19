@@ -16,11 +16,11 @@ namespace cimri.DAL
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategorieSub> CategorieSubs { get; set; }
-        public DbSet<CategoryFilter> CategoryFilters{ get; set; }
-        public DbSet<CategoryFilterValue> CategoryFilterValues { get; set; }
         public DbSet<CategoryPhoto> CategoryPhotos { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<Filter>Filters{ get; set; }
+        public DbSet<FilterValue> FilterValues { get; set; }
         public DbSet<ItemDetail> ItemDetails { get; set; }
         public DbSet<ItemMerch> ItemMerches { get; set; }
         public DbSet<ItemPhoto> ItemPhotos { get; set; }

@@ -21,6 +21,7 @@ namespace cimri.Controllers
        public VwItemsAndAllCount CalculateItems(Category cat)
         {   
             cnt += cat.Items.Count();
+            ItemsAndAllCount.Items.AddRange(cat.Items);
             foreach (var child in cat.Children)
             {
                 ItemsAndAllCount.Items.AddRange(child.Items);
@@ -91,6 +92,7 @@ namespace cimri.Controllers
                         db.SaveChanges();
                     }
                 }
+               current.Filters = current.Category.Filters.ToList();
                 current.Category.Name = UsaTextInfo.ToTitleCase(current.Category.Name);
                 current.CategotyItemCount = CalculateItems(current.Category).count;
                 current.Subcategories = new List<VwSubcategory>();
@@ -124,7 +126,15 @@ namespace cimri.Controllers
                     current.CurrentPage = 1;
                 }
                 current.Items = current.Items.Skip(itemstoskip).Take(36).OrderByDescending(x => x.ClickCount).ToList();
+                if (current.Category.Children.Count==0)
+                {
+                    current.HasChildren = false;
+                }
+                else
+                {
+                    current.HasChildren = true;
 
+                }
                 if (current.Items.Count==0)
                 {
                     return RedirectToAction("/NotFound");

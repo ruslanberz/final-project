@@ -212,14 +212,34 @@
     <Compile Include="Migrations\201903171801234_dbfix4.Designer.cs">
       <DependentUpon>201903171801234_dbfix4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903192027079_test.cs" />
+    <Compile Include="Migrations\201903192027079_test.Designer.cs">
+      <DependentUpon>201903192027079_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903192037563_FilterFixDB.cs" />
+    <Compile Include="Migrations\201903192037563_FilterFixDB.Designer.cs">
+      <DependentUpon>201903192037563_FilterFixDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903192041281_FilterFixDB2.cs" />
+    <Compile Include="Migrations\201903192041281_FilterFixDB2.Designer.cs">
+      <DependentUpon>201903192041281_FilterFixDB2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903192050113_FilterFixDB3.cs" />
+    <Compile Include="Migrations\201903192050113_FilterFixDB3.Designer.cs">
+      <DependentUpon>201903192050113_FilterFixDB3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903192121598_FilterFixDB4.cs" />
+    <Compile Include="Migrations\201903192121598_FilterFixDB4.Designer.cs">
+      <DependentUpon>201903192121598_FilterFixDB4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseController.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategorieSub.cs" />
-    <Compile Include="Models\CategoryFilter.cs" />
-    <Compile Include="Models\CategoryFilterValue.cs" />
     <Compile Include="Models\CategoryIDIndex.cs" />
+    <Compile Include="Models\Filter.cs" />
+    <Compile Include="Models\FilterValue.cs" />
     <Compile Include="Models\VwCategory.cs" />
     <Compile Include="Models\VwCategoryIndex.cs" />
     <Compile Include="Models\CategoryPhoto.cs" />
@@ -446,6 +466,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903171801234_dbfix4.resx">
       <DependentUpon>201903171801234_dbfix4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903192027079_test.resx">
+      <DependentUpon>201903192027079_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903192037563_FilterFixDB.resx">
+      <DependentUpon>201903192037563_FilterFixDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903192041281_FilterFixDB2.resx">
+      <DependentUpon>201903192041281_FilterFixDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903192050113_FilterFixDB3.resx">
+      <DependentUpon>201903192050113_FilterFixDB3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903192121598_FilterFixDB4.resx">
+      <DependentUpon>201903192121598_FilterFixDB4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

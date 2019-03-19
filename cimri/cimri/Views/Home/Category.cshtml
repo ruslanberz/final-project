@@ -19,19 +19,86 @@
                         <h2>@Model.Category.Name üçün ən ucuz qiymətlər</h2>
                         <span style="letter-spacing: 1px;">@Model.CategotyItemCount məhsul göstərilir</span>
                     </div>
-                    <div class="nav-box">
-                        <ul>
-                            @foreach (var item in Model.Subcategories)
-                            {
-                                <li>
-                                    <a href="@Url.Action("category","home",new { id=item.SubCategory.id})" class="d-flex justify-content-between" data-id="@item.SubCategory.id">
-                                        <p class="ml-text">@item.SubCategory.Name</p>
-                                        <span class="ml-count">(@item.ItemsCount)</span>
-                                    </a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
+                    @if (Model.HasChildren == true)
+                    {
+                        <div class="nav-box">
+                            <ul>
+                                @foreach (var item in Model.Subcategories)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("category","home",new { id=item.SubCategory.id})" class="d-flex justify-content-between" data-id="@item.SubCategory.id">
+                                            <p class="ml-text">@item.SubCategory.Name</p>
+                                            <span class="ml-count">(@item.ItemsCount)</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="nav-box">
+                            <h1>Qiymət aralığı</h1>
+                            <br>
+                            <div class="wrapper-fp d-flex justify-content-between align-items-center">
+                                <input type="number" name="minPriceText" value placeholder="Min" style="max-width:65px;"
+                                       autocomplete="off" class="price">
+                                <span>-</span>
+                                <input type="number" name="maxPriceText" value placeholder="Max" style="max-width:65px;"
+                                       autocomplete="off" class="price">
+                                <a href="">
+                                    <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                            <br>
+
+
+                            <ul class="filter">
+                                @foreach (var value in Model.Filters.FirstOrDefault(x => x.id == 1).FilterValues)
+                                {
+                                    <li>
+                                        <a @value.id class="">
+                                            <input type="checkbox" class="filter-chk" autocomplete="off" size="35">
+                                            <span class="filter-chk-mid">@value.SatrValue</span>
+                                            @if (value.IsSingle == false)
+                                            {
+                                                <span class="filter-chk-mid">@value.EndValue</span>
+                                            }
+                                            <span class="filter-chk-right">(1)</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+
+
+                        </div>
+
+                        foreach (var item in Model.Filters.Where(x => x.id != 1))
+                        {
+                            <div class="nav-box">
+                                <h1>@item.Name</h1>
+                                <br>
+                                <div class="wrapper-fp d-flex justify-content-between align-items-center">
+                                    <input type="text" autocomplete="off" value placeholder="@item.Name yaz" class="price">
+                                </div>
+                                <br>
+                                <ul class="filter">
+                                    @foreach (var value in item.FilterValues)
+                                    {
+                                        <li>
+                                            <a  class="">
+                                                <input type="checkbox" class="filter-chk" autocomplete="off" size="35">
+                                                <span class="filter-chk-mid">@value.SatrValue</span>
+                                                <span class="filter-chk-right">(26)</span>
+                                            </a>
+                                        </li>
+                                    }
+
+                                </ul>
+                            </div>
+                        }
+
+                    }
                     <div class="nav-box">
                         <div class="banner-navbox"></div>
                         <div class="banner-navbox"></div>
@@ -81,7 +148,7 @@
                     </div>
                 </div>
 
-                <div class="row filter" style="background-color:white;">
+                <div class="row filter filters" style="background-color:white;">
                     <div class="col-lg-9 ">
                         <a class="result-filter-selected" href="">Ən Ppopulyar Məhsullar</a>
                         <a class="result-filter" href="">Ən Ucuz Məhsullar</a>

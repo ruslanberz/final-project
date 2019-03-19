@@ -178,7 +178,6 @@ C:\Users\User\Desktop\cimri\final-project\cimri\cimri\bin\Antlr3.Runtime.pdb
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.csprojAssemblyReference.cache
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.init.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.AdminFix.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.FixStatic.resources
@@ -203,3 +202,9 @@ C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.pdb
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.BrandDbFix2.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.BrandDbFix3.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.dbfix4.resources
+C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.csprojAssemblyReference.cache
+C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.test.resources
+C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.FilterFixDB.resources
+C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.FilterFixDB2.resources
+C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.FilterFixDB3.resources
+C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.FilterFixDB4.resources

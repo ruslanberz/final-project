@@ -532,8 +532,11 @@ float: right;
     margin-bottom: 0px;
     padding: 13px 0px 0px 0px;
     list-style: none;
-    height: 50px;
    
+   
+}
+.filters {
+height:50px;
 }
 
 .tags{

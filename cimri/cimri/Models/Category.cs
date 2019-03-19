@@ -16,9 +16,9 @@ namespace cimri.Models
         public string DescriptionLong { get; set; }
         public int? ParentCategryId { get; set; }
         public virtual Category Parent { get; set; }
+        public virtual ICollection<Filter> Filters { get; set; }
         public virtual ICollection<Category> Children { get; set; }
         public virtual ICollection<CategoryPhoto> CategoryPhotos{ get; set; }
-        public virtual ICollection<CategoryFilter> CategoryFilters { get; set; }
         public virtual ICollection<SeaarchTag> SeaarchTags { get; set; }
         public virtual ICollection<SiteRecommend> SiteRecommends { get; set; }
         public virtual ICollection<CategorieSub> CategorieSubs { get; set; }
