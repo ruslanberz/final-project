@@ -1,0 +1,40 @@
+﻿@model cimri.Models.VwRecent
+@{
+
+    Layout = null;
+}
+
+@if (Model.Recent.Count > 0)
+{
+
+    
+
+        foreach (var item in Model.Recent)
+
+        {
+
+<div class="myowlitem" style="width:234px">
+    <a class="go-to-item" data-id="@item.id" onclick="Local(this)" href="@Url.Action("item","home",new { id=item.id})">
+        <div class="card card-item">
+            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title card-title-x">@item.Name</h5>
+                @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                {
+                    <a class="link-merch" href="">
+                        <div class="source">@merch.Merch.Link</div>
+                        <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                    </a>
+                }
+
+                <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+            </div>
+        </div>
+
+  </a>
+</div>
+        }
+
+
+
+}

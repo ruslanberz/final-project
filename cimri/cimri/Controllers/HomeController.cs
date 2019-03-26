@@ -67,33 +67,38 @@ namespace cimri.Controllers
             return View(all);
 
         }
-
-        public JsonResult FillRecentlyViewed(VwRecentlyItemId[] items)
+        [HttpPost]
+        public ActionResult FillRecentlyViewed(VwRecentlyItemId[] items)
         {
             if (items != null)
             {
-                List<Item> RecentlyViewed = new List<Item>();
+                VwRecent RecentlyViewed = new VwRecent();
+                RecentlyViewed.Recent = new List<Item>();
                 for (int i = 0; i < items.Length; i++)
                 {
                     Item temp = db.Items.Find(items[i].id);
                     if (temp != null)
                     {
-                        RecentlyViewed.Add(temp);
+                        RecentlyViewed.Recent.Add(temp);
                     }
                 }
 
-                if (RecentlyViewed.Count > 0)
+                if (RecentlyViewed.Recent.Count > 0)
                 {
-                    return Json(new { message = "ok" }, JsonRequestBehavior.AllowGet);
+                    return View(RecentlyViewed);
                 }
                 else
                 {
-                    return Json(new { message = "ItemsNotFound" }, JsonRequestBehavior.AllowGet);
+                    return View(RecentlyViewed);
+
                 }
             }
             else
+                
             {
-                return Json(new { message = "Recently viewed areempty" }, JsonRequestBehavior.AllowGet);
+                string ErrorText = string.Empty;
+                return new HttpStatusCodeResult(500, ErrorText);
+
             }
         }
 

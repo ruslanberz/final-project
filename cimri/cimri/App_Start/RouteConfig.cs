@@ -26,6 +26,9 @@ namespace cimri
                url: "{controller}/{action}/{id}/{pageId}/{SpecIds}",
                defaults: new { controller = "Home", action = "Category", id = UrlParameter.Optional, pageId = UrlParameter.Optional, SpecIds = UrlParameter.Optional }
            );
+
+         
+
         }
     }
 }

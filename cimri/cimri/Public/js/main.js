@@ -1,20 +1,11 @@
 ﻿$(document).ready(function () {
-    var Items = JSON.parse(localStorage.getItem('items')) || [];
-    console.log(Items);
-    $.ajax({
-        url: "/home/FillRecentlyViewed",
-        type: "POST",
-        traditional: true,
-        data: JSON.stringify(Items),
-        contentType: "application/json",
-        dataType: "json",
-        success: function (data) {
-            alert(data.message);
 
+    $(".popular").owlCarousel({
+        items: 5,
+        nav: true,
 
-
-        }
     });
+   
 
 
 
@@ -120,22 +111,7 @@
 
     });
 
-    var owl = $('.popular');
-    
-    $(document).on("owl.on",'translated.owl.carousel', function (event) {
-        $(this).find(".active").each(function () {
-
-            $(this).find(".card-item").css("background", "white");
-          
-        });
-
-
-        $(this).find(".active:nth-of-type(5)").find(".card-item").css("background", "red");
-        
-
-
-
-    });
+ 
 
       $(".wrapper-categories").owlCarousel({
         autoWidth:true,
@@ -394,6 +370,25 @@ $(".search-icon").click(function(ex){
   $("html, body").animate({ scrollTop: 0 }, "slow");
 });
 
+
+    var Items = JSON.parse(localStorage.getItem('items')) || [];
+    console.log(Items);
+    $.ajax({
+        url: "/home/FillRecentlyViewed",
+        type: "POST",
+        data: JSON.stringify(Items),
+        contentType: "application/json",
+        traditional: true,
+        dataType: "html",
+        success: function (data) {
+            $("#prepop").html(data);
+            LoadOwl();
+           
+         
+            $("#recently").removeClass("d-none");
+           
+        }
+    });
 });
 
 function showMenu(control) {
@@ -636,3 +631,13 @@ function Local(obj)
     localStorage.setItem('items', JSON.stringify(result));
 }
 
+function LoadOwl() {
+
+    $(".myowlitem").each(function () {
+        console.log($(this).html());
+        $('#pop').owlCarousel().trigger('add.owl.carousel',
+            [jQuery('<div class="owl-item">' + $(this).html() +
+                '</div>')]).trigger('refresh.owl.carousel');
+
+    });
+};

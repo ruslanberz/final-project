@@ -326,6 +326,7 @@
     <Compile Include="Models\VwItem.cs" />
     <Compile Include="Models\VwItemsAndAllCount.cs" />
     <Compile Include="Models\VwItemSpec.cs" />
+    <Compile Include="Models\VwRecent.cs" />
     <Compile Include="Models\VwRecentlyItemId.cs" />
     <Compile Include="Models\VwSubcategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -468,6 +469,7 @@
     <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Home\Item.cshtml" />
     <Content Include="Views\Home\CategoryFilter.cshtml" />
+    <Content Include="Views\Home\FillRecentlyViewed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
