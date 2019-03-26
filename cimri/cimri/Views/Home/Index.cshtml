@@ -5,7 +5,7 @@
 
         <!-- Here are promo adverts located -->
         <div class="row disappear-mobile" style="padding: 20px 0 0 0;">
-            <div class="col-lg-7 " style="padding-left:0px;  ">
+            <div class="col-lg-7 " style="padding-left:0px;  ">f
                 <div class="owl-carousel1 owl-carousel" style="min-height:470px">
                     @foreach (var item in Model.indexSliderBigItems)
                     {
@@ -84,7 +84,7 @@
                 <ol>
                     @foreach (var item in Model.Merches)
                     {
-                        <a href="@item.Link">  <li><img src="~/Public/img/content/merch/@item.İmage" alt=""></li> </a>
+                        <a href="@item.LinkWeb">  <li><img src="~/Public/img/content/merch/@item.İmage" alt=""></li> </a>
                     }
                 </ol>
 
@@ -109,20 +109,23 @@
         </div>
         <!-- Category 1 -->
         <div class="row d-flex justify-content-between m-white ">
-            <div class="custom5 disappear-mobile" >
-                <div class="card card-item" style="margin-right:0;" >
-                    <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.FirstOrDefault().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@Model.CategoryIndexes.FirstOrDefault().Category.DescriptionShort</h5>
-                        <p class="card-sale-text">
-                            @Model.CategoryIndexes.FirstOrDefault().Category.DescriptionShort
-                        </p>
-                        <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.FirstOrDefault().Category.id">Bütün məhsullara bax</a>
+            <a class="go-to-item"  href="@Url.Action("category","home", new { id=@Model.CategoryIndexes.FirstOrDefault().Category.id})">
+                <div class="custom5 disappear-mobile">
+                    <div class="card card-item" style="margin-right:0;">
+                        <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.FirstOrDefault().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.CategoryIndexes.FirstOrDefault().Category.DescriptionShort</h5>
+                            <p class="card-sale-text">
+                                @Model.CategoryIndexes.FirstOrDefault().Category.DescriptionShort
+                            </p>
+                            <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.FirstOrDefault().Category.id">Bütün məhsullara bax</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             @foreach (var item in Model.CategoryIndexes.FirstOrDefault().Items)
             {
+            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home",new { id=item.id})">
                 <div class="custom5">
                     <div class="card card-item" style="margin-right:0;">
                         <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -140,25 +143,31 @@
                         </div>
                     </div>
                 </div>
+            </a>
             }
         </div>
         <!-- Category 2 -->
 
         <div class="row d-flex justify-content-between m-white ">
-            <div class="custom5 disappear-mobile">
-                <div class="card card-item" style="margin-right:0;">
-                    <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(1).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@Model.CategoryIndexes.Skip(1).First().Category.DescriptionShort</h5>
-                        <p class="card-sale-text">
-                            @Model.CategoryIndexes.Skip(1).First().Category.DescriptionShort
-                        </p>
-                        <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(1).First().Category.id">Bütün məhsullara bax</a>
+            
+            <a class="go-to-item" href="@Url.Action("category","home", new { id=@Model.CategoryIndexes.Skip(1).First().Category.id})">
+                <div class="custom5 disappear-mobile">
+                    <div class="card card-item" style="margin-right:0;">
+                        <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(1).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.CategoryIndexes.Skip(1).First().Category.DescriptionShort</h5>
+                            <p class="card-sale-text">
+                                @Model.CategoryIndexes.Skip(1).First().Category.DescriptionShort
+                            </p>
+                            <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(1).First().Category.id">Bütün məhsullara bax</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @foreach (var item in Model.CategoryIndexes.Skip(1).First().Items)
-            {
+            </a>
+                
+                @foreach (var item in Model.CategoryIndexes.Skip(1).First().Items)
+                {
+                <a class="go-to-item" href="@Url.Action("item","home",new { id=item.id})">
                 <div class="custom5">
                     <div class="card card-item" style="margin-right:0;">
                         <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -176,7 +185,8 @@
                         </div>
                     </div>
                 </div>
-            }
+            </a>
+                }
         </div>
 
 
@@ -203,111 +213,54 @@
         <div class="row row-items">
 
             <div class="owl-carousel popular d-flex justify-content-between">
+                @foreach (var item in Model.PopularItems)
+                {
+                
                 <div style="width:234px">
-                    <div class="card card-item">
-                        <img src="~/Public/img/items/2.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                            <a class="link-merch" href="">
-                                <div class="source">amazon.com.tr</div>
-                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                            <a href=""></a>
-                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                        </div>
-                    </div>
-                </div>
-                <div style="width:234px">
-                    <div class="card card-item">
-                        <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                            <a class="link-merch" href="">
-                                <div class="source">amazon.com.tr</div>
-                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                            <a href=""></a>
-                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                        </div>
-                    </div>
-                </div>
+                    <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
+                        <div class="card card-item">
+                            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title card-title-x">@item.Name</h5>
+                                @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                                {
+                                    <a class="link-merch" href="">
+                                        <div class="source">@merch.Merch.Link</div>
+                                        <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                    </a>
+                                }
 
-                <div style="width:234px">
-                    <div class="card card-item">
-                        <img src="~/Public/img/items/4.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                            <a class="link-merch" href="">
-                                <div class="source">amazon.com.tr</div>
-                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                            <a href=""></a>
-                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                                <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-                <div style="width:234px">
-                    <div class="card card-item">
-                        <img src="~/Public/img/items/2.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                            <a class="link-merch" href="">
-                                <div class="source">amazon.com.tr</div>
-                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                            <a href=""></a>
-                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                        </div>
-                    </div>
-                </div>
-                <div style="width:234px">
-                    <div class="card card-item">
-                        <img src="~/Public/img/items/3.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                            <a class="link-merch" href="">
-                                <div class="source">amazon.com.tr</div>
-                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                            <a href=""></a>
-                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                        </div>
-                    </div>
-                </div>
-                <div style="width:234px">
-                    <div class="card card-item">
-                        <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                            <a class="link-merch" href="">
-                                <div class="source">amazon.com.tr</div>
-                                <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                            <a href=""></a>
-                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                
+                }
+             </div>
+         </div>
 
         <!-- Category 3 -->
 
         <div class="row d-flex justify-content-between m-white ">
-            <div class="custom5 disappear-mobile">
-                <div class="card card-item" style="margin-right:0;">
-                    <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(2).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@Model.CategoryIndexes.Skip(2).First().Category.DescriptionShort</h5>
-                        <p class="card-sale-text">
-                            @Model.CategoryIndexes.Skip(2).First().Category.DescriptionShort
-                        </p>
-                        <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(2).First().Category.id">Bütün məhsullara bax</a>
+            <a class="go-to-item" href="@Url.Action("category","home", new { id=@Model.CategoryIndexes.Skip(2).First().Category.id})">
+                <div class="custom5 disappear-mobile">
+                    <div class="card card-item" style="margin-right:0;">
+                        <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(2).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.CategoryIndexes.Skip(2).First().Category.DescriptionShort</h5>
+                            <p class="card-sale-text">
+                                @Model.CategoryIndexes.Skip(2).First().Category.DescriptionShort
+                            </p>
+                            <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(2).First().Category.id">Bütün məhsullara bax</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             @foreach (var item in Model.CategoryIndexes.Skip(2).First().Items)
             {
+
+            <a class="go-to-item" href="@Url.Action("item","home",new { id=item.id})">
                 <div class="custom5">
                     <div class="card card-item" style="margin-right:0;">
                         <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -325,44 +278,50 @@
                         </div>
                     </div>
                 </div>
-            }
-        </div>
+            </a>
+                    }
+            </div>
 
 
         <!-- Category 4 -->
 
         <div class="row d-flex justify-content-between m-white ">
-            <div class="custom5 disappear-mobile">
-                <div class="card card-item" style="margin-right:0;">
-                    <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(3).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@Model.CategoryIndexes.Skip(3).First().Category.DescriptionShort</h5>
-                        <p class="card-sale-text">
-                            @Model.CategoryIndexes.Skip(3).First().Category.DescriptionShort
-                        </p>
-                        <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(3).First().Category.id">Bütün məhsullara bax</a>
-                    </div>
-                </div>
-            </div>
-            @foreach (var item in Model.CategoryIndexes.Skip(3).First().Items)
-            {
-                <div class="custom5">
+            <a class="go-to-item" href="@Url.Action("category","home", new { id=@Model.CategoryIndexes.Skip(3).First().Category.id})">
+                <div class="custom5 disappear-mobile">
                     <div class="card card-item" style="margin-right:0;">
-                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(3).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">@item.Name</h5>
-                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal))
-                            {
-                                <a class="link-merch" href="">
-                                    <div class="source">@merch.Merch.Link</div>
-                                    <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                                </a>
-
-                            }
-                            <a href="#" class="btn btn-primary more-offers" data-item-id="@item.id">Hamısına bax</a>
+                            <h5 class="card-title">@Model.CategoryIndexes.Skip(3).First().Category.DescriptionShort</h5>
+                            <p class="card-sale-text">
+                                @Model.CategoryIndexes.Skip(3).First().Category.DescriptionShort
+                            </p>
+                            <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(3).First().Category.id">Bütün məhsullara bax</a>
                         </div>
                     </div>
                 </div>
+            </a>
+
+            @foreach (var item in Model.CategoryIndexes.Skip(3).First().Items)
+            {
+                <a class="go-to-item" href="@Url.Action("item","home",new { id=item.id})">
+                    <div class="custom5">
+                        <div class="card card-item" style="margin-right:0;">
+                            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal))
+                                {
+                                    <a class="link-merch" href="">
+                                        <div class="source">@merch.Merch.Link</div>
+                                        <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                    </a>
+
+                                }
+                                <a href="#" class="btn btn-primary more-offers" data-item-id="@item.id">Hamısına bax</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             }
         </div>
 
@@ -386,37 +345,41 @@
         <!-- Category 5 -->
 
         <div class="row d-flex justify-content-between m-white ">
-            <div class="custom5 disappear-mobile">
-                <div class="card card-item" style="margin-right:0;">
-                    <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(4).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@Model.CategoryIndexes.Skip(4).First().Category.DescriptionShort</h5>
-                        <p class="card-sale-text">
-                            @Model.CategoryIndexes.Skip(4).First().Category.DescriptionShort
-                        </p>
-                        <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(4).First().Category.id">Bütün məhsullara bax</a>
-                    </div>
-                </div>
-            </div>
-            @foreach (var item in Model.CategoryIndexes.Skip(4).First().Items)
-            {
-                <div class="custom5">
+            <a class="go-to-item" href="@Url.Action("category","home", new { id=@Model.CategoryIndexes.Skip(4).First().Category.id})">
+                <div class="custom5 disappear-mobile">
                     <div class="card card-item" style="margin-right:0;">
-                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <img src="~/Public/img/content/CategoryPhotos/@Model.CategoryIndexes.Skip(4).First().Category.CategoryPhotos.FirstOrDefault().NormalPhoto" class="card-img-top image-category-more" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">@item.Name</h5>
-                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal))
-                            {
-                                <a class="link-merch" href="">
-                                    <div class="source">@merch.Merch.Link</div>
-                                    <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                                </a>
-
-                            }
-                            <a href="#" class="btn btn-primary more-offers" data-item-id="@item.id">Hamısına bax</a>
+                            <h5 class="card-title">@Model.CategoryIndexes.Skip(4).First().Category.DescriptionShort</h5>
+                            <p class="card-sale-text">
+                                @Model.CategoryIndexes.Skip(4).First().Category.DescriptionShort
+                            </p>
+                            <a href="#" class="btn btn-primary more-offers" data-id="@Model.CategoryIndexes.Skip(4).First().Category.id">Bütün məhsullara bax</a>
                         </div>
                     </div>
                 </div>
+            </a>
+            @foreach (var item in Model.CategoryIndexes.Skip(4).First().Items)
+            {
+                <a class="go-to-item" href="@Url.Action("item","home",new { id=item.id})">
+                    <div class="custom5">
+                        <div class="card card-item" style="margin-right:0;">
+                            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal))
+                                {
+                                    <a class="link-merch" href="">
+                                        <div class="source">@merch.Merch.Link</div>
+                                        <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                    </a>
+
+                                }
+                                <a href="#" class="btn btn-primary more-offers" data-item-id="@item.id">Hamısına bax</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             }
         </div>
         <!-- Header of category -->

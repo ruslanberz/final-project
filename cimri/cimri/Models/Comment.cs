@@ -11,7 +11,7 @@ namespace cimri.Models
         public string Text { get; set; }
         public DateTime PublishDate { get; set; }
         public int ItemID { get; set; }
-
+        public int Rating { get; set; }
         public virtual Item Item { get; set; }
     }
 }

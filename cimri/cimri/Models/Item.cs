@@ -17,7 +17,11 @@ namespace cimri.Models
         public string Feature2 { get; set; }
         public string Feature3 { get; set; }
         public string Feature4 { get; set; }
-        
+        public int? RelatedItem1 { get; set; }
+        public int? RelatedItem2 { get; set; }
+        public int? RelatedItem3 { get; set; }
+        public int? RelatedItem4 { get; set; }
+        public int? RelatedItem5 { get; set; }
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
@@ -25,5 +29,6 @@ namespace cimri.Models
         public virtual ICollection<ItemMerch> ItemMerches { get; set; }
         public virtual ICollection<ItemDetail> ItemDetails { get; set; }
         public virtual ICollection<SiteRecommend> SiteRecommends { get; set; }
+        public virtual ICollection<ItemSpec> ItemSpecs { get; set; }
     }
 }

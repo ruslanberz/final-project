@@ -8,6 +8,7 @@ namespace cimri.Models
     public class ItemMerch
     {
         public int id { get; set; }
+        public string Name { get; set; }
         public int ItemID { get; set; }
         public double PriceNormal { get; set; } 
         public bool IsSale { get; set; }
@@ -16,7 +17,8 @@ namespace cimri.Models
         public int UserID { get; set; }
         public int SalePercent { get; set; }
         public int MerchID { get; set; }
-
+        public bool IsSponsored { get; set; }
+        public string LinkToOffer { get; set; }
         public virtual Item Item { get; set; }
         public virtual ShippiingType ShippiingType{ get; set; }
         public virtual User User { get; set; }

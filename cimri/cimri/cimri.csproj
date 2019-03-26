@@ -232,14 +232,74 @@
     <Compile Include="Migrations\201903192121598_FilterFixDB4.Designer.cs">
       <DependentUpon>201903192121598_FilterFixDB4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903201208594_ItemSpecsAdd.cs" />
+    <Compile Include="Migrations\201903201208594_ItemSpecsAdd.Designer.cs">
+      <DependentUpon>201903201208594_ItemSpecsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903201236208_ItemSpecsAddfix.cs" />
+    <Compile Include="Migrations\201903201236208_ItemSpecsAddfix.Designer.cs">
+      <DependentUpon>201903201236208_ItemSpecsAddfix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903201258244_ItemSpecsAddfix2.cs" />
+    <Compile Include="Migrations\201903201258244_ItemSpecsAddfix2.Designer.cs">
+      <DependentUpon>201903201258244_ItemSpecsAddfix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903201458433_ItemSpecsAddfix3.cs" />
+    <Compile Include="Migrations\201903201458433_ItemSpecsAddfix3.Designer.cs">
+      <DependentUpon>201903201458433_ItemSpecsAddfix3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903232008259_MerchLinkFix.cs" />
+    <Compile Include="Migrations\201903232008259_MerchLinkFix.Designer.cs">
+      <DependentUpon>201903232008259_MerchLinkFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903232147402_FilterValueFix.cs" />
+    <Compile Include="Migrations\201903232147402_FilterValueFix.Designer.cs">
+      <DependentUpon>201903232147402_FilterValueFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903232310471_CommentDbFIx.cs" />
+    <Compile Include="Migrations\201903232310471_CommentDbFIx.Designer.cs">
+      <DependentUpon>201903232310471_CommentDbFIx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903240038330_ItemMerchIsSPONSOREDadd.cs" />
+    <Compile Include="Migrations\201903240038330_ItemMerchIsSPONSOREDadd.Designer.cs">
+      <DependentUpon>201903240038330_ItemMerchIsSPONSOREDadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903240041283_ItemMerchAddLinkToOffer.cs" />
+    <Compile Include="Migrations\201903240041283_ItemMerchAddLinkToOffer.Designer.cs">
+      <DependentUpon>201903240041283_ItemMerchAddLinkToOffer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903240052016_CommentRatingFIx.cs" />
+    <Compile Include="Migrations\201903240052016_CommentRatingFIx.Designer.cs">
+      <DependentUpon>201903240052016_CommentRatingFIx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903240111173_ItemRElatedItemsAdd.cs" />
+    <Compile Include="Migrations\201903240111173_ItemRElatedItemsAdd.Designer.cs">
+      <DependentUpon>201903240111173_ItemRElatedItemsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903250448311_ItemMerchFix.cs" />
+    <Compile Include="Migrations\201903250448311_ItemMerchFix.Designer.cs">
+      <DependentUpon>201903250448311_ItemMerchFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903250749314_ItemFixRElated.cs" />
+    <Compile Include="Migrations\201903250749314_ItemFixRElated.Designer.cs">
+      <DependentUpon>201903250749314_ItemFixRElated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903251909073_Filterfix.cs" />
+    <Compile Include="Migrations\201903251909073_Filterfix.Designer.cs">
+      <DependentUpon>201903251909073_Filterfix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseController.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategorieSub.cs" />
     <Compile Include="Models\CategoryIDIndex.cs" />
+    <Compile Include="Models\FilterGroup.cs" />
+    <Compile Include="Models\FilterIdsArray.cs" />
+    <Compile Include="Models\ItemSpec.cs" />
     <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\FilterValue.cs" />
+    <Compile Include="Models\FiltersCont.cs" />
     <Compile Include="Models\VwCategory.cs" />
     <Compile Include="Models\VwCategoryIndex.cs" />
     <Compile Include="Models\CategoryPhoto.cs" />
@@ -263,7 +323,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\VwIndex.cs" />
+    <Compile Include="Models\VwItem.cs" />
     <Compile Include="Models\VwItemsAndAllCount.cs" />
+    <Compile Include="Models\VwItemSpec.cs" />
+    <Compile Include="Models\VwRecentlyItemId.cs" />
     <Compile Include="Models\VwSubcategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -403,8 +466,8 @@
     <None Include="packages.config" />
     <Content Include="Views\Home\NotFound.cshtml" />
     <Content Include="Views\Home\Category.cshtml" />
-    <Content Include="Views\Home\CategoryFilter.cshtml" />
     <Content Include="Views\Home\Item.cshtml" />
+    <Content Include="Views\Home\CategoryFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -481,6 +544,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903192121598_FilterFixDB4.resx">
       <DependentUpon>201903192121598_FilterFixDB4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903201208594_ItemSpecsAdd.resx">
+      <DependentUpon>201903201208594_ItemSpecsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903201236208_ItemSpecsAddfix.resx">
+      <DependentUpon>201903201236208_ItemSpecsAddfix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903201258244_ItemSpecsAddfix2.resx">
+      <DependentUpon>201903201258244_ItemSpecsAddfix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903201458433_ItemSpecsAddfix3.resx">
+      <DependentUpon>201903201458433_ItemSpecsAddfix3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903232008259_MerchLinkFix.resx">
+      <DependentUpon>201903232008259_MerchLinkFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903232147402_FilterValueFix.resx">
+      <DependentUpon>201903232147402_FilterValueFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903232310471_CommentDbFIx.resx">
+      <DependentUpon>201903232310471_CommentDbFIx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903240038330_ItemMerchIsSPONSOREDadd.resx">
+      <DependentUpon>201903240038330_ItemMerchIsSPONSOREDadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903240041283_ItemMerchAddLinkToOffer.resx">
+      <DependentUpon>201903240041283_ItemMerchAddLinkToOffer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903240052016_CommentRatingFIx.resx">
+      <DependentUpon>201903240052016_CommentRatingFIx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903240111173_ItemRElatedItemsAdd.resx">
+      <DependentUpon>201903240111173_ItemRElatedItemsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903250448311_ItemMerchFix.resx">
+      <DependentUpon>201903250448311_ItemMerchFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903250749314_ItemFixRElated.resx">
+      <DependentUpon>201903250749314_ItemFixRElated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903251909073_Filterfix.resx">
+      <DependentUpon>201903251909073_Filterfix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

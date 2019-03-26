@@ -9,6 +9,7 @@ namespace cimri.Models
     {
         public int id { get; set; }
         public string Link { get; set; }
+        public string LinkWeb { get; set; }
         public string Description { get; set; }
         public int Rating { get; set; }
         public string İmage { get; set; }

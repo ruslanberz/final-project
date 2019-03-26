@@ -30,7 +30,11 @@ body {
     margin:0;
 }
 
-
+.card-title-x {
+    max-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .menu-hover
 {   display: inline-block;
@@ -45,6 +49,14 @@ body {
 
 }
 
+.go-to-item 
+{
+text-decoration:none;
+}
+
+    .go-to-item:hover {
+    text-decoration:none;
+    }
 .menu-header:hover .menu-hover
 {
     visibility: visible;
@@ -333,7 +345,7 @@ color: rgb(133, 133, 133);
 }
 
     .popular-cat span {
-        font-size: 12px;
+        font-size: 14px;
   
         color: rgb(133, 133, 133);
     }
@@ -363,7 +375,7 @@ text-decoration: underline;
     display: inline-flex;
     visibility:hidden;
     position: absolute;
-    top: 92%;
+    top: 87%;
     z-index: 99;
     background-color: white;
     text-align: left;
@@ -388,7 +400,7 @@ text-decoration: underline;
 }
 
 .popular-cat h6 {
-    font-size: 14px;
+    font-size: 16px;
     color: rgb(73, 144, 226);
     font-weight: 500;
 }
@@ -832,7 +844,8 @@ transition: .4s ease .25s;
   {
       height: 211px!important;
       width: 210px!important;
-      margin:0!important;
+      padding-left:10px;
+      
   }
 
   .card-sale-text
@@ -1079,6 +1092,7 @@ transition: opacity 0.2s linear;
         padding: 0 16px;
         position: relative;
     }
+    
     .navbar-nav a
     {
         display: block;
@@ -1117,6 +1131,7 @@ transition: opacity 0.2s linear;
         white-space: nowrap;
         text-overflow: ellipsis;
         word-break: break-word;
+        text-decoration:none;
     }
 
 

@@ -50,7 +50,7 @@
             <!-- Logo&search -->
             <div class="row d-flex justify-content-center align-items-center pt-2">
                 <div class="col-lg-2" style="padding-left:0px;">
-                    <a href="#"><img src="~/Public/img/content/@Static.Logo" alt=""></a>
+                    <a href="@Url.Action("index","home")"><img src="~/Public/img/content/@Static.Logo" alt=""></a>
                 </div>
                 <div class="col-lg-6">
                     <form>
@@ -183,7 +183,7 @@
                                                 @foreach (var item2 in item.Children)
                                                 {
                                                     <div class="category-wrap popular-cat">
-                                                        <h6>@item2.Name</h6>
+                                                        <a href="@Url.Action("category","home",new { id=item2.id})"><h6>@item2.Name</h6></a>
                                                         <a href="@Url.Action("Category","Home", new {id=item2.id })">
                                                             @foreach (var chld in item2.Children)
                                                             {

@@ -1,8 +1,33 @@
-$(document).ready(function () {
-   
- 
- 
- 
+﻿$(document).ready(function () {
+    var Items = JSON.parse(localStorage.getItem('items')) || [];
+    console.log(Items);
+    $.ajax({
+        url: "/home/FillRecentlyViewed",
+        type: "POST",
+        traditional: true,
+        data: JSON.stringify(Items),
+        contentType: "application/json",
+        dataType: "json",
+        success: function (data) {
+            alert(data.message);
+
+
+
+        }
+    });
+
+
+
+    $(".go-to").click(function (e) {
+        e.preventDefault();
+
+        var position = $($(this).attr("href")).offset().top;
+
+        $("body, html").animate({
+            scrollTop: position
+        } /* speed */);
+    });
+
   var clicks = 0;
   $(".filter-li").click(function(ex){
     ex.preventDefault();
@@ -50,7 +75,6 @@ $(document).ready(function () {
    });
   $(".mobile-search").click(function(ex){
    ex.preventDefault();
-   console.log("clicked");
    $(".stickynavbar").css("display", "none");
    $("#search-form").css("display","block");
    $("#search-form").css("opacity","1");
@@ -102,12 +126,12 @@ $(document).ready(function () {
         $(this).find(".active").each(function () {
 
             $(this).find(".card-item").css("background", "white");
-            console.log("here");
+          
         });
 
 
         $(this).find(".active:nth-of-type(5)").find(".card-item").css("background", "red");
-        console.log("here");
+        
 
 
 
@@ -222,12 +246,12 @@ $(document).ready(function () {
 
       $("#searchinput").focus(function(){
         $(".search-details").css("visibility", "visible");
-        console.log("ok1");
+        
       });
 
 
       $("#searchinput").focusout(function(){
-        console.log("ok");
+        
         $(".search-details").css("visibility", "hidden");
       });
 
@@ -273,7 +297,6 @@ $(document).ready(function () {
         $(this).delay(1000).css("visibility", "hidden");
     });
       $(".btn-more-offers").click(function(){
-        console.log($(this).parent());
         $(this).parent().removeClass("mt-2");
         $(".btn-more-offers").removeClass("d-flex");
         $(".btn-more-offers").addClass("d-none");
@@ -291,11 +314,16 @@ $(document).ready(function () {
         });
       });
       $(".remove").click(function(ex){
-         ex.preventDefault();
+          ex.preventDefault();
+          $(".add-to-compare").find(("li[data-id='" + Number($(this).data("id")) + "']")).removeClass("d-none");
          var col = $(this).parent().parent().parent().children().index($(this).parent().parent());
-         $('table tr').find("td:eq("+col+"),th:eq("+col+")").remove();
-      });
+          //$('table tr').find("td:eq(" + col + "),th:eq(" + col + ")").remove();
+          $('table tr').find("td:eq(" + col + "),th:eq(" + col + ")").addClass("d-none");
+          $('table tr').find("td:eq(" + col + "),th:eq(" + col + ")").removeClass("act");
+          
+    });
 
+   
 
       $(".stars").starRating({
         starSize: 15,
@@ -314,7 +342,7 @@ $(document).ready(function () {
 
     $('.progress').jsRapBar({
 
-        position: .7,
+        position: .0,
         width: '40%',
           height: '12px',
           barColor: '#fec56f',
@@ -371,4 +399,240 @@ $(".search-icon").click(function(ex){
 function showMenu(control) {
    
     $(control).next().css("visibility", "visible");
+
 }
+
+
+function Filter(id) {
+    var SpecIds = [];
+    $(".fltr").each(function (index) {
+        
+        var temp = [];
+        $(this).find(".filter-chk").each(function ()
+        {
+            if ($(this).is(':checked'))
+            {
+                temp.push($(this).data("id"));
+            }
+            
+        });
+      
+        SpecIds.push
+            ({   
+                FilterID: $(this).data("id"),
+                FilterValues: temp
+            });   
+    });
+
+    var string = JSON.stringify({ id: 30, pageId: 1, SpecIds: SpecIds });
+    $.ajax({
+        url: "/home/catfilter",
+        type: "POST",
+        traditional: true,
+        data: string,
+        contentType: "application/json",
+        dataType: "html",
+        success: function (data) {
+            $(".forfilter").empty();
+            $(".forfilter").html(data);
+            $("#cnt").text($(".itemcount").data("val") + ' məhsul göstərilir');
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+
+
+
+        }
+    });
+}
+
+//Next 3 functions are ajax helpers for navigation on category page -  when filters are active
+function Berz(category,page) {
+   
+    var SpecIds = [];
+    $(".fltr").each(function (index) {
+
+        var temp = [];
+        $(this).find(".filter-chk").each(function () {
+            if ($(this).is(':checked')) {
+                temp.push($(this).data("id"));
+            }
+
+        });
+
+        SpecIds.push
+            ({
+                FilterID: $(this).data("id"),
+                FilterValues: temp
+            });
+    });
+
+   
+    var string = JSON.stringify({ id: category, pageId: page, SpecIds: SpecIds });
+    $.ajax({
+        url: "/home/catfilter",
+        type: "POST",
+        traditional: true,
+        data: string,
+        contentType: "application/json",
+        dataType: "html",
+        success: function (data) {
+            $(".forfilter").empty();
+            $(".forfilter").html(data);
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+
+
+
+        }
+    });
+};
+
+function BerzPrev(category, page, currentPage) {
+    if ((page < currentPage) && (Number(page) != 0)) {
+
+        var SpecIds = [];
+        $(".fltr").each(function (index) {
+
+            var temp = [];
+            $(this).find(".filter-chk").each(function () {
+                if ($(this).is(':checked')) {
+                    temp.push($(this).data("id"));
+                }
+
+            });
+
+            SpecIds.push
+                ({
+                    FilterID: $(this).data("id"),
+                    FilterValues: temp
+                });
+        });
+
+
+        var string = JSON.stringify({ id: category, pageId: page, SpecIds: SpecIds });
+        $.ajax({
+            url: "/home/catfilter",
+            type: "POST",
+            traditional: true,
+            data: string,
+            contentType: "application/json",
+            dataType: "html",
+            success: function (data) {
+                $(".forfilter").empty();
+                $(".forfilter").html(data);
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+
+
+
+            }
+        });
+    }
+
+};
+
+function BerzNext(category, page, currentPage, PagesCount) {
+    if ((page > currentPage) && (Number(PagesCount) > Number(currentPage))) {
+
+        var SpecIds = [];
+        $(".fltr").each(function (index) {
+
+            var temp = [];
+            $(this).find(".filter-chk").each(function () {
+                if ($(this).is(':checked')) {
+                    temp.push($(this).data("id"));
+                }
+
+            });
+
+            SpecIds.push
+                ({
+                    FilterID: $(this).data("id"),
+                    FilterValues: temp
+                });
+        });
+
+   
+        var string = JSON.stringify({ id: category, pageId: page, SpecIds: SpecIds });
+        $.ajax({
+            url: "/home/catfilter",
+            type: "POST",
+            traditional: true,
+            data: string,
+            contentType: "application/json",
+            dataType: "html",
+            success: function (data) {
+                $(".forfilter").empty();
+                $(".forfilter").html(data);
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+
+
+
+            }
+        });
+    }
+
+};
+
+//This function activates compare table items on item page-swaps if more than 2 items added, or ad- whenin table 0 or 1 item
+function AddCompare(obj) {
+
+    console.log($(".compare-item.d-none").length);
+
+
+    if ($(".compare-item.d-none").length <=5)
+    {
+        var toenable = $(".compare-item.act").first().data("id");
+        $(".add-to-compare").find(("li[data-id='" + Number(toenable) + "']")).removeClass("d-none");
+        $(".compare-item.act").first().addClass("d-none");
+        $(".compare-item.act").first().removeClass("act");
+        $(".tf.act").first().addClass("d-none");
+        $(".tf.act").first().removeClass("act");
+        $("tr").each(function(){
+            $(this).find(".tb.act").first().addClass("d-none");
+            $(this).find(".tb.act").first().removeClass("act");
+        });
+        $(".compare-item[data-id='" + Number($(obj).data("id")) + "']").removeClass("d-none");
+        $("tr").each(function () {
+            $(this).find(("td[data-id='" + Number($(obj).data("id")) + "']")).removeClass("d-none");
+        });
+        $(".compare-item[data-id='" + Number($(obj).data("id")) + "']").addClass("act");
+        $("tr").each(function () {
+            $(this).find(("td[data-id='" + Number($(obj).data("id")) + "']")).addClass("act");
+        });
+        $(obj).parent().addClass("d-none");
+    }
+    else
+    {
+        
+        $(".compare-item[data-id='" + Number($(obj).data("id")) + "']").removeClass("d-none");
+        $("td[data-id='" + Number($(obj).data("id")) + "']").removeClass("d-none");
+        $(".compare-item[data-id='" + Number($(obj).data("id")) + "']").addClass("act");
+        $("td[data-id='" + Number($(obj).data("id")) + "']").addClass("act");
+        $(obj).parent().addClass("d-none");
+    }
+    
+
+};
+
+function Local(obj)
+{
+    console.log($(obj).data("id"));
+    var oldItems = JSON.parse(localStorage.getItem('items')) || [];
+    console.log(oldItems);
+    var newItem =
+    {
+        'id': $(obj).data("id")
+    };
+    oldItems.push(newItem);
+    var result=[]
+    $.each(oldItems, function (i, e) {
+        var matchingItems = $.grep(result, function (item) {
+            return item.id === e.id
+        });
+        if (matchingItems.length === 0) {
+            result.push(e);
+        }
+    });
+    
+
+    localStorage.setItem('items', JSON.stringify(result));
+}
+

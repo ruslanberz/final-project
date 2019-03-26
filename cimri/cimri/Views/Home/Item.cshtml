@@ -1,17 +1,16 @@
-﻿
+﻿@model cimri.Models.VwItem
 @{
     ViewBag.Title = "Item";
 }
-
 
 @Styles.Render("~/Public/css/categoty1.css")
 @Styles.Render("~/Public/css/jsRapBar.css")
 @Styles.Render("~/Public/css/item.css")
 @Styles.Render("~/Public/css/star-rating-svg.css")
-
 <section id="mainarea" class="disappear-mobile">
     <div class="container">
-        <div class="row pt-2 pb-2">
+        @* Helelipath ishlemeyecek -commente atiram *@
+        @*<div class="row pt-2 pb-2 ">
             <div class="col-xl-12">
                 <ol class="path">
                     <li><a href="">Ana səhifə</a> </li>
@@ -24,7 +23,7 @@
                     </li>
                 </ol>
             </div>
-        </div>
+        </div>*@
         <div class="row">
             <!-- Navigation -->
             <div class="col-xl-3 left">
@@ -33,24 +32,13 @@
                         <div class="left-wrapper">
                             <div class="slider-wrapper">
                                 <div class="item-slider owl-carousel">
-                                    <div>
-                                        <img src="~/Public/img/item/slider/1.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <img src="~/Public/img/item/slider/2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <img src="~/Public/img/item/slider/3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <img src="~/Public/img/item/slider/4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <img src="~/Public/img/item/slider/5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <img src="~/Public/img/item/slider/6.jpg" alt="">
-                                    </div>
+                                    @foreach (var photo in Model.Item.ItemPhotos)
+                                    {
+                                        <div>
+                                            <img src="~/Public/img/content/item/@photo.Photo" alt="">
+                                        </div>
+                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -143,30 +131,38 @@
                 <div class="row white item-specs-header">
                     <div class="col-lg-12">
                         <br>
-                        <h1>Huawei P20 Lite 64 GB 5.84 İnç 16 MP Akıllı Cep Telefonu Siyah</h1>
-                        <br>
-                        <div class="stars jq-stars " data-rating="4.5">
-                        </div>
+                        <h1>@Model.Item.Name</h1>
+                        @if (Model.Item.Comments.Count > 0)
+                        {
+                            <div class="stars jq-stars " data-rating="@Model.OverrallRating">
+                            </div>
+                            <a class="go-to-comments go-to" href="#comments">@Model.Item.Comments.Count() rəy</a>
+                        }
+
                         <div class="related-tags">
-                            <div class="tag">3G Görüntülü Konuşma Yok</div>
-                            <div class="tag">3G İndirme Hızı 42.2 Mbps</div>
-                            <div class="tag">3G Yükleme Hızı 5.76 Mbps</div>
-                            <div class="tag">Ağırlık 145 gr</div>
+                            @if (!string.IsNullOrEmpty(Model.Item.Feature1))
+                            {<div class="tag">@Model.Item.Feature1</div>}
+                            @if (!string.IsNullOrEmpty(Model.Item.Feature2))
+                            {<div class="tag">@Model.Item.Feature2</div>}
+                            @if (!string.IsNullOrEmpty(Model.Item.Feature3))
+                            {<div class="tag">@Model.Item.Feature3</div>}
+                            @if (!string.IsNullOrEmpty(Model.Item.Feature4))
+                            {<div class="tag">@Model.Item.Feature4</div>}
                         </div>
                     </div>
                 </div>
                 <!-- NAvigation and offers -->
-                <div class="row white">
+                <div class="row white" id="merch">
                     <div class="col-lg-12">
                         <div class="item-navigation-wraper">
                             <div class="item-navigation  ">
                                 <a class="blue" href="">Mağazaların qiymətləri</a>
                             </div>
                             <div class="item-navigation">
-                                <a href="">Xüsusiyyətlər</a>
+                                <a class="go-to" href="#specs">Xüsusiyyətlər</a>
                             </div>
                             <div class="item-navigation">
-                                <a href="">Rəylər(60)</a>
+                                <a href="#comments" class="go-to-comments go-to">Rəylər(<span>@Model.Item.Comments.Count()</span>)</a>
                             </div>
                             <div class="item-navigation">
                                 <a href="">Ətraflı</a>
@@ -177,1518 +173,606 @@
                         <div class="banner">
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <h3 class="price-count"> Bu məhsul üçün 27 qiymət var. </h3>
-                    </div>
-                    <div class="col-lg-6 d-flex justify-content-end align-items-center">
-                        <input type="checkbox" class="filter-chk" autocomplete="off" size="35">
-                        <span class="carrier">BKM Express</span>
-                        <span class="carrier-count">(14)</span>
-                        <input type="checkbox" class="filter-chk" autocomplete="off" size="35">
-                        <span class="carrier">Pulsuz çatdırılma</span>
-                        <span class="carrier-count">(14)</span>
+                    <div class="row merchcnt-shipping">
+                        <div class="col-lg-6">
+                            @*<h3 class="price-count"> Bu məhsul üçün 27 qiymət var. </h3>*@
+                            <span class="merch-count">Bu məhsul üçün  </span><span class="merch-count-2">@Model.Item.ItemMerches.Count</span> <span class="merch-count">qiymət var.</span>
+                        </div>
+                        <div class="col-lg-6 d-flex justify-content-end align-items-center">
+                            <input type="checkbox" class="filter-chk" autocomplete="off" size="35">
+                            <span class="carrier">BKM Express</span>
+                            <span class="carrier-count">(14)</span>
+                            <input type="checkbox" class="filter-chk" autocomplete="off" size="35">
+                            <span class="carrier">Pulsuz çatdırılma</span>
+                            <span class="carrier-count">(14)</span>
+                        </div>
                     </div>
                     <div class="col-lg-12">
                         <table class="offers">
                             <tbody>
-                                <tr class="offertablerow">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
 
-                                </tr>
-                                <tr class="offertablerow">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
+                                @foreach (var item in Model.SponsoredMerchs)
+                                {
+                                    <tr class="offertablerow">
+                                        <td class="offert1">
+                                            <a href="@item.LinkToOffer">
+                                                <img src="~/Public/img/content/merch/@item.Merch.İmage" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="offert2">
+                                            <a href="@item.LinkToOffer">
+                                                <h2>@item.Name</h2>
+                                                <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
+                                            </a>
+                                        </td>
+                                        <td class="offert3 text-center">
+                                            <a href="@item.LinkToOffer">
+                                                <h6 class="merch-details">@item.ShippiingType.Description</h6>
+                                                <h6 class="merch-details"> 2 fürsət(not db)</h6>
+                                            </a>
+                                        </td>
+                                        <td class="offert4 ">
+                                            <a href="@item.LinkToOffer">
+                                                <div class="special-tag sponsor">
+                                                    Sponsor
+                                                </div>
+                                                <div class="merchant-price">
+                                                    @item.PriceNormal AZN
+                                                </div>
+                                            </a>
+                                            <div>
+                                                <button class="merch-goto btn btn-primary">Marketə keç</button>
                                             </div>
-                                            <div class="merchant-price">
-                                                978,00
+                                        </td>
+                                    </tr>
+                                }
+                                @foreach (var item in Model.OrdinarMerchs.Take(1))
+                                {
+                                    <tr class="offertablerow">
+                                        <td class="offert1">
+                                            <a href="@item.LinkToOffer">
+                                                <img src="~/Public/img/content//merch/@item.Merch.İmage" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="offert2">
+                                            <a href="@item.LinkToOffer">
+                                                <h2>@item.Name</h2>
+                                                <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
+                                            </a>
+                                        </td>
+                                        <td class="offert3 text-center">
+                                            <a href="@item.LinkToOffer">
+                                                <h6 class="merch-details">@item.ShippiingType.Description</h6>
+                                                <h6 class="merch-details"> 2 fürsət(not db)</h6>
+                                            </a>
+                                        </td>
+                                        <td class="offert4 ">
+                                            <a href="@item.LinkToOffer">
+                                                <div class="special-tag tag-cheapest">
+                                                    Ən ucuz
+                                                </div>
+                                                <div class="merchant-price">
+                                                    @item.PriceNormal AZN
+                                                </div>
+                                            </a>
+                                            <div>
+                                                <button class="merch-goto btn btn-primary">Marketə keç</button>
                                             </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
+                                        </td>
+                                    </tr>
+                                }
 
-                                </tr>
-                                <tr class="offertablerow">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
+                                @foreach (var item in Model.OrdinarMerchs.Skip(1).Take(10 - Model.SponsoredMerchs.Count))
+                                {
+                                    <tr class="offertablerow">
+                                        <td class="offert1">
+                                            <a href="@item.LinkToOffer">
+                                                <img src="~/Public/img/content/merch/@item.Merch.İmage" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="offert2">
+                                            <a href="@item.LinkToOffer">
+                                                <h2>@item.Name</h2>
+                                                <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
+                                            </a>
+                                        </td>
+                                        <td class="offert3 text-center">
+                                            <a href="@item.LinkToOffer">
+                                                <h6 class="merch-details">@item.ShippiingType.Description</h6>
+                                                <h6 class="merch-details"> 2 fürsət(not db)</h6>
+                                            </a>
+                                        </td>
+                                        <td class="offert4 ">
+                                            <a href="@item.LinkToOffer">
 
-                                </tr>
-                                <tr class="offertablerow">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
+                                                <div class="merchant-price">
+                                                    @item.PriceNormal AZN
+                                                </div>
+                                            </a>
+                                            <div>
+                                                <button class="merch-goto btn btn-primary">Marketə keç</button>
                                             </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
+                                        </td>
+                                    </tr>
+                                }
 
-                                </tr>
-                                <tr class="offertablerow">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
+                                @foreach (var item in Model.OrdinarMerchs.Skip(10 - Model.SponsoredMerchs.Count))
+                                {
+                                    <tr class="offertablerow d-none">
+                                        <td class="offert1">
+                                            <a href="@item.LinkToOffer">
+                                                <img src="~/Public/img/content/@item.Merch.İmage" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="offert2">
+                                            <a href="@item.LinkToOffer">
+                                                <h2>@item.Name</h2>
+                                                <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
+                                            </a>
+                                        </td>
+                                        <td class="offert3 text-center">
+                                            <a href="@item.LinkToOffer">
+                                                <h6 class="merch-details">@item.ShippiingType.Description</h6>
+                                                <h6 class="merch-details"> 2 fürsət(not db)</h6>
+                                            </a>
+                                        </td>
+                                        <td class="offert4 ">
+                                            <a href="@item.LinkToOffer">
+                                                <div class="special-tag sponsor">
+                                                    Sponsor
+                                                </div>
+                                                <div class="merchant-price">
+                                                    @item.PriceNormal
+                                                </div>
+                                            </a>
+                                            <div>
+                                                <button class="merch-goto btn btn-primary">Marketə keç</button>
                                             </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
+                                        </td>
+                                    </tr>
+                                }
 
-                                </tr>
-                                <tr class="offertablerow">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow d-none">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow d-none">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow d-none">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow d-none">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow d-none">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow d-none">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow d-none">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow d-none">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr class="offertablerow d-none">
-                                    <td class="offert1">
-                                        <a href="">
-                                            <img src="~/Public/img/merch1/component_IDR2m2018-10-19..png" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="offert2">
-                                        <a href="">
-                                            <h2>HUAWEİ P20 LİTE 64 GB DUOS CEP TELEFONU-QARA (QARA)</h2>
-                                            <span class="merch-other-details">Çatdırılma haqqında məlumat</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert3 text-center">
-                                        <a href="">
-                                            <span class="merch-details">+ Əlavə çatdırılma ödənişi </span>
-                                            <span class="merch-details"> 2 günə çatdırılma</span>
-                                        </a>
-                                    </td>
-                                    <td class="offert4 ">
-                                        <a href="">
-                                            <div class="special-tag sponsor">
-                                                Sponsor
-                                            </div>
-                                            <div class="merchant-price">
-                                                978,00
-                                            </div>
-                                        </a>
-                                        <div>
-                                            <button class="merch-goto btn btn-primary">Marketə keç</button>
-                                        </div>
-                                    </td>
-
-                                </tr>
                             </tbody>
                         </table>
-                        <div class="d-flex justify-content-center mt-2">
-                            <button class="btn btn-more-offers d-flex align-self-center d-none">
-                                Daha çöx göstər <i class="fas fa-angle-down"></i>
-                            </button>
-                        </div>
+                        @if (Model.SponsoredMerchs.Count + Model.OrdinarMerchs.Count > 10)
+                        {
+                            <div class="d-flex justify-content-center mt-2">
+                                <button class="btn btn-more-offers d-flex align-self-center d-none">
+                                    Daha çöx göstər <i class="fas fa-angle-down"></i>
+                                </button>
+                            </div>
+                        }
                     </div>
-
                 </div>
             </div>
         </div>
         <br>
         <!-- Phone Models Comparison -->
-        <div class="row white">
-            <div class="col-lg-12">
-                <h2 class="customh2">Bu Məhsulla Ən Çox Müqayisə Olunan Telefonlar</h2>
-                <div class="comparison">
-                    <div class="compare-wrapper">
-                        <table class="compare-table">
-                            <thead>
-                                <tr>
-                                    <th class="compare-item specifications">
-                                    </th>
-                                    <th class="  compare-item">
-                                        <a href="">
-                                            <img src="~/Public/img/compare/huaweiplitegbsiyah_75210374.jpg" alt="">
-                                            <span class="phone-name mt-4">Huawei P20 Lite 64GB Siyah</span>
-                                        </a>
-                                    </th>
-                                    <th class="   compare-item delete-item">
-                                        <a href="">
-                                            <button class="remove"></button>
-                                            <img src="~/Public/img/compare/huaweiplitegbsiyah_75210374.jpg" alt="">
-                                            <span class="phone-name mt-4">Huawei P20 Lite 64GB Siyah</span>
-                                        </a>
-                                    </th>
-                                    <th class="  compare-item delete-item">
-                                        <a href="">
-                                            <button class="remove"></button>
-                                            <img src="~/Public/img/compare/3.jpg" alt="">
-                                            <span class="phone-name mt-4">Huawei Mate 10 Lite 64GB Siyah</span>
-                                        </a>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="compare-body">
-                                <tr>
-                                    <td class=" first">Ekran Ölçüsü</td>
-                                    <td class="  full">5.84 duym</td>
-                                    <td class="  full">6.26 duym</td>
-                                    <td class="  full">5.9 duym</td>
-                                </tr>
-                                <tr>
-                                    <td class="first">Screen resolution</td>
-                                    <td class="  empty">—</td>
-                                    <td class="  empty">—</td>
-                                    <td class="  empty">—</td>
-                                </tr>
-                                <tr>
-                                    <td class="first">Arxa kamera</td>
-                                    <td class="   full"></td>
-                                    <td class="  full"></td>
-                                    <td class="  full"></td>
-                                </tr>
-                                <tr>
-                                    <td class="first">Ön kamera</td>
-                                    <td class="  full">16 MP</td>
-                                    <td class="  full">12 MP</td>
-                                    <td class="  full">16 MP</td>
-                                </tr>
-                                <tr>
-                                    <td class="first">Daxili yaddaş</td>
-                                    <td class=" full">16 MP</td>
-                                    <td class=" full">24 MP</td>
-                                    <td class=" full">13 MP</td>
-                                </tr>
-                                <tr>
-                                    <td class=" first">RAM</td>
-                                    <td class=" full">4 GB RAM</td>
-                                    <td class=" full">4 GB RAM</td>
-                                    <td class=" full">4 GB RAM</td>
-                                </tr>
-                                <tr>
-                                    <td class="first">Video Recording Resolution</td>
-                                    <td class=" empty">—</td>
-                                    <td class=" empty">—</td>
-                                    <td class=" empty">—</td>
-                                </tr>
-                                <tr>
-                                    <td class="first">Batareya</td>
-                                    <td class=" full">3000 mAh</td>
-                                    <td class=" full">3350 mAh</td>
-                                    <td class=" full">3340 mAh</td>
-                                </tr>
-                            </tbody>
+        @if (Model.Item.RelatedItem1!=null|| Model.Item.RelatedItem2 != null || Model.Item.RelatedItem3 != null || Model.Item.RelatedItem4 != null || Model.Item.RelatedItem5 != null)
+        {
+            <div class="row white">
+                <div class="col-lg-12">
+                    <h2 class="customh2">Bu Məhsulla Ən Çox Müqayisə Olunan Telefonlar</h2>
+                    <div class="comparison">
+                        <div class="compare-wrapper">
+                            <table class="compare-table">
+                                <thead>
+                                    <tr>
+                                        <th class="compare-item specifications">
+                                        </th>
+                                        <th class="  compare-item">
+                                            <a href="">
+                                                <img class="img-compare" src="~/Public/img/content/item/@Model.Item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                                                <span class="phone-name mt-4">@Model.Item.Name</span>
+                                            </a>
+                                        </th>
+                                        @foreach (var item in Model.RelatedItems.Take(2))
+                                        {
+                                            <th class="   compare-item delete-item act" data-id="@item.id">
+                                                <a href="">
+                                                    <button class="remove"  data-id="@item.id"></button>
+                                                    <img class="img-compare" src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                                                    <span class="phone-name mt-4">@item.Name</span>
+                                                </a>
+                                            </th>
+
+                                        }
+                                        @foreach (var item in Model.RelatedItems.Skip(2))
+                                        {
+                                            <th class="compare-item delete-item d-none" data-id="@item.id">
+                                                <a href="">
+                                                    <button class="remove"  data-id="@item.id"></button>
+                                                    <img class="img-compare" src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                                                    <span class="phone-name mt-4">@item.Name</span>
+                                                </a>
+                                            </th>
+
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody class="compare-body">
+
+                                    @foreach (var spec in Model.Item.Category.Filters.Where(x => x.IsComparable == true))
+                                    {
+                                    <tr>
+                                        <td class=" first">@spec.Name</td>
+                                        @if (Model.Item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault() != null)
+                                        {
+                                            <td class="  full">@Model.Item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault().FilterValue.SatrValue</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="  empty">—</td>
+                                        }
+
+                                        @foreach (var item in Model.RelatedItems.Take(2))
+                                        {
+
+                                            if (item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault() != null)
+                                            {
+                                                <td class="full tb act" data-id="@item.id">@item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault().FilterValue.SatrValue</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="empty tb act" data-id="@item.id">—</td>
+                                            }
+                                        }
+                                        @foreach (var item in Model.RelatedItems.Skip(2))
+                                        {
+
+                                            if (item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault() != null)
+                                            {
+                                                <td class="full d-none tb " data-id="@item.id">@item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault().FilterValue.SatrValue</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="empty d-none tb " data-id="@item.id">—</td>
+                                            }
+                                        }
+                                    </tr>
+                                    }
+
+
+                                    </tbody>
                             <tfoot class="compare-footer">
                                 <tr>
                                     <td class="first"></td>
                                     <td>
                                         <br>
-                                        <a class="link-merch-c" href="">
-                                            <div class="source">amazon.com.tr</div>
-                                            <div class="merch-price-c">
-                                                3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                            </div>
-                                        </a>
-                                        <a class="link-merch-c" href="">
-                                            <div class="source">amazon.com.tr</div>
-                                            <div class="merch-price-c">
-                                                3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                            </div>
-                                        </a>
-                                        <a class="link-merch-c" href="">
-                                            <div class="source">amazon.com.tr</div>
-                                            <div class="merch-price-c">
-                                                3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                            </div>
-                                        </a>
+                                        @foreach (var item in Model.Item.ItemMerches.OrderBy(x => x.PriceNormal).Take(3))
+                                        {
+
+                                            <a class="link-merch-c" href="@Url.Action(item.LinkToOffer)">
+                                                <div class="source">@item.Merch.Link</div>
+                                                <div class="merch-price-c">
+                                                    @item.PriceNormal AZN<i class="fas fa-angle-right"></i>
+                                                </div>
+                                            </a>
+
+                                        }
                                         <br>
-                                        <a href="#" class="gotoitem">Hamısına bax</a>
+                                        <a href="#merch" class="gotoitem go-to">Hamısına bax</a>
                                         <br>
                                     </td>
-                                    <td>
-                                        <a class="link-merch-c" href="">
-                                            <div class="source">amazon.com.tr</div>
-                                            <div class="merch-price-c">
-                                                3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                            </div>
-                                        </a>
-                                        <a class="link-merch-c" href="">
-                                            <div class="source">amazon.com.tr</div>
-                                            <div class="merch-price-c">
-                                                3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                            </div>
-                                        </a>
-                                        <a class="link-merch-c" href="">
-                                            <div class="source">amazon.com.tr</div>
-                                            <div class="merch-price-c">
-                                                3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                            </div>
-                                        </a>
-                                        <br>
-                                        <a href="#" class="gotoitem">Hamısına bax</a>
-                                    </td>
-                                    <td>
-                                        <a class="link-merch-c" href="">
-                                            <div class="source">amazon.com.tr</div>
-                                            <div class="merch-price-c">
-                                                3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                            </div>
-                                        </a>
-                                        <a class="link-merch-c" href="">
-                                            <div class="source">amazon.com.tr</div>
-                                            <div class="merch-price-c">
-                                                3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                            </div>
-                                        </a>
-                                        <a class="link-merch-c" href="">
-                                            <div class="source">amazon.com.tr</div>
-                                            <div class="merch-price-c">
-                                                3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                            </div>
-                                        </a>
-                                        <br>
-                                        <a href="#" class="gotoitem">Hamısına bax</a>
-                                    </td>
+                                    @foreach (var item in Model.RelatedItems.Take(2))
+                                    {
+                                        <td data-id="@item.id" class="tf act">
+                                            <br>
+                                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(3))
+                                            {
+
+                                                <a class="link-merch-c" href="@Url.Action(merch.LinkToOffer)">
+                                                    <div class="source">@merch.Merch.Link</div>
+                                                    <div class="merch-price-c">
+                                                        @merch.PriceNormal AZN<i class="fas fa-angle-right"></i>
+                                                    </div>
+                                                </a>
+
+                                            }
+                                            <br>
+                                            <a href="@Url.Action("item", "index", new {id=item.id })" class="gotoitem">Hamısına bax</a>
+                                            <br>
+                                        </td>
+                                    }
+                                    @foreach (var item in Model.RelatedItems.Skip(2))
+                                    {
+                                        <td class="tf d-none" data-id="@item.id">
+                                            <br>
+                                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(3))
+                                            {
+
+                                                <a class="link-merch-c" href="@Url.Action(merch.LinkToOffer)">
+                                                    <div class="source">@merch.Merch.Link</div>
+                                                    <div class="merch-price-c">
+                                                        @merch.PriceNormal AZN<i class="fas fa-angle-right"></i>
+                                                    </div>
+                                                </a>
+
+                                            }
+                                            <br>
+                                            <a href="@Url.Action("item", "index", new {id=item.id })" class="gotoitem">Hamısına bax</a>
+                                            <br>
+                                        </td>
+                                    }
                                 </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                    <div class="compare-item-wrapper">
-                        <h5>Müqayisə üçün əlavə məhsullar </h5>
-                        <ol class="add-to-compare">
-                            <li>
-                                <img class="compare-img" src="~/Public/img/compare/huaweiplitegbsiyah_75210374.jpg" alt="">
-                                Huawei Mate 10 Lite 64GB Siyah
-                                <div class="add-to-comparison">
-                                    <i class="fas fa-check-square"></i>
-                                    Müqayisə üçün əlavə et
-                                </div>
-                            </li>
-                            <li>
-                                <img class="compare-img" src="~/Public/img/compare/huaweiplitegbsiyah_75210374.jpg" alt="">
-                                Huawei Mate 10 Lite 64GB Siyah
-                                <div class="add-to-comparison">
-                                    <i class="fas fa-check-square"></i>
-                                    Müqayisə üçün əlavə et
-                                </div>
-                            </li>
-                            <li>
-                                <img class="compare-img" src="~/Public/img/compare/huaweiplitegbsiyah_75210374.jpg" alt="">
-                                Huawei Mate 10 Lite 64GB Siyah
-                                <div class="add-to-comparison">
-                                    <i class="fas fa-check-square"></i>
-                                    Müqayisə üçün əlavə et
-                                </div>
-                            </li>
-                        </ol>
+                                </tfoot></table></div><div class="compare-item-wrapper">
+                            <h5>Müqayisə üçün əlavə məhsullar </h5>
+                            <ol class="add-to-compare">
+                                @foreach (var item in Model.RelatedItems.Take(2))
+                                {
+                                    <li class="d-none" data-id="@item.id">
+                                        <img class="compare-img" src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                                        @item.Name
+                                        <div class="add-to-comparison" data-id="@item.id" onclick="AddCompare(this)">
+                                            <i class="fas fa-check-square"></i>
+                                            Müqayisə üçün əlavə et
+                                        </div>
+                                    </li>
+                                }
+                                @foreach (var item in Model.RelatedItems.Skip(2))
+                                {
+                                    <li data-id="@item.id">
+                                        <img class="compare-img" src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                                        @item.Name
+                                        <div class="add-to-comparison" data-id="@item.id" onclick="AddCompare(this)">
+                                            <i class="fas fa-check-square"></i>
+                                            Müqayisə üçün əlavə et
+                                        </div>
+                                    </li>
+                                }
+
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
         <br>
         <!-- Item Specifications -->
-        <div class="row  white">
+        <div id="specs" class="row  white">
             <div class="col-lg-12">
                 <h6 class="specs-header">Xüsusiyyətlər</h6>
             </div>
             <div class="col-lg-12">
+
+
                 <div class="specs-wrapper">
-                    <ul>
-                        <li class="spec-header">
-                            Bağlantı Özellikleri
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li class="spec-header">
-                            Bağlantı Özellikleri
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li class="spec-header">
-                            Bağlantı Özellikleri
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li class="spec-header">
-                            Bağlantı Özellikleri
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li class="spec-header">
-                            Bağlantı Özellikleri
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li class="spec-header">
-                            Bağlantı Özellikleri
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                        <li>
-                            <span class="spec-name">3G Görüntülü Konuşma</span>
-                            <span class="spec-spec">Yok</span>
-                        </li>
-                    </ul>
+                    @foreach (var item in Model.ItemSpecs)
+                    {
+                        <ul>
+                            <li class="spec-header">
+                                @item.SpecGroupName
+                            </li>
+                            @foreach (var spec in item.Values)
+                            {
+                                <li>
+                                    <span class="spec-name">@spec.Filter.Name</span>
+                                    <span class="spec-spec">@spec.FilterValue.SatrValue @if (string.IsNullOrEmpty(spec.FilterValue.Prefix))
+                                    {@(" " + spec.FilterValue.Prefix)}</span>
+                                </li>
+
+                            }
+                        </ul>
+
+                    }
                 </div>
             </div>
         </div>
         <br>
         <!-- Comments -->
-        <div class="row white">
-            <div class="col-lg-12">
-                <h6 class="specs-header">Rəylər</h6>
-                <br>
-                <div class="row white">
-                    <div class="col-lg-5">
-                        <div class="star-rating-overall">
-                            <div class="rating-line d-inline">
-                                <div class="stars jq-stars " data-rating="5">
-                                </div>
-                                <span class="rating-mark-word">Əla</span>
-                                <span>
-                                    <div class="progress"></div>
-                                </span>
-                                <span class="rating-rate-count">81 nəfər</span>
-                            </div>
-                        </div>
-                        <div class="star-rating-overall">
-                            <div class="rating-line d-inline">
-                                <div class="stars jq-stars " data-rating="4">
-                                </div>
-                                <span class="rating-mark-word">Əla</span>
-                                <span>
-                                    <div class="progress"></div>
-                                </span>
-                                <span class="rating-rate-count">81 nəfər</span>
-                            </div>
-                        </div>
-                        <div class="star-rating-overall">
-                            <div class="rating-line d-inline">
-                                <div class="stars jq-stars " data-rating="3">
-                                </div>
-                                <span class="rating-mark-word">Əla</span>
-                                <span>
-                                    <div class="progress"></div>
-                                </span>
-                                <span class="rating-rate-count">81 nəfər</span>
-                            </div>
-                        </div>
-                        <div class="star-rating-overall">
-                            <div class="rating-line d-inline">
-                                <div class="stars jq-stars " data-rating="2">
-                                </div>
-                                <span class="rating-mark-word">Əla</span>
-                                <span>
-                                    <div class="progress"></div>
-                                </span>
-                                <span class="rating-rate-count">81 nəfər</span>
-                            </div>
-                        </div>
-                        <div class="star-rating-overall">
-                            <div class="rating-line d-inline">
-                                <div class="stars jq-stars " data-rating="1">
-                                </div>
-                                <span class="rating-mark-word">Əla</span>
-                                <span>
-                                    <div class="progress"></div>
-                                </span>
-                                <span class="rating-rate-count">81 nəfər</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="add-comment-wrapper">
-                            <p>Fikirlərinizi digər istifadəçilərlə də paylaşa bilərsiniz. Paylaşmaq istəyirsiniz?</p>
-                            <a href="">Şərh yaz</a>
-                        </div>
-                    </div>
+        @if (Model.Item.Comments.Count > 0)
+        {
+            <div class="row white" id="comments">
+                <div class="col-lg-12">
+                    <h6 class="specs-header">Rəylər</h6>
+                    <br>
+                    <div class="row white">
+                        <div class="col-lg-5">
+                            <div class="star-rating-overall">
+                                <div class="rating-line d-inline">
+                                    <div class="stars jq-stars " data-rating="5">
+                                    </div>
+                                    <span class="rating-mark-word">Əla</span>
+                                    <span>
+                                        <div id="bar-5" class="progress"></div>
+                                        @*<script>$('#bar-5').SetPosition(@(Model.CommentFiveCount/@Model.Item.Comments.Count));</script>*@
+                                        <script>
 
+                                            var a =@Model.CommentFiveCount;
+
+                                            var b =@Model.Item.Comments.Count;
+
+                                            var c = a / b;
+                                            $('#bar-5').jsRapBar({
+
+                                                position: c,
+                                                 height: '12px',
+                                                barColor: '#fec56f',
+                                                enabled: false,
+                                                width: '40%',
+
+                                            });</script>
+                                    </span>
+                                    <span class="rating-rate-count">@Model.CommentFiveCount nəfər</span>
+                                </div>
+                            </div>
+                            <div class="star-rating-overall">
+                                <div class="rating-line d-inline">
+                                    <div class="stars jq-stars " data-rating="4">
+                                    </div>
+                                    <span class="rating-mark-word">Yaxşı</span>
+                                    <span>
+                                        <div id="bar-4" class="progress"></div>
+                                        <script>
+
+                                            var a =@Model.CommentFourCount;
+
+                                            var b =@Model.Item.Comments.Count;
+
+
+                                            var c = a / b;
+                                            $('#bar-4').jsRapBar({
+
+                                                position: c,
+                                                 height: '12px',
+                                                barColor: '#fec56f',
+                                                enabled: false,
+                                                width: '40%',
+
+                                            });</script>
+                                    </span>
+                                    <span class="rating-rate-count">@Model.CommentFourCount nəfər</span>
+                                </div>
+                            </div>
+                            <div class="star-rating-overall">
+                                <div class="rating-line d-inline">
+                                    <div class="stars jq-stars " data-rating="3">
+                                    </div>
+                                    <span class="rating-mark-word">Orta</span>
+                                    <span>
+                                        <div id="bar-3" class="progress"></div>
+                                        <script>
+
+                                            var a =@Model.CommentThreeCount;
+
+                                            var b =@Model.Item.Comments.Count;
+
+                                            var c = a / b;
+                                            $('#bar-3').jsRapBar({
+
+                                                position: c,
+                                                 height: '12px',
+                                                barColor: '#fec56f',
+                                                enabled: false,
+                                                width: '40%',
+
+                                            });</script>
+                                    </span>
+                                    <span class="rating-rate-count">@Model.CommentThreeCount nəfər</span>
+                                </div>
+                            </div>
+                            <div class="star-rating-overall">
+                                <div class="rating-line d-inline">
+                                    <div class="stars jq-stars " data-rating="2">
+                                    </div>
+                                    <span class="rating-mark-word">Pis</span>
+                                    <span>
+                                        <div id="bar-2" class="progress"></div>
+                                        <script>
+
+                                            var a =@Model.CommentTwoCount;
+
+                                            var b =@Model.Item.Comments.Count;
+
+                                            var c = a / b;
+                                            $('#bar-2').jsRapBar({
+
+                                                position: c,
+                                                 height: '12px',
+                                                barColor: '#fec56f',
+                                                enabled: false,
+                                                width: '40%',
+
+                                            });</script>
+                                    </span>
+                                    <span class="rating-rate-count">@Model.CommentTwoCount nəfər</span>
+                                </div>
+                            </div>
+                            <div class="star-rating-overall">
+                                <div class="rating-line d-inline">
+                                    <div class="stars jq-stars " data-rating="1">
+                                    </div>
+                                    <span class="rating-mark-word">Çox pis</span>
+                                    <span>
+                                        <div id="bar-1" class="progress"></div>
+                                        <script>
+
+                                            var a =@Model.CommentOneCount;
+
+                                            var b =@Model.Item.Comments.Count;
+
+                                            var c = a / b;
+                                            $('#bar-1').jsRapBar({
+
+                                                position: c,
+                                                 height: '12px',
+                                                barColor: '#fec56f',
+                                                enabled: false,
+                                                width: '40%',
+
+                                            });</script>
+                                    </span>
+                                    <span class="rating-rate-count">@Model.CommentOneCount nəfər</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="add-comment-wrapper">
+                                <p>Fikirlərinizi digər istifadəçilərlə də paylaşa bilərsiniz. Paylaşmaq istəyirsiniz?</p>
+                                <a href="">Şərh yaz</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row white comments">
+
+                        @foreach (var comment in Model.Item.Comments.OrderByDescending(x => x.PublishDate).Take(10))
+                        {
+                            <div class="col-lg-12">
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <div data-rating="@comment.Rating" class="stars jq-stars"></div>
+                                        <span class="comment-date">@comment.PublishDate.ToString("dd.MM.yyyy HH:mm")</span>
+                                    </div>
+                                    <div class="comment-text">
+                                        <p>
+                                            @comment.Text
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (Model.Item.Comments.Count > 10)
+                        {
+                            foreach (var comment in Model.Item.Comments.OrderByDescending(x => x.PublishDate).Skip(10))
+                            {
+                                <div class="col-lg-12">
+                                    <div class="comment">
+                                        <div class="comment-header">
+                                            <div data-rating="@comment.Rating" class="stars jq-stars"></div>
+                                            <span class="comment-date">@comment.PublishDate.ToString("dd.MM.yyyy HH:mm")</span>
+                                        </div>
+                                        <div class="comment-text">
+                                            <p>
+                                                @comment.Text
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                        @if (Model.Item.Comments.Count > 10)
+                        {
+                            <div class="col-lg-12">
+                                <div class="d-flex justify-content-center mt-2">
+                                    <button class="btn btn-more-comments d-flex align-self-center d-none">
+                                        Daha çöx göstər <i class="fas fa-angle-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <br>
                 </div>
-                <br>
-                <div class="row white comments">
-                    <div class="col-lg-12">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment d-none">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment d-none">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment d-none">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment d-none">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment d-none">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment d-none">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment d-none">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment d-none">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment d-none">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="comment d-none">
-                            <div class="comment-header">
-                                <div class="stars jq-stars"></div>
-                                <span class="comment-date">12.01.2019 07:37</span>
-                            </div>
-                            <div class="comment-text">
-                                <p>
-                                    Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                    sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                    ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                    bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                    güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                    kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                    yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                    kaliteli bence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="d-flex justify-content-center mt-2">
-                            <button class="btn btn-more-comments d-flex align-self-center d-none">
-                                Daha çöx göstər <i class="fas fa-angle-down"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <br>
+
             </div>
-
-
-        </div>
+        }
         <!-- Item Detailed Rewier -->
         <div class="row white">
             <div class="col-lg-12">
                 <h6 class="specs-header">Ətraflı</h6>
-
             </div>
             <div class="col-lg-12">
                 <div class="writtenby">
@@ -1711,7 +795,6 @@
         </div>
         <!-- Pupular items 1 carousel -->
         <div class="row">
-
             <div class="owl-carousel popular">
                 <div style="width:226px">
                     <div class="card card-item">
@@ -1741,7 +824,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div style="width:226px">
                     <div class="card card-item">
                         <img src="~/Public/img/items/4.jpg" class="card-img-top" alt="...">
@@ -1800,7 +882,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="section-header">Cimrinin seçimi</h3>
@@ -1808,7 +889,6 @@
         </div>
         <!-- Pupular items 2 carousel -->
         <div class="row">
-
             <div class="owl-carousel popular">
                 <div style="width:226px">
                     <div class="card card-item">
@@ -1838,7 +918,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div style="width:226px">
                     <div class="card card-item">
                         <img src="~/Public/img/items/4.jpg" class="card-img-top" alt="...">
@@ -1904,7 +983,6 @@
         </div>
         <!-- Pupular items 3 carousel -->
         <div class="row">
-
             <div class="owl-carousel popular">
                 <div style="width:226px">
                     <div class="card card-item">
@@ -1934,7 +1012,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div style="width:226px">
                     <div class="card card-item">
                         <img src="~/Public/img/items/4.jpg" class="card-img-top" alt="...">
@@ -2198,10 +1275,8 @@
             </div>
         </div>
     </div>
-
 </section>
 <section id="m-mainarea" class="m-mainarea">
-
 
     <!-- Item head -->
     <div class="row m-white">
@@ -2212,7 +1287,6 @@
                 </div>
                 <span class="m-comment-count">33 Rəy</span>
             </span>
-
         </div>
         <div class="col-12">
             <div class="m-carousel-item-photo owl-carousel owl-theme">
@@ -2243,19 +1317,16 @@
                     <div class="m-other-choises-price">
                         2.062,00 AZN
                     </div>
-
                 </div>
                 <div class="angle-down"> <i class="fas fa-angle-down"></i></div>
             </a>
             <div class="test">
                 <div class="best-deal">
                     <span> Hal-hazırda internetdə ən ucuz qiymət</span>
-
                     <p class="link-best-deal">hepsiburda.com</p>
                 </div>
                 <span class="m-best-price">2.062</span>
             </div>
-
             <a href="" class="m-show-all-specs">Ən ucuz mağazaya get</a>
         </div>
     </div>
@@ -2359,14 +1430,12 @@
                                 </th>
                                 <th class="   compare-item delete-item">
                                     <a href="">
-
                                         <img src="~/Public/img/compare/huaweiplitegbsiyah_75210374.jpg" alt="">
                                         <span class="phone-name mt-4">Huawei P20 Lite 64GB Siyah</span>
                                     </a>
                                 </th>
                                 <th class="  compare-item delete-item">
                                     <a href="">
-
                                         <img src="~/Public/img/compare/3.jpg" alt="">
                                         <span class="phone-name mt-4">Huawei Mate 10 Lite 64GB Siyah</span>
                                     </a>
@@ -2498,7 +1567,6 @@
                         </tfoot>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
@@ -2520,7 +1588,6 @@
                         </a>
                         <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
                     </div>
-
                 </div>
             </div>
             <div class="custom5">
@@ -2538,7 +1605,6 @@
                         </a>
                         <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
                     </div>
-
                 </div>
             </div>
             <div class="custom5">
@@ -2556,7 +1622,6 @@
                         </a>
                         <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
                     </div>
-
                 </div>
             </div>
             <div class="custom5">
@@ -2574,7 +1639,6 @@
                         </a>
                         <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
                     </div>
-
                 </div>
             </div>
             <div class="custom5">
@@ -2592,7 +1656,6 @@
                         </a>
                         <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
                     </div>
-
                 </div>
             </div>
             <div class="custom5">
@@ -2610,7 +1673,6 @@
                         </a>
                         <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -2650,7 +1712,6 @@
             </a>
         </div>
     </div>
-
     <!-- Comments -->
     <div class="row white">
         <div class="col-lg-12">
@@ -2720,7 +1781,6 @@
                         <a href="">Şərh yaz</a>
                     </div>
                 </div>
-
             </div>
             <br>
             <div class="row white comments">
@@ -3135,7 +2195,6 @@
             <br>
         </div>
 
-
     </div>
     <!-- Related tags -->
     <div class="row white">
@@ -3160,4 +2219,3 @@
         </a>
     </div>
 </section>
-

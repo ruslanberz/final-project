@@ -17,7 +17,7 @@
                     <div class="nav-box">
                         <h1>@Model.Category.Name</h1>
                         <h2>@Model.Category.Name üçün ən ucuz qiymətlər</h2>
-                        <span style="letter-spacing: 1px;">@Model.CategotyItemCount məhsul göstərilir</span>
+                        <span id="cnt" style="letter-spacing: 1px;">@Model.CategotyItemCount məhsul göstərilir</span>
                     </div>
                     @if (Model.HasChildren == true)
                     {
@@ -53,17 +53,26 @@
                             <br>
 
 
-                            <ul class="filter">
-                                @foreach (var value in Model.Filters.FirstOrDefault(x => x.id == 1).FilterValues)
+                            <ul class="filterr">
+                                @foreach (var value in Model.Filters.FirstOrDefault(x => x.id == 6).FilterValues)
                                 {
                                     <li>
-                                        <a @value.id class="">
-                                            <input type="checkbox" class="filter-chk" autocomplete="off" size="35">
-                                            <span class="filter-chk-mid">@value.SatrValue</span>
-                                            @if (value.IsSingle == false)
-                                            {
-                                                <span class="filter-chk-mid">@value.EndValue</span>
-                                            }
+                                        <a data-id="@value.Filter.id" class="">
+                                            <input type="checkbox" class="filter-chk" onchange="Filter(@value.id)" data-id="@value.id" autocomplete="off" size="35">
+                                            <span class="filter-chk-mid">
+                                                @value.SatrValue @if (value.IsSingle == false)
+
+                                                                                        {
+                                                                                            @("-");
+                                                                                            @value.EndValue;
+                                                                                            if (!string.IsNullOrEmpty(value.Prefix))
+                                                                                            { @(" ");
+                                                                                            @value.Prefix}
+
+
+                                                                                    }
+                                            </span>
+                                           
                                             <span class="filter-chk-right">(1)</span>
                                         </a>
                                     </li>
@@ -73,25 +82,40 @@
 
                         </div>
 
-                        foreach (var item in Model.Filters.Where(x => x.id != 1))
+                        foreach (var item in Model.Filters.Where(x => (x.id != 6)&(x.IsFiltered==true)))
                         {
-                            <div class="nav-box">
+                            <div data-id="@item.id" class="nav-box fltr">
                                 <h1>@item.Name</h1>
                                 <br>
                                 <div class="wrapper-fp d-flex justify-content-between align-items-center">
-                                    <input type="text" autocomplete="off" value placeholder="@item.Name yaz" class="price">
+                                    <input type="text" autocomplete="off"  value placeholder="@item.Name yaz" class="price">
                                 </div>
                                 <br>
-                                <ul class="filter">
+                                <ul class="filterr">
                                     @foreach (var value in item.FilterValues)
                                     {
-                                        <li>
-                                            <a  class="">
-                                                <input type="checkbox" class="filter-chk" autocomplete="off" size="35">
-                                                <span class="filter-chk-mid">@value.SatrValue</span>
-                                                <span class="filter-chk-right">(26)</span>
-                                            </a>
-                                        </li>
+                                    <li>
+                                        <a data-id="@value.Filter.id" class="">
+                                            <input type="checkbox" class="filter-chk" onchange="Filter(@value.id)" data-id="@value.id" autocomplete="off" size="35">
+                                            <span class="filter-chk-mid">
+                                                @value.SatrValue @if (value.IsSingle == true)
+                                                {@(" ");@value.Prefix;
+                                            } @if (value.IsSingle == false)
+
+                                                {
+                                                    @("-");
+                                                    @value.EndValue;
+                                                    if (!string.IsNullOrEmpty(value.Prefix))
+                                                    { @(" ");
+                                                    @value.Prefix}
+
+
+                                            }
+                                        </span>
+
+                                        <span class="filter-chk-right">(@value.ItemsCount)</span>
+                                    </a>
+                                    </li>
                                     }
 
                                 </ul>
@@ -108,7 +132,7 @@
                 </div>
             </div>
             <!-- Content -->
-            <div class="col-xl-9 ">
+            <div class="col-xl-9 forfilter">
                 <div class="row " style="background-color:white; padding: 5px 0; margin-top:0px!important">
                     <div class="col-lg-3">
                         <a href="">
@@ -160,9 +184,11 @@
                     </div>
                 </div>
 
+                @* Items First row *@
                 <div class="row">
                     @foreach (var item in Model.Items.Take(4))
                     {
+                    <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
                         <div class="col-lg-3 item">
                             <div class="card card-item">
                                 <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -180,6 +206,7 @@
                                 </div>
                             </div>
                         </div>
+                    </a>
                     }
 
                 </div>
@@ -189,9 +216,11 @@
                         </div>
                     </div>
                 </div>
+                @* Items Second row *@
                 <div class="row pt-2">
                     @foreach (var item in Model.Items.Skip(4).Take(4))
                     {
+                    <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
                         <div class="col-lg-3 item">
                             <div class="card card-item">
                                 <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -209,6 +238,7 @@
                                 </div>
                             </div>
                         </div>
+                    </a>
                     }
                 </div>
                 <br>
@@ -269,9 +299,11 @@
                         </a>
                     </div>
                 </div>
+                @* Items Third row *@
                 <div class="row pt-2">
                     @foreach (var item in Model.Items.Skip(8).Take(4))
                     {
+                    <a class="go-to-item" href="@Url.Action("item", "home", new {id=item.id })">
                         <div class="col-lg-3 item">
                             <div class="card card-item">
                                 <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -289,36 +321,14 @@
                                 </div>
                             </div>
                         </div>
+                    </a>
                     }
                 </div>
+                @* Items Fourth row *@
                 <div class="row pt-2">
                     @foreach (var item in Model.Items.Skip(12).Take(4))
                     {
-                        <div class="col-lg-3 item">
-                            <div class="card card-item">
-                                <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">@item.Name</h5>
-                                    @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
-                                    {
-                                        <a class="link-merch" href="">
-                                            <div class="source">@item2.Merch.Link</div>
-                                            <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                                        </a>
-                                    }
-
-                                    <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-
-                @if (Model.Items.Count > 16)
-                {
-                    <div class="row pt-2">
-                        @foreach (var item in Model.Items.Skip(16).Take(4))
-                        {
+                        <a class="go-to-item" href="@Url.Action("item","home", new {id=item.id })">
                             <div class="col-lg-3 item">
                                 <div class="card card-item">
                                     <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -336,10 +346,40 @@
                                     </div>
                                 </div>
                             </div>
+                       </a>
+                    }
+                </div>
+
+                @* Items Fiveth row  *@
+                @if (Model.Items.Count > 16)
+                {
+                    <div class="row pt-2">
+                        @foreach (var item in Model.Items.Skip(16).Take(4))
+                        {
+                            <a class="go-to-item" href="@Url.Action("item", "home", new { id=item.id})"> 
+                                <div class="col-lg-3 item">
+                                    <div class="card card-item">
+                                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@item.Name</h5>
+                                            @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                                            {
+                                                <a class="link-merch" href="">
+                                                    <div class="source">@item2.Merch.Link</div>
+                                                    <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                                </a>
+                                            }
+
+                                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                                        </div>
+                                    </div>
+                                </div>
+                             </a>
                         }
                     </div>
                 }
 
+                @* Items Sixth row *@
                 @if (Model.Items.Count > 20)
                 {
                     <div class="row pt-2">
@@ -352,6 +392,7 @@
                     <div class="row pt-2">
                         @foreach (var item in Model.Items.Skip(20).Take(4))
                         {
+                        <a class="go-to-item" href="@Url.Action("item", "home", new { id=item.id})">
                             <div class="col-lg-3 item">
                                 <div class="card card-item">
                                     <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -369,14 +410,17 @@
                                     </div>
                                 </div>
                             </div>
+                        </a>
                         }
                     </div>
                 }
+                @* Items Seventh row *@
                 @if (Model.Items.Count > 24)
                 {
                     <div class="row pt-2">
                         @foreach (var item in Model.Items.Skip(24).Take(4))
                         {
+                        <a class="go-to-item" href="@Url.Action("item", "home", new { id=item.id})">
                             <div class="col-lg-3 item">
                                 <div class="card card-item">
                                     <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -394,14 +438,17 @@
                                     </div>
                                 </div>
                             </div>
+                        </a>
                         }
                     </div>
                 }
+                @* Items Eigths *@
                 @if (Model.Items.Count > 28)
                 {
                     <div class="row pt-2">
                         @foreach (var item in Model.Items.Skip(28).Take(4))
                         {
+                        <a class="go-to-item" href="@Url.Action("item", "home", new { id=item.id})">
                             <div class="col-lg-3 item">
                                 <div class="card card-item">
                                     <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -419,14 +466,17 @@
                                     </div>
                                 </div>
                             </div>
+                        </a>
                         }
                     </div>
                 }
+                @* Items Nineth row *@
                 @if (Model.Items.Count > 32)
                 {
                     <div class="row pt-2">
                         @foreach (var item in Model.Items.Skip(32).Take(4))
                         {
+                        <a class="go-to-item" href="@Url.Action("item", "home", new { id=item.id})">
                             <div class="col-lg-3 item">
                                 <div class="card card-item">
                                     <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -444,6 +494,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </a>
                         }
                     </div>
                 }

@@ -509,10 +509,10 @@
     display: inline-block;
 }
 
-.other-items-title
-{
+.other-items-title {
     color: rgb(132, 134, 137);
     font-size: 12px;
+    padding-left: 10px;
 }
 
 .white
@@ -521,8 +521,21 @@
     margin-top: 10px!important ;
 }
 
-.other-price
-{
+.go-to-comments {
+    font-size: 13px;
+    color: rgb(73, 144, 226);
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    margin-left: 10px;
+    line-height: 13px;
+}
+
+    .go-to-comments:hover {
+        text-decoration: none;
+        color: rgb(73, 144, 226);
+    }
+    .other-price {
     display: block;
     padding-top: 0px;
     padding-left: 5px;
@@ -731,11 +744,42 @@
     line-height: 15px;
     text-align: left;
     color: rgb(62, 65, 69);
-    cursor: pointer;
+    
 }
 
-.offers h2
-{
+.merch-count {
+    overflow: hidden;
+    font-size: 11px;
+    user-select: none;
+    line-height: 15px;
+    text-align: left;
+    color: rgb(62, 65, 69);
+}
+
+.merch-count-2 {
+    overflow: hidden;
+    font-size: 11px;
+    user-select: none;
+    line-height: 15px;
+    text-align: left;
+    font-weight:900;
+    color: rgb(62, 65, 69);
+}
+.merchcnt-shipping {
+
+    display: flex !important;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.owl-next {
+    top: 50%!important;
+}
+
+.owl-prev {
+    top: 50% !important;
+}
+.offers h2 {
     width: 100%;
     max-width: 345px;
     font-size: 13px;
@@ -826,11 +870,14 @@ padding-right: 30px;
 
 .offertablerow
 {
-    background-color: rgb(255, 250, 237);
+    
     height: 115px;
     padding-left: 30px;
     transition: all 0.4s ease 0s;
     overflow: hidden;
+}
+.offertablerow-sponsored {
+    background-color: rgb(255, 250, 237);
 }
 .merch-goto
 {
@@ -868,6 +915,26 @@ padding-right: 30px;
     text-decoration: none;
     padding: 0px 7px;
     border-radius: 2px;
+}
+
+.tag-cheapest {
+    color: rgb(255, 255, 255);
+    background-color: rgb(58, 160, 58);
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: 600;
+    text-align: center;
+    width: 59px;
+    height: 16px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0px 7px;
+    border-radius: 2px;
+}
+
+.img-compare {
+    height:127px;
+    width:127px;
 }
 
 .merchant-price
@@ -940,8 +1007,7 @@ padding-right: 30px;
 
 }
 
-.compare-item
-{
+.compare-item {
     text-align: center;
     font-size: 13px;
     font-weight: 600;
@@ -951,6 +1017,7 @@ padding-right: 30px;
     padding: 22px 14px 17px;
     border-left: 0.5px solid rgb(184, 193, 203);
     border-top: 0.5px solid rgb(184, 193, 203);
+    border-right: 0.5px solid rgb(184, 193, 203);
 }
 
 .compare-item:last-child
@@ -1043,14 +1110,14 @@ color: rgb(73, 144, 226);
     border-radius: 1.5px;
 }
 
-.compare-body td
-{
+.compare-body td {
     color: rgb(74, 74, 74);
     font-size: 13px;
     font-weight: 600;
     height: 44px;
     padding: 0px 14px;
     border-left: 0.5px solid rgb(184, 193, 203);
+    border-right: 0.5px solid rgb(184, 193, 203);
     border-top: 0.5px solid rgb(184, 193, 203);
 }
 
@@ -1118,9 +1185,8 @@ color: rgb(73, 144, 226);
     font-weight: 600;
     height: 44px;
     padding: 0px 14px;
-    border-left: 0.5px solid rgb(184, 193, 203);
-    border-top: 0.5px solid rgb(184, 193, 203);
-    border-bottom: 0.5px solid rgb(184, 193, 203);
+    border: 0.5px solid rgb(184, 193, 203);
+  
 }
 
 .gotoitem
