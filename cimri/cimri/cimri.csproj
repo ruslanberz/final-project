@@ -288,6 +288,10 @@
     <Compile Include="Migrations\201903251909073_Filterfix.Designer.cs">
       <DependentUpon>201903251909073_Filterfix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903270053048_site-select-fix-Item.cs" />
+    <Compile Include="Migrations\201903270053048_site-select-fix-Item.Designer.cs">
+      <DependentUpon>201903270053048_site-select-fix-Item.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseController.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -588,6 +592,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903251909073_Filterfix.resx">
       <DependentUpon>201903251909073_Filterfix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903270053048_site-select-fix-Item.resx">
+      <DependentUpon>201903270053048_site-select-fix-Item.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

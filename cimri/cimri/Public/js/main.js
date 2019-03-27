@@ -372,7 +372,6 @@ $(".search-icon").click(function(ex){
 
 
     var Items = JSON.parse(localStorage.getItem('items')) || [];
-    console.log(Items);
     $.ajax({
         url: "/home/FillRecentlyViewed",
         type: "POST",
@@ -569,10 +568,10 @@ function BerzNext(category, page, currentPage, PagesCount) {
 //This function activates compare table items on item page-swaps if more than 2 items added, or ad- whenin table 0 or 1 item
 function AddCompare(obj) {
 
-    console.log($(".compare-item.d-none").length);
 
 
-    if ($(".compare-item.d-none").length <=5)
+
+    if ($(".compare-item.d-none").length <4)
     {
         var toenable = $(".compare-item.act").first().data("id");
         $(".add-to-compare").find(("li[data-id='" + Number(toenable) + "']")).removeClass("d-none");
@@ -609,9 +608,10 @@ function AddCompare(obj) {
 
 function Local(obj)
 {
-    console.log($(obj).data("id"));
+
     var oldItems = JSON.parse(localStorage.getItem('items')) || [];
-    console.log(oldItems);
+
+
     var newItem =
     {
         'id': $(obj).data("id")
@@ -630,11 +630,10 @@ function Local(obj)
 
     localStorage.setItem('items', JSON.stringify(result));
 }
-
+//this function first loads content to d-none row and then putseach itemto owl carousel
 function LoadOwl() {
 
     $(".myowlitem").each(function () {
-        console.log($(this).html());
         $('#pop').owlCarousel().trigger('add.owl.carousel',
             [jQuery('<div class="owl-item">' + $(this).html() +
                 '</div>')]).trigger('refresh.owl.carousel');

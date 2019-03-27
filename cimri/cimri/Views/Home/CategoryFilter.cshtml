@@ -56,7 +56,7 @@
 <div class="row">
     @foreach (var item in Model.Items.Take(4))
     {
-        <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
+        <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
             <div class="col-lg-3 item">
                 <div class="card card-item">
                     <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -87,7 +87,7 @@
 <div class="row pt-2">
     @foreach (var item in @Model.Items.Skip(4).Take(4))
     {
-        <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
+        <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
             <div class="col-lg-3 item">
                 <div class="card card-item">
                     <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -169,7 +169,7 @@
 <div class="row pt-2">
     @foreach (var item in Model.Items.Skip(8).Take(4))
     {
-        <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
+        <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
             <div class="col-lg-3 item">
                 <div class="card card-item">
                     <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -193,7 +193,7 @@
 <div class="row pt-2">
     @foreach (var item in @Model.Items.Skip(12).Take(4))
     {
-        <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
+        <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
             <div class="col-lg-3 item">
                 <div class="card card-item">
                     <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -220,7 +220,7 @@
 <div class="row pt-2">
     @foreach (var item in @Model.Items.Skip(16).Take(4))
     {
-        <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
+        <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
             <div class="col-lg-3 item">
                 <div class="card card-item">
                     <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -255,7 +255,7 @@
     <div class="row pt-2">
         @foreach (var item in @Model.Items.Skip(20).Take(4))
         {
-            <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
+            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
                 <div class="col-lg-3 item">
                     <div class="card card-item">
                         <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -282,7 +282,7 @@
     <div class="row pt-2">
         @foreach (var item in Model.Items.Skip(24).Take(4))
         {
-            <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
+            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
                 <div class="col-lg-3 item">
                     <div class="card card-item">
                         <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -309,7 +309,7 @@
     <div class="row pt-2">
         @foreach (var item in @Model.Items.Skip(28).Take(4))
         {
-            <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
+            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
                 <div class="col-lg-3 item">
                     <div class="card card-item">
                         <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
@@ -336,7 +336,7 @@
     <div class="row pt-2">
         @foreach (var item in @Model.Items.Skip(32).Take(4))
         {
-            <a class="go-to-item" href="@Url.Action("item","home", new { id=item.id})">
+            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
                 <div class="col-lg-3 item">
                     <div class="card card-item">
                         <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">

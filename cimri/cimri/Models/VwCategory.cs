@@ -16,5 +16,6 @@ namespace cimri.Models
         public int PagesCount { get; set; }
         public int CurrentPage { get; set; }
         public bool HasChildren { get; set; }
+        public List<Item> SiteSelected { get; set; }
     }
 }

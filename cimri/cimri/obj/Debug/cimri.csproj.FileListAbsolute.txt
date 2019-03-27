@@ -222,3 +222,4 @@ C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.ItemMerchFix.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.ItemFixRElated.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.Filterfix.resources
+C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.siteselectfixItem.resources

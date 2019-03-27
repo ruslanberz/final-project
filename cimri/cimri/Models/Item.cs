@@ -22,6 +22,7 @@ namespace cimri.Models
         public int? RelatedItem3 { get; set; }
         public int? RelatedItem4 { get; set; }
         public int? RelatedItem5 { get; set; }
+        public bool? SiteSelection { get; set; }
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }

@@ -51,6 +51,7 @@ namespace cimri.Controllers
             all.CategoryIDIndexes = db.CategoryIDIndexes.Where(x => x.IsActive == true).ToList();
             all.PopularItems = db.Items.OrderByDescending(x => x.ClickCount).Take(10).ToList();
             all.Brands = db.Brands.OrderByDescending(x => x.Rating).Take(8).ToList();
+            all.SiteSelect = db.Items.Where(x => x.SiteSelection == true).OrderByDescending(x=>x.ClickCount).ToList();
 
             foreach (var item in all.CategoryIDIndexes)
             {
@@ -74,7 +75,7 @@ namespace cimri.Controllers
             {
                 VwRecent RecentlyViewed = new VwRecent();
                 RecentlyViewed.Recent = new List<Item>();
-                for (int i = 0; i < items.Length; i++)
+                for (int i = (items.Length-1); (i >= (items.Length - 10))&&(i>=0); i--)
                 {
                     Item temp = db.Items.Find(items[i].id);
                     if (temp != null)
@@ -294,6 +295,7 @@ namespace cimri.Controllers
             {
                 VwCategory current = new VwCategory();
                 current.Category = db.Categories.Find(id);
+                current.SiteSelected = db.Items.Where(x => x.SiteSelection == true).OrderByDescending(x => x.ClickCount).ToList();
                 // Category visit increment
                 using (var db = new CheapestContext())
                 {

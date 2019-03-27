@@ -358,7 +358,7 @@
                     <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                         @foreach (var item in FooterItems.Take(5))
                         {
-                            <li><a href="" data-id="@item.id">@item.Name</a></li>
+                            <li><a href="@Url.Action("item","home", new { id=item.id})" onclick="Local(this)" data-id="@item.id" >@item.Name</a></li>
                         }
                     </ul>
                 </div>
@@ -367,7 +367,7 @@
                     <ul class="footer-list" style="list-style-type:none; padding:0px; margin:0px">
                         @foreach (var item in FooterItems.Skip(5).Take(5))
                         {
-                            <li><a href="" data-id="@item.id">@item.Name</a></li>
+                            <li><a href="@Url.Action("item","home", new { id=item.id})" onclick="Local(this)" data-id="@item.id">@item.Name</a></li>
                         }
                     </ul>
                 </div>
