@@ -166,6 +166,19 @@
 
       });
 
+    $(".m-brand-popular").owlCarousel({
+
+        nav: false,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        rewind: true,
+        nav: false,
+        dots: false,
+        margin: 50,
+
+
+    });
+
 
 
       $(".item-slider").owlCarousel({
@@ -355,28 +368,44 @@ function fixDiv() {
   if (($(window).scrollTop() > 0))
   {
     $cache.css({
-      'position': 'fixed',
-      'top': '-5px',
-     'width': '100%',
-      'z-index': '100',
-      'box-shadow': '0px 4px 8px -3px rgba(17,17,17,0.2)',
+     // 'position': 'fixed',
+     // 'top': '-5px',
+     //'width': '100%',
+     // 'z-index': '100',
+     // 'box-shadow': '0px 4px 8px -3px rgba(17,17,17,0.2)',
     });
     $(".search-icon").css("display","block");
   }  
   else
   {
     $cache.css({
-      'position': 'relative',
-      'top': 'auto',
-      'box-shadow': 'none',
+      //'position': 'relative',
+      //'top': 'auto',
+      //'box-shadow': 'none',
     });
     $(".search-icon").css("display","none");
   }
     
 }
 $(window).scroll(fixDiv);
-fixDiv();
+    fixDiv();
 
+    $('#stickynavbar').on('show.bs.collapse', function () {
+        $(".footer").addClass("d-none");
+        $("#stickynavbar").css("position", "relative");
+        $("#mobile-body").addClass("d-none");
+        $(".mobile-search").addClass("d-none");
+       
+       
+    });
+    $('#stickynavbar').on('hide.bs.collapse', function () {
+        $(".footer").removeClass("d-none");
+        $("#stickynavbar").css("position", "fixed");
+        $("#mobile-body").removeClass("d-none");
+        $(".mobile-search").removeClass("d-none");
+    
+       
+    });
 $(".back-to-top").click(function(ex){
 ex.preventDefault();
 $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -406,6 +435,27 @@ $(".search-icon").click(function(ex){
         }
     });
 });
+
+var ItemsM = JSON.parse(localStorage.getItem('items')) || [];
+$.ajax({
+    url: "/home/FillRecentlyViewedM",
+    type: "POST",
+    data: JSON.stringify(ItemsM),
+    contentType: "application/json",
+    traditional: true,
+    dataType: "html",
+    success: function (data) {
+        $(".m-recent-row").removeClass("d-none");
+        $("#m-recent").html(data);
+        
+       
+
+
+      
+
+    }
+});
+
 
 function showMenu(control) {
    
@@ -710,3 +760,4 @@ function LoadOwl() {
 
     });
 };
+

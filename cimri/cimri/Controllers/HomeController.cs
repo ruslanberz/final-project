@@ -52,6 +52,7 @@ namespace cimri.Controllers
             all.CategoryIDIndexes = db.CategoryIDIndexes.Where(x => x.IsActive == true).ToList();
             all.PopularItems = db.Items.OrderByDescending(x => x.ClickCount).Take(10).ToList();
             all.Brands = db.Brands.OrderByDescending(x => x.Rating).Take(8).ToList();
+            all.Categories = db.Categories.ToList();
             all.SiteSelect = db.Items.Where(x => x.SiteSelection == true).OrderByDescending(x=>x.ClickCount).ToList();
 
             foreach (var item in all.CategoryIDIndexes)
@@ -103,7 +104,40 @@ namespace cimri.Controllers
 
             }
         }
+        [HttpPost]
+        public ActionResult FillRecentlyViewedM(VwRecentlyItemId[] items)
+        {
+            if (items != null)
+            {
+                VwRecent RecentlyViewed = new VwRecent();
+                RecentlyViewed.Recent = new List<Item>();
+                for (int i = (items.Length - 1); (i >= (items.Length - 10)) && (i >= 0); i--)
+                {
+                    Item temp = db.Items.Find(items[i].id);
+                    if (temp != null)
+                    {
+                        RecentlyViewed.Recent.Add(temp);
+                    }
+                }
 
+                if (RecentlyViewed.Recent.Count > 0)
+                {
+                    return View(RecentlyViewed);
+                }
+                else
+                {
+                    return View(RecentlyViewed);
+
+                }
+            }
+            else
+
+            {
+                string ErrorText = string.Empty;
+                return new HttpStatusCodeResult(500, ErrorText);
+
+            }
+        }
         public ActionResult SearchNotFound(string search)
         {
             VwSearchNotFound srch = new VwSearchNotFound();

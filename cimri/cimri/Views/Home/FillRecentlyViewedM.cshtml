@@ -1,0 +1,15 @@
+﻿@model cimri.Models.VwRecent
+@{
+    Layout = null;
+}
+
+@if (Model.Recent!=null)
+{
+    foreach (var item in Model.Recent.Take(3))
+    {
+        <a href="@Url.Action("item","home",new { id=item.id})" class="d-flex justify-content-around go-to-item" data-id="@item.id" onclick="Local(this) ">
+            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" alt="">
+            <b>@item.Name</b>
+        </a>
+    }
+}

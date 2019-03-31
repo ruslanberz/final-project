@@ -36,7 +36,7 @@
     <script src="~/Public/js/main.js"></script>
 </head>
 <body>
-    <section id="banner">
+    <section id="banner" class="d-none">
         <a href="">
             <div class="banner-inner d-flex align-items-center">
                 <button class="btn  banner-btn disappear-mobile">Göstər</button>
@@ -262,70 +262,29 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="~/Public/img/logo.JPG" alt=""></a>
-
+            <a class="navbar-brand" href="@Url.Action("index","home")"><img src="~/Public/img/content/@Static.Logo" alt=""></a>
             <a href="navbar-brand" class="search-icon"> <i class="fas fa-search"></i></a>
             <a href="navbar-brand"> <i class="far fa-bell"></i> </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <h6>Bütün kategoriyalar</h6>
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            ELEKTRONİK,
-                            CEP TELEFONU<i class="fas fa-angle-right"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            EV, YAŞAM
-                            OFİS, KIRTASİYE<i class="fas fa-angle-right"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            ANNE, BEBEK,
-                            OYUNCAK<i class="fas fa-angle-right"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            SAAT, MODA,
-                            TAKI, AYAKKABI<i class="fas fa-angle-right"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            KİTAP,
-                            MÜZİK, HOBİ<i class="fas fa-angle-right"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            SPOR,
-                            OUTDOOR<i class="fas fa-angle-right"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            SAĞLIK, BAKIM,
-                            KOZMETİK<i class="fas fa-angle-right"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            OTO, BAHÇE,
-                            YAPI MARKET<i class="fas fa-angle-right"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            SÜPERMARKET,
-                            PETSHOP<i class="fas fa-angle-right"></i>
-                        </a>
-                    </li>
+                    @foreach (var item in Categories.Where(x => x.Parent == null))
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" data-id="@item.id" href="@Url.Action("category","home",new { id=item.id})">
+                                @item.Name<i class="fas fa-angle-right"></i>
+                            </a>
+                        </li>
+                    }
+
                 </ul>
             </div>
         </nav>
+        
+        <br>
+        <br >
+        <br >
+        <br >
         <div class="mobile-search">
             <input type="text" id="typewriter" value="Ən ucuz nəyi almaq istəyirsiniz?" autofocus="" class="typewriter">
             <i class="fas fa-search"></i>
@@ -410,7 +369,7 @@
                     <img src="~/Public/img/google-play-badge-hemenindirin.svg" alt="">
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-bottom:0px!important">
                 <div class="col-lg-12 text-center copyright">
                     <p>Copyright © 2007 – 2019 Cimri A.Ş. Cimri markası ve logosu, Cimri A.Ş.'nin tescilli markasıdır.</p>
                     <p>

@@ -18,6 +18,7 @@ namespace cimri.Models
         public List<Brand> Brands { get; set; }
         public List<Item> PopularItems { get; set; }
         public List<Item> SiteSelect { get; set; }
+        public List<Category> Categories { get; set; }
 
     }
 }

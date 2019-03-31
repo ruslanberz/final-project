@@ -13,8 +13,13 @@ body {
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'Roboto', sans-serif;
 
+ 
+
 }
 
+    body a:hover, a:focus {
+        text-decoration: none;
+    }
 
 #mobile-body
 {
@@ -368,7 +373,7 @@ text-decoration: underline;
     display: inline-flex;
     visibility:hidden;
     position: absolute;
-    top: 87%;
+    top: 60%;
     z-index: 99;
     background-color: white;
     text-align: left;
@@ -764,10 +769,9 @@ transition: .4s ease .25s;
     position: relative;
   }
 
-  .card-item img
-  {
-      margin: 20px auto;
-  }
+.card-item img {
+    margin: 20px auto;
+}
   .card-item:hover
   {
 
@@ -958,7 +962,7 @@ transition: .4s ease .25s;
 }
 
     .custom5 .card-body {
-        padding: 0 1.25rem!important;
+        padding: 0 0.25rem!important;
     }
 .custom5 .card
 {
@@ -1012,6 +1016,13 @@ transition: opacity 0.2s linear;
         margin-bottom: 40px;
     }
 
+   .stickynavbar {
+        position: fixed;
+        top: -5px;
+        width: 100%;
+        z-index: 100;
+        box-shadow: 0px 4px 8px -3px rgba(17,17,17,0.2);
+    }
    html,body
     {
         overflow-x: hidden;
@@ -1446,6 +1457,7 @@ transition: opacity 0.2s linear;
 .m-site-select
 {
     float: right;
+    padding-left:10px;
 }
 
 
@@ -1540,18 +1552,31 @@ transition: opacity 0.2s linear;
     overflow-y: hidden;
     padding-bottom:10px;
 }
+    .m-brand-popular {
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 10px;
+    }
 
 .m-merch-popular a
 {
     margin: 0 44px 0 0;
     display: inline-block;
 }
+    .m-brand-popular a {
+        margin: 0 44px 0 0;
+        display: inline-block;
+    }
 
 .m-merch-popular img
 {
     width: 93px!important;
 
 }
+
+    .m-brand-popular img {
+        width: 93px !important;
+    }
 
 .m-recent-wrapper img
 
@@ -1797,7 +1822,7 @@ width: 50px;
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
     overflow-y: hidden;
-    min-height: 140px;
+    min-height: 160px;
     margin-bottom: 10px;
 }
 
