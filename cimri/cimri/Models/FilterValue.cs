@@ -15,6 +15,7 @@ namespace cimri.Models
         public string Prefix { get; set; }
         public virtual Filter Filter { get; set; }
         public int ItemsCount { get; set; }
+        public bool? IsChecked { get; set; }
 
     }
 }

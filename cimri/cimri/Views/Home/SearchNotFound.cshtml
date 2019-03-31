@@ -1,0 +1,191 @@
+﻿@model cimri.Models.VwSearchNotFound
+@{
+    ViewBag.Title = "Sizin sorğunuz üçün heç bir nəticə tapılmadı";
+}
+@Styles.Render("~/Public/css/categoty1.css")
+@Styles.Render("~/Public/css/jsRapBar.css")
+@Styles.Render("~/Public/css/item.css")
+@Styles.Render("~/Public/css/search.css")
+@Styles.Render("~/Public/css/star-rating-svg.css")
+
+
+
+
+<section id="search-404" class="disappear-mobile">
+    <div class="container ">
+        <div class="row search-row">
+            <div class="col-lg-4 d-flex justify-content-end">
+                <div class="rabbit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="136" height="162" viewBox="0 0 136 162" class="s1o8ay5l-4 dqjVlR">
+                        <path fill="#4A4A4A" d="M130.805 70.128A5.2 5.2 0 0 1 136 75.323v15.584a5.2 5.2 0 0 1-5.195 5.195h-7.792v51.947c0 7.16-5.826 12.987-12.986 12.987H26.91c-7.16 0-12.986-5.826-12.986-12.987V96.102H6.133a5.2 5.2 0 0 1-5.195-5.195V75.323a5.2 5.2 0 0 1 5.195-5.195h2.95c.32-1.171.847-2.179 1.637-2.963 2.314-2.294 5.872-2.257 9.643-2.24l1.354.009 1.353-.008c3.776-.026 7.33-.055 9.644 2.239.79.784 1.317 1.792 1.636 2.963h.486c.76-9.919 5.818-18.63 13.32-24.308a118.49 118.49 0 0 0-31.992-21.408l-2.951-1.34a12.103 12.103 0 0 1-7.08-10.994C6.133 5.418 11.55 0 18.208 0a38.68 38.68 0 0 1 34.189 20.511l10.137 19.005c1.93-.345 3.906-.556 5.935-.556 2.028 0 4.005.21 5.938.556L84.54 20.511A38.678 38.678 0 0 1 118.731 0c6.656 0 12.074 5.418 12.074 12.078 0 4.724-2.779 9.038-7.08 10.992l-2.95 1.342A118.49 118.49 0 0 0 88.782 45.82c7.501 5.678 12.558 14.39 13.319 24.308h.486c.32-1.171.846-2.179 1.636-2.963 2.314-2.294 5.873-2.257 9.644-2.24l1.353.009 1.353-.008c3.777-.026 7.33-.055 9.644 2.239.79.784 1.317 1.792 1.637 2.963h2.95zm-22.919.722c-.379.374-.457 1.226-.457 1.876 0 4.296 3.496 7.792 7.792 7.792 4.296 0 7.792-3.496 7.792-7.792 0-.65-.078-1.502-.457-1.876-.776-.771-3.514-.748-5.943-.73l-1.392.008-1.392-.007c-.38-.003-.771-.006-1.158-.006-2.078 0-4.13.086-4.785.735zM89.123 22.955l-9.556 17.922a33.48 33.48 0 0 1 4.733 2.047c10.083-9.631 21.605-17.46 34.324-23.239l2.95-1.343a6.89 6.89 0 0 0 4.037-6.264c0-3.795-3.086-6.883-6.88-6.883a33.498 33.498 0 0 0-29.608 17.76zm-70.811-3.272c12.719 5.781 24.24 13.607 34.324 23.236a33.578 33.578 0 0 1 4.73-2.047L47.81 22.955a33.49 33.49 0 0 0-29.602-17.76c-3.795 0-6.88 3.088-6.88 6.883a6.892 6.892 0 0 0 4.033 6.264l2.95 1.34zm50.157 24.472c-14.878 0-27.122 11.433-28.438 25.973h12.854v-5.194h5.195v5.194h20.778v-5.194h5.195v5.194h12.854c-1.317-14.54-13.56-25.973-28.438-25.973zM14.382 70.85c-.38.374-.457 1.226-.457 1.876 0 4.296 3.496 7.792 7.792 7.792 4.296 0 7.792-3.496 7.792-7.792 0-.65-.078-1.502-.457-1.876-.777-.771-3.512-.748-5.943-.73l-1.392.008-1.392-.007c-.38-.003-.772-.006-1.159-.006-2.078 0-4.13.086-4.784.735zm95.645 84.99c4.296 0 7.792-3.495 7.792-7.791v-36.363h-98.7v36.363c0 4.296 3.496 7.792 7.792 7.792h83.116zm7.792-49.349v-10.39h-98.7v10.39h98.7zm12.986-15.584V75.323h-2.86c-1.207 5.92-6.451 10.39-12.724 10.39-6.272 0-11.516-4.47-12.724-10.39H34.44c-1.208 5.92-6.452 10.39-12.724 10.39-6.273 0-11.517-4.47-12.725-10.39h-2.86v15.584h124.673z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="search-phrase-all">
+                    <h3>"<span class="search-phrase">@Model.Request</span>" ilə bağlı heç bir nəticə tapılmadı</h3>
+                    <p>Axtarışınızı təkrarlayarkən aşağıdakılara diqqət edin:</p>
+                    <p>- Müxtəlif sözlərlə və ya daha az sözlə axtarışa yenidən cəhd edin.</p>
+                    <p>
+                        -Axtardığınız məhsulda Azərbaycan əlifbasının simvollarının (ı, ç, ğ, ö, ü, ə, ş) düzgün
+                        yazılmasında əmin olun.
+                    </p>
+                    <p>- Bizim kateqoriyalara baxıb axtardığınız məhsulu tapa bilərsiniz.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="category-offer-wrapper" style='background-image: url("../../Public/img/search-offer/1.png")'>
+                    <a href="">
+                        <span class="text-center">Elektronika</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="category-offer-wrapper" style='background-image: url("../../Public/img/search-offer/2.png")'>
+                    <a href="">
+                        <span class="text-center">Elektronika</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="category-offer-wrapper" style='background-image: url("../../Public/img/search-offer/3.png")'>
+                    <a href="">
+                        <span class="text-center">Elektronika</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="category-offer-wrapper" style='background-image: url("../../Public/img/search-offer/4.png")'>
+                    <a href="">
+                        <span class="text-center">Elektronika</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="category-offer-wrapper" style='background-image: url("../../Public/img/search-offer/5.png")'>
+                    <a href="">
+                        <span class="text-center">Elektronika</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="category-offer-wrapper" style='background-image: url("../../Public/img/search-offer/6.png")'>
+                    <a href="">
+                        <span class="text-center">Elektronika</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="category-offer-wrapper" style='background-image: url("../../Public/img/search-offer/7.png")'>
+                    <a href="">
+                        <span class="text-center">Elektronika</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="category-offer-wrapper" style='background-image: url("../../Public/img/search-offer/8.png")'>
+                    <a href="">
+                        <span class="text-center">Elektronika</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="category-offer-wrapper" style='background-image: url("../../Public/img/search-offer/9.png")'>
+                    <a href="">
+                        <span class="text-center">Elektronika</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <br>
+
+    </div>
+</section>
+<div class="m-search-404">
+    <div class="container">
+        <div class="row">
+            <div class="wrapper-404">
+                <span class="sorry">¯\_(ツ)_/¯</span>
+                <div class="result-text">
+                    <span>@Model.Request</span> <span>ilə bağlı</span>
+                    <p>heç bir nəticə tapılmadı</p>
+                </div>
+            </div>
+        </div>
+        <!-- REcent viewed -->
+        <div class="row m-white">
+            <div class="col-12">
+                <h3 style="padding-left:10px;" class="section-header">Son axtardığınız</h3>
+            </div>
+            <div class="col-12">
+                <div class="m-recent-wrapper">
+                    <a href="" class="d-flex justify-content-around">
+                        <img src="~/Public/img/mobile/index/site-select/1.jpg" alt="">
+                        <b>Xiaomi Redmi Note 6 Pro 64GB 6.26 inç 12MP Çift Hatlı Akıllı Cep Telefonu Siyah</b>
+                    </a>
+                    <a href="" class="d-flex justify-content-around">
+                        <img src="~/Public/img/mobile/index/site-select/2.jpg" alt="">
+                        <b>Xiaomi Redmi Note 6 Pro 64GB 6.26 inç 12MP Çift Hatlı Akıllı Cep Telefonu Siyah</b>
+                    </a>
+                    <a href="" class="d-flex justify-content-around">
+                        <img src="~/Public/img/mobile/index/site-select/3.jpg" alt="">
+                        <b>Xiaomi Redmi Note 6 Pro 64GB 6.26 inç 12MP Çift Hatlı Akıllı Cep Telefonu Siyah</b>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- SAytin secimi -->
+        <div class="row m-white" style="margin-bottom:0%!important">
+            <h3 style="padding-left:10px;" class="section-header text-center">Saytın Seçimi</h3>
+            <div class="col-12">
+                <a href="" class="link-to-site-select">
+                    <img class="m-site-select-img" src="~/Public/img/mobile/index/site-select/1.jpg" alt="">
+                    <div class="m-site-select ">
+                        <div class="m-site-select-title">Oppo RX17 Pro 128GB</div>
+                        <h2>
+                            4.999,
+                            <small>00 TL</small>
+                            <i class="fas fa-angle-right"></i>
+                        </h2>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12">
+                <a href="" class="link-to-site-select">
+                    <img class="m-site-select-img" src="~/Public/img/mobile/index/site-select/2.jpg" alt="">
+                    <div class="m-site-select">
+                        <div class="m-site-select-title">Alcatel 1C 2019 8GB</div>
+                        <span>En Ucuz Fiyatlarla Yakında Cimri.com'da   <i class="fas fa-angle-right"></i> </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12">
+                <a href="" class="link-to-site-select">
+                    <img class="m-site-select-img" src="~/Public/img/mobile/index/site-select/3.jpg" alt="">
+                    <div class="m-site-select">
+                        <div class="m-site-select-title">Lenovo Z5 Pro GT 128GB 6.39 iNÇ Çift Hatlı 16MP Akıllı Cep Telefonu Siyah</div>
+                        <span>En Ucuz Fiyatlarla Yakında Cimri.com'da   <i class="fas fa-angle-right"></i> </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row bottom m-white">
+            <a href="" class="back-to-top">
+                <i class="fas fa-angle-up"></i>
+                Əvvələ qayıd
+            </a>
+        </div>
+    </div>
+</div>

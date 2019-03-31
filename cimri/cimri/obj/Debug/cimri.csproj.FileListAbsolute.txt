@@ -211,7 +211,6 @@ C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.ItemSpecsAddfix.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.ItemSpecsAddfix2.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.ItemSpecsAddfix3.resources
-C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.csprojAssemblyReference.cache
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.MerchLinkFix.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.FilterValueFix.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.CommentDbFIx.resources
@@ -223,3 +222,6 @@ C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.ItemFixRElated.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.Filterfix.resources
 C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.siteselectfixItem.resources
+C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.FilterFixRelation.resources
+C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.Migrations.FilterValueAddIsChecked.resources
+C:\Users\User\Desktop\cimri\final-project\cimri\cimri\obj\Debug\cimri.csprojAssemblyReference.cache

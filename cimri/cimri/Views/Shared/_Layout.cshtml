@@ -53,16 +53,16 @@
                     <a href="@Url.Action("index","home")"><img src="~/Public/img/content/@Static.Logo" alt=""></a>
                 </div>
                 <div class="col-lg-6">
-                    <form>
+                    <form id="srch">
                         <div class="form-row align-items-center">
                             <div class="col-lg-9">
                                 <label class="sr-only" for="searchinput"></label>
                                 <input type="text" class="form-control mb-2 search-input search-text" id="searchinput"
-                                       placeholder="Minlərlə mağaza arasında ən ucuz qiyməti tapın!">
+                                       placeholder="Minlərlə mağaza arasında ən ucuz qiyməti tapın!" autocomplete="off">
                             </div>
 
                             <div class="col-lg-3">
-                                <button type="submit" class="btn-search">Axtar</button>
+                                <a  class="btn-search" id="btn-search">Axtar</a>
                             </div>
                         </div>
                     </form>

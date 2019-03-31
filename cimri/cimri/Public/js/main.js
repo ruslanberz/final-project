@@ -5,8 +5,18 @@
         nav: true,
 
     });
-   
 
+
+    $("#btn-search").click(function (e) {
+
+        e.preventDefault();
+        var query = $("#searchinput").val();
+
+        var url = '/Home/Search?q='+query;
+        window.location.href = url;
+
+
+    });
 
 
     $(".go-to").click(function (e) {
@@ -220,14 +230,15 @@
 
 
 
-      $("#searchinput").focus(function(){
+    $("#searchinput").focus(function () {
+        $(".search-details").find(".col-lg-5").css("display", "block");
         $(".search-details").css("visibility", "visible");
         
       });
 
 
       $("#searchinput").focusout(function(){
-        
+          $(".search-details").find(".col-lg-5").css("display", "none");
         $(".search-details").css("visibility", "hidden");
       });
 
@@ -252,7 +263,7 @@
       //});
 
 
-    $(".main-li").hover(function () {
+    $(".menu-header").hover(function () {
         $(".menu-cat-hover2").each(function () {
 
             $(this).css("visibility", "hidden");
@@ -271,6 +282,12 @@
     $(".menu-cat-hover2").mouseleave(function () {
 
         $(this).delay(1000).css("visibility", "hidden");
+    });
+    $(".menu-header").mouseleave(function () {
+        var isHovered = $(this).parent().next().is(":hover");
+        if (isHovered == false) {
+            $(this).parent().next().css("visibility", "hidden");
+        }
     });
       $(".btn-more-offers").click(function(){
         $(this).parent().removeClass("mt-2");
@@ -392,12 +409,12 @@ $(".search-icon").click(function(ex){
 
 function showMenu(control) {
    
-    $(control).next().css("visibility", "visible");
+    $(control).parent().next().css("visibility", "visible");
 
 }
 
 
-function Filter(id) {
+function Filter(id, query) {
     var SpecIds = [];
     $(".fltr").each(function (index) {
         
@@ -417,8 +434,15 @@ function Filter(id) {
                 FilterValues: temp
             });   
     });
-
-    var string = JSON.stringify({ id: 30, pageId: 1, SpecIds: SpecIds });
+    var min;
+    var max;
+    if ($("#MinPrice").val() == "") {
+        min = 0;
+    } else { min = Number($("#MinPrice").val()); }
+    if ($("#MaxPrice").val() == "") {
+        max = 0;
+    } else { max = Number($("#MaxPrice").val()); }
+    var string = JSON.stringify({ id: 30, pageId: 1, SpecIds: SpecIds,q:query,MinPrice:min,MaxPrice:max });
     $.ajax({
         url: "/home/catfilter",
         type: "POST",
@@ -427,8 +451,8 @@ function Filter(id) {
         contentType: "application/json",
         dataType: "html",
         success: function (data) {
-            $(".forfilter").empty();
-            $(".forfilter").html(data);
+            $("#forcatfilter").empty();
+            $("#forcatfilter").html(data);
             $("#cnt").text($(".itemcount").data("val") + ' məhsul göstərilir');
             $("html, body").animate({ scrollTop: 0 }, "slow");
 
@@ -437,9 +461,55 @@ function Filter(id) {
         }
     });
 }
+function Price(query) {
+    var SpecIds = [];
+    $(".fltr").each(function (index) {
 
+        var temp = [];
+        $(this).find(".filter-chk").each(function () {
+            if ($(this).is(':checked')) {
+                temp.push($(this).data("id"));
+            }
+
+        });
+
+        SpecIds.push
+            ({
+                FilterID: $(this).data("id"),
+                FilterValues: temp
+            });
+    });
+    var min;
+    var max;
+    if ($("#MinPrice").val() == "") {
+        min = 0;
+    } else { min = Number($("#MinPrice").val()); }
+    if ($("#MaxPrice").val() == "") {
+        max = 0;
+    } else { max = Number($("#MaxPrice").val()); }
+    var categoryId = Number($("#cat-id").data("id"));
+    console.log(categoryId);
+    var string = JSON.stringify({ id: categoryId, pageId: 1, SpecIds: SpecIds, q: query, MinPrice: min, MaxPrice: max });
+    $.ajax({
+        url: "/home/catfilter",
+        type: "POST",
+        traditional: true,
+        data: string,
+        contentType: "application/json",
+        dataType: "html",
+        success: function (data) {
+            $("#forcatfilter").empty();
+            $("#forcatfilter").html(data);
+            $("#cnt").text($(".itemcount").data("val") + ' məhsul göstərilir');
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+
+
+
+        }
+    });
+}
 //Next 3 functions are ajax helpers for navigation on category page -  when filters are active
-function Berz(category,page) {
+function Berz(category,page,query) {
    
     var SpecIds = [];
     $(".fltr").each(function (index) {
@@ -460,7 +530,7 @@ function Berz(category,page) {
     });
 
    
-    var string = JSON.stringify({ id: category, pageId: page, SpecIds: SpecIds });
+    var string = JSON.stringify({ id: category, pageId: page, SpecIds: SpecIds,q:query });
     $.ajax({
         url: "/home/catfilter",
         type: "POST",
@@ -479,7 +549,7 @@ function Berz(category,page) {
     });
 };
 
-function BerzPrev(category, page, currentPage) {
+function BerzPrev(category, page, currentPage,query) {
     if ((page < currentPage) && (Number(page) != 0)) {
 
         var SpecIds = [];
@@ -501,7 +571,7 @@ function BerzPrev(category, page, currentPage) {
         });
 
 
-        var string = JSON.stringify({ id: category, pageId: page, SpecIds: SpecIds });
+        var string = JSON.stringify({ id: category, pageId: page, SpecIds: SpecIds,q:query });
         $.ajax({
             url: "/home/catfilter",
             type: "POST",
@@ -522,7 +592,7 @@ function BerzPrev(category, page, currentPage) {
 
 };
 
-function BerzNext(category, page, currentPage, PagesCount) {
+function BerzNext(category, page, currentPage, PagesCount, query) {
     if ((page > currentPage) && (Number(PagesCount) > Number(currentPage))) {
 
         var SpecIds = [];
@@ -544,7 +614,7 @@ function BerzNext(category, page, currentPage, PagesCount) {
         });
 
    
-        var string = JSON.stringify({ id: category, pageId: page, SpecIds: SpecIds });
+        var string = JSON.stringify({ id: category, pageId: page, SpecIds: SpecIds,q:query });
         $.ajax({
             url: "/home/catfilter",
             type: "POST",
@@ -630,7 +700,7 @@ function Local(obj)
 
     localStorage.setItem('items', JSON.stringify(result));
 }
-//this function first loads content to d-none row and then putseach itemto owl carousel
+//this function first loads content to d-none row and then puts each item to owl carousel
 function LoadOwl() {
 
     $(".myowlitem").each(function () {

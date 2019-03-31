@@ -2,463 +2,563 @@
 @{
     Layout = null;
 }
-<div class="itemcount d-none" data-val="@Model.Items.Count" ></div>
-<div class="row " style="background-color:white; padding: 5px 0; margin-top:0px!important">
-    <div class="col-lg-3">
-        <a href="">
-            <div class="area-wrapper">
-                <img src="~/Public/img/category1/promo-main/1.jpg" alt="">
-                <span>Samsung Galaxy Note 9</span>
-
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-3">
-        <a href="">
-            <div class="area-wrapper">
-                <img src="~/Public/img/category1/promo-main/2.jpg" alt="">
-                <span>Amazon noutbukları</span>
-
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-3">
-        <a href="">
-            <div class="area-wrapper">
-                <img src="~/Public/img/category1/promo-main/3.jpg" alt="">
-                <span>Tozsoranlar</span>
-
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-3">
-        <a href="">
-            <div class="area-wrapper" style="margin-right: 5px;">
-                <img src="~/Public/img/category1/promo-main/4.jpg" alt="">
-                <span>Playstation 4</span>
-
-            </div>
-        </a>
-    </div>
-</div>
-
-<div class="row filter filters" style="background-color:white;">
-    <div class="col-lg-9 ">
-        <a class="result-filter-selected" href="">Ən Ppopulyar Məhsullar</a>
-        <a class="result-filter" href="">Ən Ucuz Məhsullar</a>
-        <a class="result-filter" href="">Ən yeni məhsullar</a>
-    </div>
-    <div class="col-lg-3 text-right">
-        <i class="fab fa-microsoft blue"></i>
-        <i class="fas fa-sort-amount-down gray"></i>
-    </div>
-</div>
-<div class="row">
-    @foreach (var item in Model.Items.Take(4))
-    {
-        <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
-            <div class="col-lg-3 item">
-                <div class="card card-item">
-                    <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Name</h5>
-                        @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
-                        {
-                            <a class="link-merch" href="">
-                                <div class="source">@item2.Merch.Link</div>
-                                <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                        }
-
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
-                </div>
-            </div>
-        </a>
-    }
-
-</div>
-<div class="row pt-2">
-    <div class="col-lg-12">
-        <div class="banner-ads">
+<div class="col-xl-3">
+    <div class="navigation-wrapper">
+        <div class="nav-box">
+            <h1>@Model.Category.Name</h1>
+            <h2>@Model.Category.Name üçün ən ucuz qiymətlər</h2>
+            <span id="cnt" style="letter-spacing: 1px;">@Model.CategotyItemCount məhsul göstərilir</span>
         </div>
-    </div>
-</div>
-<div class="row pt-2">
-    @foreach (var item in @Model.Items.Skip(4).Take(4))
-    {
-        <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
-            <div class="col-lg-3 item">
-                <div class="card card-item">
-                    <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Name</h5>
-                        @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
-                        {
-                            <a class="link-merch" href="">
-                                <div class="source">@item2.Merch.Link</div>
-                                <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                        }
-
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
-                </div>
-            </div>
-        </a>
-    }
-</div>
-<br>
-<div class="row owl-carousel categories-carousel " style="background-color:white; padding: 5px 0;">
-    <div class="promo-wrapper ">
-        <a href="">
-            <div class="area-wrapper d-flex justify-content-center align-items-center">
-                <img src="~/public/img/category1/promo-main/1.jpg" alt="">
-                <span>samsung galaxy note 9</span>
-
-            </div>
-        </a>
-    </div>
-
-    <div class="promo-wrapper ">
-        <a href="">
-            <div class="area-wrapper d-flex justify-content-center align-items-center">
-                <img src="~/public/img/category1/promo-main/2.jpg" alt="">
-                <span>amazon noutbukları</span>
-
-            </div>
-        </a>
-    </div>
-    <div class="promo-wrapper ">
-        <a href="">
-            <div class="area-wrapper d-flex justify-content-center align-items-center">
-                <img src="~/public/img/category1/promo-main/3.jpg" alt="">
-                <span>tozsoranlar</span>
-
-            </div>
-        </a>
-    </div>
-    <div class="promo-wrapper ">
-        <a href="">
-            <div class="area-wrapper d-flex justify-content-center align-items-center" style="margin-left:5px;">
-                <img src="~/public/img/category1/promo-main/4.jpg" alt="">
-                <span>playstation 4</span>
-
-            </div>
-        </a>
-    </div>
-    <div class="promo-wrapper ">
-        <a href="">
-            <div class="area-wrapper d-flex justify-content-center align-items-center">
-                <img src="~/public/img/category1/promo-main/3.jpg" alt="">
-                <span>tozsoranlar</span>
-
-            </div>
-        </a>
-    </div>
-    <div class="promo-wrapper ">
-        <a href="">
-            <div class="area-wrapper d-flex justify-content-center align-items-center">
-                <img src="~/public/img/category1/promo-main/1.jpg" alt="">
-                <span>samsung galaxy note 9</span>
-
-            </div>
-        </a>
-    </div>
-</div>
-<div class="row pt-2">
-    @foreach (var item in Model.Items.Skip(8).Take(4))
-    {
-        <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
-            <div class="col-lg-3 item">
-                <div class="card card-item">
-                    <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Name</h5>
-                        @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
-                        {
-                            <a class="link-merch" href="">
-                                <div class="source">@item2.Merch.Link</div>
-                                <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                        }
-
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
-                </div>
-            </div>
-        </a>
-    }
-</div>
-<div class="row pt-2">
-    @foreach (var item in @Model.Items.Skip(12).Take(4))
-    {
-        <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
-            <div class="col-lg-3 item">
-                <div class="card card-item">
-                    <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Name</h5>
-                        @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
-                        {
-                            <a class="link-merch" href="">
-                                <div class="source">@item2.Merch.Link</div>
-                                <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                        }
-
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
-                </div>
-            </div>
-        </a>
-    }
-</div>
-
-@if (@Model.Items.Count > 16)
-{
-<div class="row pt-2">
-    @foreach (var item in @Model.Items.Skip(16).Take(4))
-    {
-        <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
-            <div class="col-lg-3 item">
-                <div class="card card-item">
-                    <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Name</h5>
-                        @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
-                        {
-                            <a class="link-merch" href="">
-                                <div class="source">@item2.Merch.Link</div>
-                                <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                            </a>
-                        }
-
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
-                </div>
-            </div>
-        </a>
-    }
-</div>
-}
-
-@if (@Model.Items.Count > 20)
-{
-    <div class="row pt-2">
-        <div class="promo2-wrapper">
-            <div class="banner-promo2"></div>
-            <div class="banner-promo2"></div>
-            <div class="banner-promo2"></div>
-        </div>
-    </div>
-    <div class="row pt-2">
-        @foreach (var item in @Model.Items.Skip(20).Take(4))
+        @if (Model.HasChildren == true)
         {
-            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
-                <div class="col-lg-3 item">
-                    <div class="card card-item">
-                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">@item.Name</h5>
-                            @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
-                            {
-                                <a class="link-merch" href="">
-                                    <div class="source">@item2.Merch.Link</div>
-                                    <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                                </a>
-                            }
-
-                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            <div class="nav-box">
+                <ul>
+                    @foreach (var item in Model.Subcategories)
+                    {
+                        <li>
+                            <a href="@Url.Action("category","home",new { id=item.SubCategory.id})" class="d-flex justify-content-between" data-id="@item.SubCategory.id">
+                                <p class="ml-text">@item.SubCategory.Name</p>
+                                <span class="ml-count">(@item.ItemsCount)</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
         }
-    </div>
-}
-@if (@Model.Items.Count > 24)
-{
-    <div class="row pt-2">
-        @foreach (var item in Model.Items.Skip(24).Take(4))
+        else
         {
-            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
-                <div class="col-lg-3 item">
-                    <div class="card card-item">
-                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">@item.Name</h5>
-                            @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
-                            {
-                                <a class="link-merch" href="">
-                                    <div class="source">@item2.Merch.Link</div>
-                                    <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                                </a>
-                            }
-
-                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                        </div>
-                    </div>
+            <div class="nav-box">
+                <h1>Qiymət aralığı</h1>
+                <br>
+                <div class="wrapper-fp d-flex justify-content-between align-items-center">
+                    <input type="number" name="minPriceText" id="MinPrice" @if (Model.MinPrice>0) { @("value=")@Model.MinPrice} placeholder="Min" style="max-width:65px;"
+                           autocomplete="off" class="price">
+                    <span>-</span>
+                    <input type="number" name="maxPriceText" id="MaxPrice"  @if (Model.MaxPrice>0) { @("value=")@Model.MaxPrice} placeholder="Max" style="max-width:65px;"
+                           autocomplete="off" class="price">
+                    <a id="setprice" onclick="Price('@Model.SearchQuery')">
+                        <i class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
-            </a>
-        }
-    </div>
-}
-@if (Model.Items.Count > 28)
-{
-    <div class="row pt-2">
-        @foreach (var item in @Model.Items.Skip(28).Take(4))
-        {
-            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
-                <div class="col-lg-3 item">
-                    <div class="card card-item">
-                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">@item.Name</h5>
-                            @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
-                            {
-                                <a class="link-merch" href="">
-                                    <div class="source">@item2.Merch.Link</div>
-                                    <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                                </a>
-                            }
+           
 
-                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        }
-    </div>
-}
-@if (Model.Items.Count > 32)
-{
-    <div class="row pt-2">
-        @foreach (var item in @Model.Items.Skip(32).Take(4))
-        {
-            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
-                <div class="col-lg-3 item">
-                    <div class="card card-item">
-                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">@item.Name</h5>
-                            @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
-                            {
-                                <a class="link-merch" href="">
-                                    <div class="source">@item2.Merch.Link</div>
-                                    <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
-                                </a>
-                            }
+            </div>
 
-                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        }
-    </div>
-}
-<div class="row pt-2">
-    <div class="col-lg-12">
-        <div class="paging">
-            @if (Model.PagesCount < 7)
+            if (Model.Filters.Count > 0)
             {
-                if (Model.PagesCount == 1)
+                foreach (var item in Model.Filters.Where(x => (x.id != 6) & (x.IsFiltered == true)))
+                {
+                    <div data-id="@item.id" class="nav-box fltr">
+                        <h1>@item.Name</h1>
+                        <br>
+                        <div class="wrapper-fp d-flex justify-content-between align-items-center">
 
-                {
-                    <a><i class="fas fa-angle-left" ></i></a>
-                    <a class="active-page filter-link-cf"  data-id="1" >1</a>
-                    <a><i class="fas fa-angle-right"></i></a>
-                }
-                if (Model.PagesCount == 2)
-                {
-                    <a data-id="1" class="filter-link-cf" onclick="BerzPrev(@Model.Category.id,1,@Model.CurrentPage)" ><i class="fas fa-angle-left"></i></a>
-                    <a data-id="1"  onclick="Berz(@Model.Category.id,1)"  class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >1</a>
-                    <a data-id="2"  onclick="Berz(@Model.Category.id,2)"  class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">2</a>
-                    <a data-id="2" onclick="BerzNext(@Model.Category.id,2,@Model.CurrentPage,@Model.PagesCount)" class="filter-link-cf" ><i class="fas fa-angle-right"></i></a>
-                }
-                if (Model.PagesCount == 3)
-                {
-                    <a class="filter-link-cf" data-id="@(Model.CurrentPage-1)" onclick="BerzPrev(@Model.Category.id,(@Model.CurrentPage-1),@Model.CurrentPage)" ><i class="fas fa-angle-left"></i></a>
-                    <a data-id="1"  onclick="Berz(@Model.Category.id,1)" class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >1</a>
-                    <a data-id="2"  onclick="Berz(@Model.Category.id,2)"  class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">2</a>
-                    <a data-id="3"  onclick="Berz(@Model.Category.id,3)"  class="@if (Model.CurrentPage==3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">3</a>
-                    <a class="filter-link-cf" data-id="@(Model.CurrentPage+1)" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount)" ><i class="fas fa-angle-right"></i></a>
+                        </div>
+
+                        <ul class="filterr">
+                            @foreach (var value in item.FilterValues)
+                            {
+                                if (value.ItemsCount != 0)
+                                {
+                                    <li>
+                                        <a data-id="@value.Filter.id" class="">
+                                            <input type="checkbox" class="filter-chk" onchange="Filter(@value.id,'@Model.SearchQuery')" data-id="@value.id" @if (value.IsChecked==true) {@("checked") } autocomplete="off" ifze="35">
+                                            <span class="filter-chk-mid">
+                                                @value.SatrValue @if (value.IsSingle == true)
+                            {@(" ");@value.Prefix;
+                            } @if (value.IsSingle == false)
+
+                            {
+                                                    @("-");
+                                @value.EndValue;
+                                if (!string.IsNullOrEmpty(value.Prefix))
+                                { @(" ");
+                                    @value.Prefix}
+
+
+                            }
+                                        </span>
+
+                                        <span class="filter-chk-right">(@value.ItemsCount)</span>
+                                    </a>
+                                </li>
+                            }
+                    }
+
+                        </ul>
+                    </div>
                 }
 
-                if (Model.PagesCount == 4)
-                {
-                    <a data-id="@(Model.CurrentPage-1)" class="filter-link-cf" onclick="BerzPrev(@Model.Category.id,@(Model.CurrentPage-1),@Model.CurrentPage)" ><i class="fas fa-angle-left"></i></a>
-                    <a data-id="1"  onclick="Berz(@Model.Category.id,1)"  class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">1</a>
-                    <a data-id="2"   onclick="Berz(@Model.Category.id,2)" class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >2</a>
-                    <a data-id="3"  onclick="Berz(@Model.Category.id,3)"  class="@if (Model.CurrentPage==3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >3</a>
-                    <a data-id="4"  onclick="Berz(@Model.Category.id,4)"  class="@if (Model.CurrentPage==4) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >4</a>
-                    <a data-id="@(Model.CurrentPage+1)" class="filter-link-cf" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount)"><i class="fas fa-angle-right"></i></a>
-                }
-                if (Model.PagesCount == 5)
-                {
-                    <a class="filter-link-cf" onclick="BerzPrev(@Model.Category.id,@(Model.CurrentPage-1),@Model.CurrentPage)" data-id="@(Model.CurrentPage-1)" ><i class="fas fa-angle-left"></i></a>
-                    <a data-id="1"  onclick="Berz(@Model.Category.id,1)"  class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">1</a>
-                    <a data-id="2" onclick="Berz(@Model.Category.id,2)"  class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >2</a>
-                    <a data-id="3" onclick="Berz(@Model.Category.id,3)"  class="@if (Model.CurrentPage==3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >3</a>
-                    <a data-id="4" onclick="Berz(@Model.Category.id,4)"  class="@if (Model.CurrentPage==4) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">4</a>
-                    <a data-id="5" onclick="Berz(@Model.Category.id,5)"  class="@if (Model.CurrentPage==5) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >5</a>
-                    <a class="filter-link-cf" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount)"  data-id="@Model.CurrentPage+1"><i class="fas fa-angle-right"></i></a>
-                }
-
-                if (Model.PagesCount == 6)
-                {
-                    <a data-id="@(Model.CurrentPage-1)" onclick="BerzPrev(@Model.Category.id,@(Model.CurrentPage-1),@Model.CurrentPage)" class="filter-link-cf"><i class="fas fa-angle-left"></i></a>
-                    <a data-id="1" onclick="Berz(@Model.Category.id,1)" class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page")}">1</a>
-                    <a data-id="2" onclick="Berz(@Model.Category.id,2)" class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">2</a>
-                    <a data-id="3" onclick="Berz(@Model.Category.id,3)" class="@if (Model.CurrentPage==3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">3</a>
-                    <a data-id="4" onclick="Berz(@Model.Category.id,4)" class="@if (Model.CurrentPage==4) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >4</a>
-                    <a data-id="5" onclick="Berz(@Model.Category.id,5)" class="@if (Model.CurrentPage==5) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">5</a>
-                    <a data-id="6" onclick="Berz(@Model.Category.id,6)" class="@if (Model.CurrentPage==6) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">6</a>
-                    <a data-id="@(Model.CurrentPage+1)" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount)" class="filter-link-cf"><i class="fas fa-angle-right"></i></a>
-                }
             }
-            else
-            {
-                if (Model.CurrentPage == 1 || Model.CurrentPage == 2 || Model.CurrentPage == 3)
-                {
-                    <a data-id="@(Model.CurrentPage-1)" onclick="BerzPrev(@Model.Category.id,@(Model.CurrentPage-1),@Model.CurrentPage)" class="filter-link-cf"><i class="fas fa-angle-left"></i></a>
-                    <a data-id="1" onclick="Berz(@Model.Category.id,1)" class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">1</a>
-                    <a data-id="2" onclick="Berz(@Model.Category.id,2)" class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">2</a>
-                    <a data-id="3" onclick="Berz(@Model.Category.id,3)" class="@if (Model.CurrentPage==3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >3</a>
-                    <a data-id="4" onclick="Berz(@Model.Category.id,4)" class="@if (Model.CurrentPage==4) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >4</a>
-                    <a class="page">...</a>
-                    <a data-id="@Model.PagesCount" onclick="Berz(@Model.Category.id,@Model.PagesCount)" class="@if (Model.CurrentPage==Model.PagesCount) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">@Model.PagesCount</a>
-                    <a data-id="@(Model.CurrentPage+1)" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount)" class="filter-link-cf"><i class="fas fa-angle-right"></i></a>
-                }
-                 
-                else if (Model.CurrentPage == Model.PagesCount || Model.CurrentPage == Model.PagesCount - 1 || Model.CurrentPage == Model.PagesCount - 2)
-                {
-                    <a data-id="@(Model.CurrentPage-1)" class="filter-link-cf" onclick="BerzPrev(@Model.Category.id,@(Model.CurrentPage-1),@Model.CurrentPage)" ><i class="fas fa-angle-left"></i></a>
-                    <a data-id="1" onclick="Berz(@Model.Category.id,1)"  class="@if (Model.CurrentPage==1) {@("active-page") } else { @("page")}" >1</a>
-                    <a  class="page">...</a>
-                    <a data-id="@(Model.PagesCount-3)" onclick="Berz(@Model.Category.id,@(Model.PagesCount-3))" class="@if (Model.CurrentPage==Model.PagesCount-3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >@(Model.PagesCount-3)</a>
-                    <a data-id="@(Model.PagesCount-2)" onclick="Berz(@Model.Category.id,@(Model.PagesCount-2))" class="@if (Model.CurrentPage==Model.PagesCount-2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >@(Model.PagesCount-2)</a>
-                    <a data-id="@(Model.PagesCount-1)" onclick="Berz(@Model.Category.id,@(Model.PagesCount-1))" class="@if (Model.CurrentPage==Model.PagesCount-1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">@(Model.PagesCount-1)</a>
-                    <a data-id="@Model.PagesCount" onclick="Berz(@Model.Category.id,@Model.PagesCount)" class="@if (Model.CurrentPage==Model.PagesCount) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">@Model.PagesCount</a>
-                    <a data-id="@(Model.CurrentPage+1)" class="filter-link-cf" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount)"><i class="fas fa-angle-right"></i></a>
-                }
+        }
+        <div class="nav-box">
+            <div class="banner-navbox"></div>
+            <div class="banner-navbox"></div>
+            <div class="banner-navbox"></div>
+            <div class="banner-navbox"></div>
+        </div>
+    </div>
+</div>
 
+<div class="col-xl-9">
+    <div class="itemcount d-none" data-val="@Model.Items.Count"></div>
+    <div class="row " style="background-color:white; padding: 5px 0; margin-top:0px!important">
+        <div class="col-lg-3">
+            <a href="">
+                <div class="area-wrapper">
+                    <img src="~/Public/img/category1/promo-main/1.jpg" alt="">
+                    <span>Samsung Galaxy Note 9</span>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3">
+            <a href="">
+                <div class="area-wrapper">
+                    <img src="~/Public/img/category1/promo-main/2.jpg" alt="">
+                    <span>Amazon noutbukları</span>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3">
+            <a href="">
+                <div class="area-wrapper">
+                    <img src="~/Public/img/category1/promo-main/3.jpg" alt="">
+                    <span>Tozsoranlar</span>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3">
+            <a href="">
+                <div class="area-wrapper" style="margin-right: 5px;">
+                    <img src="~/Public/img/category1/promo-main/4.jpg" alt="">
+                    <span>Playstation 4</span>
+
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row filter filters" style="background-color:white;">
+        <div class="col-lg-9 ">
+            <a class="result-filter-selected" href="">Ən Ppopulyar Məhsullar</a>
+            <a class="result-filter" href="">Ən Ucuz Məhsullar</a>
+            <a class="result-filter" href="">Ən yeni məhsullar</a>
+        </div>
+        <div class="col-lg-3 text-right">
+            <i class="fab fa-microsoft blue"></i>
+            <i class="fas fa-sort-amount-down gray"></i>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model.Items.Take(4))
+        {
+            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
+                <div class="col-lg-3 item">
+                    <div class="card card-item">
+                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                            {
+                                <a class="link-merch" href="">
+                                    <div class="source">@item2.Merch.Link</div>
+                                    <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                </a>
+                            }
+
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+
+    </div>
+    <div class="row pt-2">
+        <div class="col-lg-12">
+            <div class="banner-ads">
+            </div>
+        </div>
+    </div>
+    <div class="row pt-2">
+        @foreach (var item in @Model.Items.Skip(4).Take(4))
+        {
+            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
+                <div class="col-lg-3 item">
+                    <div class="card card-item">
+                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                            {
+                                <a class="link-merch" href="">
+                                    <div class="source">@item2.Merch.Link</div>
+                                    <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                </a>
+                            }
+
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+    <br>
+    <div class="row owl-carousel categories-carousel " style="background-color:white; padding: 5px 0;">
+        <div class="promo-wrapper ">
+            <a href="">
+                <div class="area-wrapper d-flex justify-content-center align-items-center">
+                    <img src="~/public/img/category1/promo-main/1.jpg" alt="">
+                    <span>samsung galaxy note 9</span>
+
+                </div>
+            </a>
+        </div>
+
+        <div class="promo-wrapper ">
+            <a href="">
+                <div class="area-wrapper d-flex justify-content-center align-items-center">
+                    <img src="~/public/img/category1/promo-main/2.jpg" alt="">
+                    <span>amazon noutbukları</span>
+
+                </div>
+            </a>
+        </div>
+        <div class="promo-wrapper ">
+            <a href="">
+                <div class="area-wrapper d-flex justify-content-center align-items-center">
+                    <img src="~/public/img/category1/promo-main/3.jpg" alt="">
+                    <span>tozsoranlar</span>
+
+                </div>
+            </a>
+        </div>
+        <div class="promo-wrapper ">
+            <a href="">
+                <div class="area-wrapper d-flex justify-content-center align-items-center" style="margin-left:5px;">
+                    <img src="~/public/img/category1/promo-main/4.jpg" alt="">
+                    <span>playstation 4</span>
+
+                </div>
+            </a>
+        </div>
+        <div class="promo-wrapper ">
+            <a href="">
+                <div class="area-wrapper d-flex justify-content-center align-items-center">
+                    <img src="~/public/img/category1/promo-main/3.jpg" alt="">
+                    <span>tozsoranlar</span>
+
+                </div>
+            </a>
+        </div>
+        <div class="promo-wrapper ">
+            <a href="">
+                <div class="area-wrapper d-flex justify-content-center align-items-center">
+                    <img src="~/public/img/category1/promo-main/1.jpg" alt="">
+                    <span>samsung galaxy note 9</span>
+
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row pt-2">
+        @foreach (var item in Model.Items.Skip(8).Take(4))
+        {
+            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
+                <div class="col-lg-3 item">
+                    <div class="card card-item">
+                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                            {
+                                <a class="link-merch" href="">
+                                    <div class="source">@item2.Merch.Link</div>
+                                    <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                </a>
+                            }
+
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+    <div class="row pt-2">
+        @foreach (var item in @Model.Items.Skip(12).Take(4))
+        {
+            <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
+                <div class="col-lg-3 item">
+                    <div class="card card-item">
+                        <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                            {
+                                <a class="link-merch" href="">
+                                    <div class="source">@item2.Merch.Link</div>
+                                    <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                </a>
+                            }
+
+                            <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+
+    @if (@Model.Items.Count > 16)
+    {
+        <div class="row pt-2">
+            @foreach (var item in @Model.Items.Skip(16).Take(4))
+            {
+                <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
+                    <div class="col-lg-3 item">
+                        <div class="card card-item">
+                            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                                {
+                                    <a class="link-merch" href="">
+                                        <div class="source">@item2.Merch.Link</div>
+                                        <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                    </a>
+                                }
+
+                                <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+
+    @if (@Model.Items.Count > 20)
+    {
+        <div class="row pt-2">
+            <div class="promo2-wrapper">
+                <div class="banner-promo2"></div>
+                <div class="banner-promo2"></div>
+                <div class="banner-promo2"></div>
+            </div>
+        </div>
+        <div class="row pt-2">
+            @foreach (var item in @Model.Items.Skip(20).Take(4))
+            {
+                <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
+                    <div class="col-lg-3 item">
+                        <div class="card card-item">
+                            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                                {
+                                    <a class="link-merch" href="">
+                                        <div class="source">@item2.Merch.Link</div>
+                                        <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                    </a>
+                                }
+
+                                <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+    @if (@Model.Items.Count > 24)
+    {
+        <div class="row pt-2">
+            @foreach (var item in Model.Items.Skip(24).Take(4))
+            {
+                <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
+                    <div class="col-lg-3 item">
+                        <div class="card card-item">
+                            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                                {
+                                    <a class="link-merch" href="">
+                                        <div class="source">@item2.Merch.Link</div>
+                                        <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                    </a>
+                                }
+
+                                <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+    @if (Model.Items.Count > 28)
+    {
+        <div class="row pt-2">
+            @foreach (var item in @Model.Items.Skip(28).Take(4))
+            {
+                <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
+                    <div class="col-lg-3 item">
+                        <div class="card card-item">
+                            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                                {
+                                    <a class="link-merch" href="">
+                                        <div class="source">@item2.Merch.Link</div>
+                                        <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                    </a>
+                                }
+
+                                <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+    @if (Model.Items.Count > 32)
+    {
+        <div class="row pt-2">
+            @foreach (var item in @Model.Items.Skip(32).Take(4))
+            {
+                <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item","home", new { id=item.id})">
+                    <div class="col-lg-3 item">
+                        <div class="card card-item">
+                            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                @foreach (var item2 in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                                {
+                                    <a class="link-merch" href="">
+                                        <div class="source">@item2.Merch.Link</div>
+                                        <div class="merch-price">@item2.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                    </a>
+                                }
+
+                                <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+    <div class="row pt-2">
+        <div class="col-lg-12">
+            <div class="paging">
+                @if (Model.PagesCount < 7)
+                {
+                    if (Model.PagesCount == 1)
+
+                    {
+                        <a><i class="fas fa-angle-left"></i></a>
+                        <a class="active-page filter-link-cf" data-id="1">1</a>
+                        <a><i class="fas fa-angle-right"></i></a>
+                    }
+                    if (Model.PagesCount == 2)
+                    {
+                        <a data-id="1" class="filter-link-cf" onclick="BerzPrev(@Model.Category.id,1,@Model.CurrentPage,@Model.SearchQuery)"><i class="fas fa-angle-left"></i></a>
+                        <a data-id="1" onclick="Berz(@Model.Category.id,1,@Model.SearchQuery)" class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">1</a>
+                        <a data-id="2" onclick="Berz(@Model.Category.id,2,@Model.SearchQuery)" class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">2</a>
+                        <a data-id="2" onclick="BerzNext(@Model.Category.id,2,@Model.CurrentPage,@Model.PagesCount,@Model.SearchQuery)" class="filter-link-cf"><i class="fas fa-angle-right"></i></a>
+                    }
+                    if (Model.PagesCount == 3)
+                    {
+                        <a class="filter-link-cf" data-id="@(Model.CurrentPage-1)" onclick="BerzPrev(@Model.Category.id,(@Model.CurrentPage-1),@Model.CurrentPage,@Model.SearchQuery)"><i class="fas fa-angle-left"></i></a>
+                        <a data-id="1" onclick="Berz(@Model.Category.id,1,@Model.SearchQuery)" class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">1</a>
+                        <a data-id="2" onclick="Berz(@Model.Category.id,2,@Model.SearchQuery)" class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">2</a>
+                        <a data-id="3" onclick="Berz(@Model.Category.id,3,@Model.SearchQuery)" class="@if (Model.CurrentPage==3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">3</a>
+                        <a class="filter-link-cf" data-id="@(Model.CurrentPage+1)" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount,@Model.SearchQuery)"><i class="fas fa-angle-right"></i></a>
+                    }
+
+                    if (Model.PagesCount == 4)
+                    {
+                        <a data-id="@(Model.CurrentPage-1)" class="filter-link-cf" onclick="BerzPrev(@Model.Category.id,@(Model.CurrentPage-1),@Model.CurrentPage,@Model.SearchQuery)"><i class="fas fa-angle-left"></i></a>
+                        <a data-id="1" onclick="Berz(@Model.Category.id,1,@Model.SearchQuery)" class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">1</a>
+                        <a data-id="2" onclick="Berz(@Model.Category.id,2,@Model.SearchQuery)" class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">2</a>
+                        <a data-id="3" onclick="Berz(@Model.Category.id,3,@Model.SearchQuery)" class="@if (Model.CurrentPage==3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">3</a>
+                        <a data-id="4" onclick="Berz(@Model.Category.id,4,@Model.SearchQuery)" class="@if (Model.CurrentPage==4) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">4</a>
+                        <a data-id="@(Model.CurrentPage+1)" class="filter-link-cf" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount,@Model.SearchQuery)"><i class="fas fa-angle-right"></i></a>
+                    }
+                    if (Model.PagesCount == 5)
+                    {
+                        <a class="filter-link-cf" onclick="BerzPrev(@Model.Category.id,@(Model.CurrentPage-1),@Model.CurrentPage)" data-id="@(Model.CurrentPage-1)"><i class="fas fa-angle-left"></i></a>
+                        <a data-id="1" onclick="Berz(@Model.Category.id,1)" class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">1</a>
+                        <a data-id="2" onclick="Berz(@Model.Category.id,2)" class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">2</a>
+                        <a data-id="3" onclick="Berz(@Model.Category.id,3)" class="@if (Model.CurrentPage==3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">3</a>
+                        <a data-id="4" onclick="Berz(@Model.Category.id,4)" class="@if (Model.CurrentPage==4) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">4</a>
+                        <a data-id="5" onclick="Berz(@Model.Category.id,5)" class="@if (Model.CurrentPage==5) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">5</a>
+                        <a class="filter-link-cf" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount,@Model.SearchQuery)" data-id="@Model.CurrentPage+1"><i class="fas fa-angle-right"></i></a>
+                    }
+
+                    if (Model.PagesCount == 6)
+                    {
+                        <a data-id="@(Model.CurrentPage-1)" onclick="BerzPrev(@Model.Category.id,@(Model.CurrentPage-1),@Model.CurrentPage,@Model.SearchQuery)" class="filter-link-cf"><i class="fas fa-angle-left"></i></a>
+                        <a data-id="1" onclick="Berz(@Model.Category.id,1,@Model.SearchQuery)" class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page")}">1</a>
+                        <a data-id="2" onclick="Berz(@Model.Category.id,2,@Model.SearchQuery)" class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">2</a>
+                        <a data-id="3" onclick="Berz(@Model.Category.id,3,@Model.SearchQuery)" class="@if (Model.CurrentPage==3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">3</a>
+                        <a data-id="4" onclick="Berz(@Model.Category.id,4,@Model.SearchQuery)" class="@if (Model.CurrentPage==4) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">4</a>
+                        <a data-id="5" onclick="Berz(@Model.Category.id,5,@Model.SearchQuery)" class="@if (Model.CurrentPage==5) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">5</a>
+                        <a data-id="6" onclick="Berz(@Model.Category.id,6,@Model.SearchQuery)" class="@if (Model.CurrentPage==6) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">6</a>
+                        <a data-id="@(Model.CurrentPage+1)" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount,@Model.SearchQuery)" class="filter-link-cf"><i class="fas fa-angle-right"></i></a>
+                    }
+                }
                 else
                 {
-                    <a data-id="@Model.CurrentPage-1" onclick="BerzPrev(@Model.Category.id,(@Model.CurrentPage-1),@Model.CurrentPage)" class="filter-link-cf" ><i class="fas fa-angle-left"></i></a>
-                    <a data-id="1" onclick="Berz(@Model.Category.id,1)"  class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >1</a>
-                    <a class="page">...</a>
-                    <a data-id="@Model.CurrentPage-1" onclick="Berz(@Model.Category.id,@Model.CurrentPage-1)" class="page filter-link-cf " >@(Model.CurrentPage-1)</a>
-                    <a data-id="@Model.CurrentPage" onclick="Berz(@Model.Category.id,@Model.CurrentPage)" class="active-page filter-link-cf"  >@Model.CurrentPage</a>
-                    <a data-id="@Model.CurrentPage+1" onclick="Berz(@Model.Category.id,@Model.CurrentPage+1)" class="page filter-link-cf">@(Model.CurrentPage+1)</a>
-                    <a class="page">...</a>
-                    <a data-id="@Model.PagesCount" onclick="Berz(@Model.Category.id,@Model.PagesCount)" class="@if (Model.CurrentPage==Model.PagesCount) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}" >@Model.PagesCount</a>
-                    <a data-id="@Model.CurrentPage+1" onclick="BerzNext(@Model.Category.id,@Model.CurrentPage+1,@Model.CurrentPage,@Model.PagesCount)" class="filter-link-cf"><i class="fas fa-angle-right"></i></a>
+                    if (Model.CurrentPage == 1 || Model.CurrentPage == 2 || Model.CurrentPage == 3)
+                    {
+                        <a data-id="@(Model.CurrentPage-1)" onclick="BerzPrev(@Model.Category.id,@(Model.CurrentPage-1),@Model.CurrentPage,@Model.SearchQuery)" class="filter-link-cf"><i class="fas fa-angle-left"></i></a>
+                        <a data-id="1" onclick="Berz(@Model.Category.id,1,@Model.SearchQuery)" class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">1</a>
+                        <a data-id="2" onclick="Berz(@Model.Category.id,2,@Model.SearchQuery)" class="@if (Model.CurrentPage==2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">2</a>
+                        <a data-id="3" onclick="Berz(@Model.Category.id,3,@Model.SearchQuery)" class="@if (Model.CurrentPage==3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">3</a>
+                        <a data-id="4" onclick="Berz(@Model.Category.id,4,@Model.SearchQuery)" class="@if (Model.CurrentPage==4) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">4</a>
+                        <a class="page">...</a>
+                        <a data-id="@Model.PagesCount" onclick="Berz(@Model.Category.id,@Model.PagesCount,@Model.SearchQuery)" class="@if (Model.CurrentPage==Model.PagesCount) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">@Model.PagesCount</a>
+                        <a data-id="@(Model.CurrentPage+1)" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount,@Model.SearchQuery)" class="filter-link-cf"><i class="fas fa-angle-right"></i></a>
+                    }
+
+                    else if (Model.CurrentPage == Model.PagesCount || Model.CurrentPage == Model.PagesCount - 1 || Model.CurrentPage == Model.PagesCount - 2)
+                    {
+                        <a data-id="@(Model.CurrentPage-1)" class="filter-link-cf" onclick="BerzPrev(@Model.Category.id,@(Model.CurrentPage-1),@Model.CurrentPage,@Model.SearchQuery)"><i class="fas fa-angle-left"></i></a>
+                        <a data-id="1" onclick="Berz(@Model.Category.id,1,@Model.SearchQuery)" class="@if (Model.CurrentPage==1) {@("active-page") } else { @("page")}">1</a>
+                        <a class="page">...</a>
+                        <a data-id="@(Model.PagesCount-3)" onclick="Berz(@Model.Category.id,@(Model.PagesCount-3),@Model.SearchQuery)" class="@if (Model.CurrentPage==Model.PagesCount-3) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">@(Model.PagesCount - 3)</a>
+                        <a data-id="@(Model.PagesCount-2)" onclick="Berz(@Model.Category.id,@(Model.PagesCount-2),@Model.SearchQuery)" class="@if (Model.CurrentPage==Model.PagesCount-2) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">@(Model.PagesCount - 2)</a>
+                        <a data-id="@(Model.PagesCount-1)" onclick="Berz(@Model.Category.id,@(Model.PagesCount-1),@Model.SearchQuery)" class="@if (Model.CurrentPage==Model.PagesCount-1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">@(Model.PagesCount - 1)</a>
+                        <a data-id="@Model.PagesCount" onclick="Berz(@Model.Category.id,@Model.PagesCount,@Model.SearchQuery)" class="@if (Model.CurrentPage==Model.PagesCount) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">@Model.PagesCount</a>
+                        <a data-id="@(Model.CurrentPage+1)" class="filter-link-cf" onclick="BerzNext(@Model.Category.id,@(Model.CurrentPage+1),@Model.CurrentPage,@Model.PagesCount,@Model.SearchQuery)"><i class="fas fa-angle-right"></i></a>
+                    }
+
+                    else
+                    {
+                        <a data-id="@Model.CurrentPage-1" onclick="BerzPrev(@Model.Category.id,(@Model.CurrentPage-1),@Model.CurrentPage,@Model.SearchQuery)" class="filter-link-cf"><i class="fas fa-angle-left"></i></a>
+                        <a data-id="1" onclick="Berz(@Model.Category.id,1,@Model.SearchQuery)" class="@if (Model.CurrentPage==1) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">1</a>
+                        <a class="page">...</a>
+                        <a data-id="@Model.CurrentPage-1" onclick="Berz(@Model.Category.id,@Model.CurrentPage-1,@Model.SearchQuery)" class="page filter-link-cf ">@(Model.CurrentPage - 1)</a>
+                        <a data-id="@Model.CurrentPage" onclick="Berz(@Model.Category.id,@Model.CurrentPage,@Model.SearchQuery)" class="active-page filter-link-cf">@Model.CurrentPage</a>
+                        <a data-id="@Model.CurrentPage+1" onclick="Berz(@Model.Category.id,@Model.CurrentPage+1,@Model.SearchQuery)" class="page filter-link-cf">@(Model.CurrentPage + 1)</a>
+                        <a class="page">...</a>
+                        <a data-id="@Model.PagesCount" onclick="Berz(@Model.Category.id,@Model.PagesCount,@Model.SearchQuery)" class="@if (Model.CurrentPage==Model.PagesCount) {@("active-page filter-link-cf") } else { @("page filter-link-cf")}">@Model.PagesCount</a>
+                        <a data-id="@Model.CurrentPage+1" onclick="BerzNext(@Model.Category.id,@Model.CurrentPage+1,@Model.CurrentPage,@Model.PagesCount,@Model.SearchQuery)" class="filter-link-cf"><i class="fas fa-angle-right"></i></a>
+                    }
                 }
-            }
 
 
+            </div>
         </div>
     </div>
 </div>

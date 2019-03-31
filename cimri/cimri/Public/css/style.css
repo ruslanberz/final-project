@@ -143,10 +143,7 @@ text-decoration:none;
 
 }
 
-.container {
 
-
-}
 
 .form-row
 {
@@ -196,12 +193,7 @@ text-decoration:none;
 display:flex;
 
 }
-.daily-category .one {
-}
 
-.owl-stage .active:nth-of-type(5n) .card-item {
-   
-}
 
 .daily-category .two{
 
@@ -243,16 +235,17 @@ display:flex;
 }
 
 
-.btn-search
-{
+.btn-search {
+    display: inline-block;
     min-width: 100%;
+    line-height: 43px;
     font-size: 16px;
     font-weight: 800;
     white-space: nowrap;
     text-align: center;
     cursor: pointer;
     background-color: rgb(73, 144, 226);
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255)!important;
     border-width: initial;
     border-style: none;
     border-color: initial;

@@ -23,8 +23,8 @@ namespace cimri
 
             routes.MapRoute(
                name: "Category",
-               url: "{controller}/{action}/{id}/{pageId}/{SpecIds}",
-               defaults: new { controller = "Home", action = "Category", id = UrlParameter.Optional, pageId = UrlParameter.Optional, SpecIds = UrlParameter.Optional }
+               url: "{controller}/{action}/{id}/{pageId}/{SpecIds}/{q}/{MinPrice}/{MaxPrice}",
+               defaults: new { controller = "Home", action = "Category", id = UrlParameter.Optional, pageId = UrlParameter.Optional, SpecIds = UrlParameter.Optional, q = UrlParameter.Optional, MinPrice = UrlParameter.Optional, MaxPrice = UrlParameter.Optional }
            );
 
          

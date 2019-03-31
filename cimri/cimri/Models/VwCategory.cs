@@ -17,5 +17,8 @@ namespace cimri.Models
         public int CurrentPage { get; set; }
         public bool HasChildren { get; set; }
         public List<Item> SiteSelected { get; set; }
+        public string SearchQuery { get; set; }
+        public double MinPrice { get; set; }
+        public double MaxPrice { get; set; }
     }
 }
