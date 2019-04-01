@@ -338,6 +338,7 @@
     <Compile Include="Models\VwItem.cs" />
     <Compile Include="Models\VwItemsAndAllCount.cs" />
     <Compile Include="Models\VwItemSpec.cs" />
+    <Compile Include="Models\VwMobileCategoryAndItems.cs" />
     <Compile Include="Models\VwRecent.cs" />
     <Compile Include="Models\VwRecentlyItemId.cs" />
     <Compile Include="Models\VwSearchNotFound.cs" />

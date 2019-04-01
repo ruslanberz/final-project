@@ -20,5 +20,6 @@ namespace cimri.Models
         public string SearchQuery { get; set; }
         public double MinPrice { get; set; }
         public double MaxPrice { get; set; }
+        public List<VwMobileCategoryAndItems> TopFiveCatsMobile { get; set; }
     }
 }

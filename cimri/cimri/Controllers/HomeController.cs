@@ -913,6 +913,25 @@ int ItemHasFilterValue2 = 0;
                 {
                     VwCategory current = new VwCategory();
                     current.Category = db.Categories.Find(id);
+                    if (current.Category.Children.Count > 0)
+                    {
+                        current.TopFiveCatsMobile = new List<VwMobileCategoryAndItems>();
+                        List<Category> calculateCat = current.Category.Children.OrderByDescending(x => x.ClickCount).Take(5).ToList();
+
+                        foreach (var cat in calculateCat)
+                        {
+                            VwMobileCategoryAndItems tmp = new VwMobileCategoryAndItems();
+                            tmp.Category = cat;
+                            tmp.Items = CalculateItems(cat).Items.OrderByDescending(x => x.ClickCount).Take(2).ToList();
+                            if (tmp.Items.Count>0)
+                            {
+                                current.TopFiveCatsMobile.Add(tmp);
+                            }
+                            ItemsAndAllCount.Items.Clear();
+                            ItemsAndAllCount.count = 0;
+                        }
+
+                    }
                     if (current.Category==null)
                     {
                         return RedirectToAction("PageNotFound");
@@ -1022,6 +1041,20 @@ int ItemHasFilterValue2 = 0;
                 {
                     VwCategory current = new VwCategory();
                     current.Category = db.Categories.Find(id);
+                    if (current.Category.Children.Count > 0)
+                    {
+                        current.TopFiveCatsMobile = new List<VwMobileCategoryAndItems>();
+                        List<Category> calculateCat = current.Category.Children.OrderByDescending(x => x.ClickCount).Take(5).ToList();
+
+                        foreach (var cat in calculateCat)
+                        {
+                            VwMobileCategoryAndItems tmp = new VwMobileCategoryAndItems();
+                            tmp.Category = cat;
+                            tmp.Items = CalculateItems(cat).Items.OrderByDescending(x => x.ClickCount).Take(2).ToList();
+                            current.TopFiveCatsMobile.Add(tmp);
+                        }
+
+                    }
                     if (current.Category == null)
                     {
                         return RedirectToAction("PageNotFound");
