@@ -1000,11 +1000,11 @@ int ItemHasFilterValue2 = 0;
                         current.Items.AddRange(current.Category.Items);
                         current.ItemsCount = current.Items.Count();
                     }
-                    current.PagesCount = (current.Items.Count - 1) / 36 + 1;
+                    current.PagesCount = (current.Items.Count - 1) / 4 + 1;
                     int itemstoskip = 0;
                     if (pageId != null)
                     {
-                        itemstoskip = (pageId - 1) * 36 ?? default(int);
+                        itemstoskip = (pageId - 1) * 4 ?? default(int);
                         current.CurrentPage = pageId ?? default(int);
 
                     }
@@ -1013,7 +1013,7 @@ int ItemHasFilterValue2 = 0;
                         current.CurrentPage = 1;
                     }
 
-                    current.Items = current.Items.Skip(itemstoskip).Take(36).OrderByDescending(x => x.ClickCount).ToList();
+                    current.Items = current.Items.Skip(itemstoskip).Take(4).OrderByDescending(x => x.ClickCount).ToList();
                     
 
 

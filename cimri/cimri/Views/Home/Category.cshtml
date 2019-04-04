@@ -1581,15 +1581,32 @@
             <div class="row">
                 <div class="col-12">
                     <div class="paging">
-                        <a href=""><i class="fas fa-angle-double-left blue"></i></a>
-                        <a href="" class="nav-m"><i class="fas fa-angle-left "></i> <span class="span">Əvvəlki</span></a>
-                        <div class="pages">
-                            <div class="page-start">1</div>
-                            <div class="divider">/</div>
-                            <div class="page-end">@Model.PagesCount</div>
-                        </div>
-                        <a href="" class="nav-m"><span class="span">Sonraki</span><i class="fas fa-angle-right"></i></a>
-                        <a href=""><i class="fas fa-angle-double-right blue"></i></a>
+                        @if (Model.PagesCount == 1)
+                        {
+                            <a style="filter:grayscale(100%)!important"><i class="fas fa-angle-double-left blue"></i></a>
+                            <a style="filter:grayscale(100%)!important" class="nav-m"><i class="fas fa-angle-left "></i> <span class="span">Əvvəlki</span></a>
+                            <div class="pages">
+                                <div  class="page-start">1</div>
+                                <div class="divider">/</div>
+                                <div class="page-end">1</div>
+                            </div>
+                            <a style="filter:grayscale(100%)!important" class="nav-m"><span class="span">Sonraki</span><i class="fas fa-angle-right"></i></a>
+                            <a style="filter:grayscale(100%)!important"><i class="fas fa-angle-double-right blue"></i></a>
+                        }
+                        else
+                        {
+                            <a class="@if (Model.CurrentPage==1) {@("sasha-gray") } " @if (Model.CurrentPage > 1) {@Html.Raw("href=" + Url.Action("category", "home", new { id = Model.Category.id, pageId = 1, q = Model.SearchQuery } ))} }><i class="fas fa-angle-double-left blue"></i></a>
+                            <a  @if (Model.CurrentPage >1) {@Html.Raw("href=" + Url.Action("category", "home", new { id = Model.Category.id, pageId = Model.CurrentPage - 1, q = Model.SearchQuery }))} class="nav-m"><i class="fas fa-angle-left "></i> <span class="span">Əvvəlki</span></a>
+                            <div class="pages">
+                                <div class="page-start">@Model.CurrentPage</div>
+                                <div class="divider">/</div>
+                                <div class="page-end">@Model.PagesCount</div>
+                            </div>
+                            <a  @if(Model.CurrentPage<Model.PagesCount){@Html.Raw("href=" + Url.Action("category", "home", new { id = Model.Category.id, pageId = Model.CurrentPage + 1, q = Model.SearchQuery }))} class="nav-m"><span class="span">Sonraki</span><i class="fas fa-angle-right"></i></a>
+                            <a class="@if (Model.CurrentPage == Model.PagesCount) {@("sasha-gray")}" @if (Model.CurrentPage<Model.PagesCount){@Html.Raw("href=" + Url.Action("category", "home", new { id = Model.Category.id, pageId = Model.PagesCount, q = Model.SearchQuery } ))}><i class="fas fa-angle-double-right blue"></i></a>
+
+
+                        }
                     </div>
                 </div>
             </div>

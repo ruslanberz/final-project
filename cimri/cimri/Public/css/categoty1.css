@@ -25,7 +25,14 @@
     .bottom{
       margin:0px!important;
     }
-
+    .sasha-gray i {
+    filter:grayscale(100%);
+    color:gray!important;
+    }
+    .paging a
+    {
+        cursor:pointer;
+    }
     .m-show-more
     {
       border-top:1px solid #eeeeee;
