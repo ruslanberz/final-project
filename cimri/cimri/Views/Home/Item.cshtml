@@ -1281,31 +1281,29 @@
     <!-- Item head -->
     <div class="row m-white">
         <div class="col-12 d-flex justify-content-between pt-2 pb-2 " style="padding: 0px 10px">
-            <a class="link-to-upcat" href="">Bütün mobil telefonlar>></a>
+            <a class="link-to-upcat" href="@Url.Action("category","home" ,new { id=Model.Item.Category.id})">Bütün mobil telefonlar>></a>
             <span>
-                <div class="stars jq-stars " data-rating="5">
+                <div class="stars jq-stars " data-rating="@Model.OverrallRating">
                 </div>
-                <span class="m-comment-count">33 Rəy</span>
+                <span class="m-comment-count">@Model.Item.Comments.Count Rəy</span>
             </span>
         </div>
         <div class="col-12">
             <div class="m-carousel-item-photo owl-carousel owl-theme">
-                <div style="height: 60%; width:60%;margin: 0 auto">
-                    <img src="~/Public/img/mobile/item/carousel/1.jpg" alt="">
-                </div>
-                <div style="height: 60%; width:60%;margin: 0 auto">
-                    <img src="~/Public/img/mobile/item/carousel/2.jpg" alt="">
-                </div>
-                <div style="height: 60%; width:60%;margin: 0 auto">
-                    <img src="~/Public/img/mobile/item/carousel/3.jpg" alt="">
-                </div>
+                @foreach (var item in Model.Item.ItemPhotos)
+                {
+                    <div style="height: 60%; width:60%;margin: 0 auto">
+                        <img src="~/Public/img/content/item/@item.Photo" alt="">
+                    </div>
+                }
+
             </div>
         </div>
         <div class="col-12">
-            <h1 class="m-main-title">Huawei Mate 20 Lite 64 GB 6.3 İnç 20 MP Akıllı Cep Telefonu Siyah</h1>
+            <h1 class="m-main-title">@Model.Item.Name</h1>
         </div>
         <div class="col-12">
-            <div style="padding:0px 15px;">
+            @*<div style="padding:0px 15px;">
                 <span class="m-other-choises-h">Digər seçimlər</span>
             </div>
             <a class="m-other-wrapper" href="">
@@ -1319,96 +1317,109 @@
                     </div>
                 </div>
                 <div class="angle-down"> <i class="fas fa-angle-down"></i></div>
-            </a>
+            </a>*@
+            <br >
             <div class="test">
                 <div class="best-deal">
                     <span> Hal-hazırda internetdə ən ucuz qiymət</span>
-                    <p class="link-best-deal">hepsiburda.com</p>
+                    <p class="link-best-deal">@Model.Item.ItemMerches.OrderBy(x=>x.PriceNormal).FirstOrDefault().Merch.Link</p>
                 </div>
-                <span class="m-best-price">2.062</span>
+                <span class="m-best-price">@Model.Item.ItemMerches.OrderBy(x => x.PriceNormal).FirstOrDefault().PriceNormal azn</span>
             </div>
-            <a href="" class="m-show-all-specs">Ən ucuz mağazaya get</a>
+            <a href="@Model.Item.ItemMerches.OrderBy(x=>x.PriceNormal).FirstOrDefault().LinkToOffer" class="m-show-all-specs">Ən ucuz mağazaya get</a>
         </div>
     </div>
     <div class="row m-white">
-        <div class="col-12 m-offerr">
-            <a href="">
+        @if (Model.Item.ItemMerches.Count == 1)
+
+        { <div class="col-12 m-offerr">
+            <a href="@Model.Item.ItemMerches.FirstOrDefault().LinkToOffer">
                 <span class="cheapest">Ən Ucuz</span>
                 <br>
                 <br>
                 <div class="m-offer-wrapper-1">
                     <div class="left">
-                        <img src="~/Public/img/daily_sale/10370.png" alt="">
+                        <img src="~/Public/img/content/merch/@Model.Item.ItemMerches.FirstOrDefault().Merch.İmage" alt="">
                     </div>
                     <div class="right">
-                        <h2>HUAWEI MATE 20 LITE 64 GB CEP TELEFONU - SİYAH (SİYAH)</h2>
-                        <p>11 TL ve Üzeri Alışverişe 177 TL’ye Varan İndirim</p>
+                        <h2>@Model.Item.ItemMerches.FirstOrDefault().Item.Name</h2>
+                        <p></p>
                     </div>
                 </div>
                 <div class="m-offer-wrapper-2">
-                    <span class="published-by">CyberStore</span>
-                    <div class="merch-offer-price">6969 AZN</div>
+                    <span class="published-by">@Model.Item.ItemMerches.FirstOrDefault().Merch.Link</span>
+                    <div class="merch-offer-price">@Model.Item.ItemMerches.FirstOrDefault().PriceNormal AZN</div>
                 </div>
                 <div class="m-offer-wrapper-3">
-                    <div class="shipping"><i class="fas fa-truck"></i>+ 7,50 TL Kargo</div>
+                    <div class="shipping"><i class="fas fa-truck"></i>@Model.Item.ItemMerches.FirstOrDefault().ShippiingType.Description</div>
                     <span class="go-button">Mağazaya keç</span>
                 </div>
             </a>
-        </div>
-        <div class="col-12 m-offerr">
-            <a href="">
-                <span class="cheapest">Ən Ucuz</span>
-                <br>
-                <br>
-                <div class="m-offer-wrapper-1">
-                    <div class="left">
-                        <img src="~/Public/img/daily_sale/10370.png" alt="">
+        </div>}
+
+        @if (Model.Item.ItemMerches.Count > 1)
+        {
+            <div class="col-12 m-offerr">
+                <a href="@Model.Item.ItemMerches.FirstOrDefault().LinkToOffer">
+                    <span class="cheapest">Ən Ucuz</span>
+                    <br>
+                    <br>
+                    <div class="m-offer-wrapper-1">
+                        <div class="left">
+                            <img src="~/Public/img/content/merch/@Model.Item.ItemMerches.FirstOrDefault().Merch.İmage" alt="">
+                        </div>
+                        <div class="right">
+                            <h2>@Model.Item.ItemMerches.FirstOrDefault().Item.Name</h2>
+                            <p></p>
+                        </div>
                     </div>
-                    <div class="right">
-                        <h2>HUAWEI MATE 20 LITE 64 GB CEP TELEFONU - SİYAH (SİYAH)</h2>
-                        <p>11 TL ve Üzeri Alışverişe 177 TL’ye Varan İndirim</p>
+                    <div class="m-offer-wrapper-2">
+                        <span class="published-by">@Model.Item.ItemMerches.FirstOrDefault().Merch.Link</span>
+                        <div class="merch-offer-price">@Model.Item.ItemMerches.FirstOrDefault().PriceNormal AZN</div>
                     </div>
+                    <div class="m-offer-wrapper-3">
+                        <div class="shipping"><i class="fas fa-truck"></i>@Model.Item.ItemMerches.FirstOrDefault().ShippiingType.Description</div>
+                        <span class="go-button">Mağazaya keç</span>
+                    </div>
+                </a>
+            </div>
+
+            foreach (var item in Model.Item.ItemMerches.Skip(1))
+            {
+                <div class="col-12 m-offerr">
+                    <a href="@item.LinkToOffer">
+                        <span class="cheapest"></span>
+                        <br>
+                        <br>
+                        <div class="m-offer-wrapper-1">
+                            <div class="left">
+                                <img src="~/Public/img/content/merch/@item.Merch.İmage" alt="">
+                            </div>
+                            <div class="right">
+                                <h2>@item.Item.Name</h2>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="m-offer-wrapper-2">
+                            <span class="published-by">@item.Merch.Link</span>
+                            <div class="merch-offer-price">@item.PriceNormal AZN</div>
+                        </div>
+                        <div class="m-offer-wrapper-3">
+                            <div class="shipping"><i class="fas fa-truck"></i>@item.ShippiingType.Description</div>
+                            <span class="go-button">Mağazaya keç</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="m-offer-wrapper-2">
-                    <span class="published-by">CyberStore</span>
-                    <div class="merch-offer-price">6969 AZN</div>
-                </div>
-                <div class="m-offer-wrapper-3">
-                    <div class="shipping"><i class="fas fa-truck"></i>+ 7,50 TL Kargo</div>
-                    <span class="go-button">Mağazaya keç</span>
-                </div>
-            </a>
-        </div>
+            }
+        }
     </div>
     <!-- Item Specifications -->
     <div class="row m-white">
         <div class="col-12">
             <h2 class="customh2">Bəzi xarakteristikaları</h2>
         </div>
-        <div class="col-12">
-            <a href="" class="m-link-to-vendor">
-                <img src="~/Public/img/mobile/index/site-select/1.jpg" alt=""> <span>Xiaomi Cep Telefonları (159)</span> <i class="fas fa-angle-right"></i>
-            </a>
-        </div>
-        <div class="col-12" style="padding-bottom: 10px;">
-            <h2 class="customh2">Məhsulun xüsusiyyətləri</h2>
-            <span class="m-item-specs">
-                <span class="m-spec-name">3G Görüntülü Konuşma</span> <span class="m-spec-value">Yok</span>
-            </span>
-            <span class="m-item-specs">
-                <span class="m-spec-name">3G Görüntülü Konuşma</span> <span class="m-spec-value">Yok</span>
-            </span>
-            <span class="m-item-specs">
-                <span class="m-spec-name">3G Görüntülü Konuşma</span> <span class="m-spec-value">Yok</span>
-            </span>
-            <span class="m-item-specs">
-                <span class="m-spec-name">3G Görüntülü Konuşma</span> <span class="m-spec-value">Yok</span>
-            </span>
-            <span class="m-item-specs">
-                <span class="m-spec-name">3G Görüntülü Konuşma</span> <span class="m-spec-value">Yok</span>
-            </span>
-            <a href="" class="m-show-all-specs">Bütün xüsusiyyətlərini göstər</a>
-        </div>
+     
+        
     </div>
     <!-- Comparison -->
     <div class="row m-wite " style="background-color:white">
@@ -1679,38 +1690,25 @@
     </div>
     <!-- Site selection -->
     <div class="row m-white">
+
         <h3 style="padding-left:10px;" class="section-header text-center">Saytın Seçimi</h3>
-        <div class="col-12">
-            <a href="" class="link-to-site-select">
-                <img class="m-site-select-img" src="~/Public/img/mobile/index/site-select/1.jpg" alt="">
-                <div class="m-site-select ">
-                    <div class="m-site-select-title">Oppo RX17 Pro 128GB</div>
-                    <h2>
-                        4.999,
-                        <small>00 TL</small>
-                        <i class="fas fa-angle-right"></i>
-                    </h2>
-                </div>
-            </a>
-        </div>
-        <div class="col-12">
-            <a href="" class="link-to-site-select">
-                <img class="m-site-select-img" src="~/Public/img/mobile/index/site-select/2.jpg" alt="">
-                <div class="m-site-select">
-                    <div class="m-site-select-title">Alcatel 1C 2019 8GB</div>
-                    <span>En Ucuz Fiyatlarla Yakında Cimri.com'da   <i class="fas fa-angle-right"></i> </span>
-                </div>
-            </a>
-        </div>
-        <div class="col-12">
-            <a href="" class="link-to-site-select">
-                <img class="m-site-select-img" src="~/Public/img/mobile/index/site-select/3.jpg" alt="">
-                <div class="m-site-select">
-                    <div class="m-site-select-title">Lenovo Z5 Pro GT 128GB 6.39 iNÇ Çift Hatlı 16MP Akıllı Cep Telefonu Siyah</div>
-                    <span>En Ucuz Fiyatlarla Yakında Cimri.com'da   <i class="fas fa-angle-right"></i> </span>
-                </div>
-            </a>
-        </div>
+        @foreach (var item in Model.SiteSelection.Take(3))
+        {
+            <div class="col-12">
+                <a href="@Url.Action("item","home",new { id=item.id})" class="link-to-site-select go-to-item" onclick="Local(this)">
+                    <img class="m-site-select-img" src="~/Public/img/content//item/@item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                    <div class="m-site-select ">
+                        <div class="m-site-select-title">@item.Name</div>
+                        <h2>
+                            @item.ItemMerches.OrderBy(x => x.PriceNormal).First().PriceNormal
+                            <small>AZN</small>
+                            <i class="fas fa-angle-right"></i>
+                        </h2>
+                    </div>
+                </a>
+            </div>
+        }
+
     </div>
     <!-- Comments -->
     <div class="row white">
@@ -1725,53 +1723,133 @@
                             </div>
                             <span class="rating-mark-word">Əla</span>
                             <span>
-                                <div class="progress"></div>
+                                <div id="m-bar-5" class="progress"></div>
+                                <script>
+
+                                            var a =@Model.CommentFiveCount;
+
+                                            var b =@Model.Item.Comments.Count;
+
+                                            var c = a / b;
+                                            $('#m-bar-5').jsRapBar({
+
+                                                position: c,
+                                                 height: '12px',
+                                                barColor: '#fec56f',
+                                                enabled: false,
+                                                width: '40%',
+
+                                            });</script>
                             </span>
-                            <span class="rating-rate-count">81 nəfər</span>
+                            <span class="rating-rate-count">@Model.CommentFiveCount nəfər</span>
                         </div>
                     </div>
                     <div class="star-rating-overall">
                         <div class="rating-line d-inline">
-                            <div class="stars jq-stars " data-rating="5">
+                            <div class="stars jq-stars " data-rating="4">
                             </div>
-                            <span class="rating-mark-word">Əla</span>
+                            <span class="rating-mark-word">Yaxşı</span>
                             <span>
-                                <div class="progress"></div>
+                                <div id="m-bar-4" class="progress"></div>
+                                <script>
+
+                                            var a =@Model.CommentFourCount;
+
+                                            var b =@Model.Item.Comments.Count;
+
+                                            var c = a / b;
+                                            $('#m-bar-4').jsRapBar({
+
+                                                position: c,
+                                                 height: '12px',
+                                                barColor: '#fec56f',
+                                                enabled: false,
+                                                width: '40%',
+
+                                            });</script>
                             </span>
-                            <span class="rating-rate-count">81 nəfər</span>
+                            <span class="rating-rate-count">@Model.CommentFourCount nəfər</span>
                         </div>
                     </div>
                     <div class="star-rating-overall">
                         <div class="rating-line d-inline">
-                            <div class="stars jq-stars " data-rating="5">
+                            <div class="stars jq-stars " data-rating="3">
                             </div>
-                            <span class="rating-mark-word">Əla</span>
+                            <span class="rating-mark-word">Orta</span>
                             <span>
-                                <div class="progress"></div>
+                                <div id="m-bar-3" class="progress"></div>
+                                <script>
+
+                                            var a =@Model.CommentThreeCount;
+
+                                            var b =@Model.Item.Comments.Count;
+
+                                            var c = a / b;
+                                            $('#m-bar-3').jsRapBar({
+
+                                                position: c,
+                                                 height: '12px',
+                                                barColor: '#fec56f',
+                                                enabled: false,
+                                                width: '40%',
+
+                                            });</script>
                             </span>
-                            <span class="rating-rate-count">81 nəfər</span>
+                            <span class="rating-rate-count">@Model.CommentThreeCount nəfər</span>
                         </div>
                     </div>
                     <div class="star-rating-overall">
                         <div class="rating-line d-inline">
-                            <div class="stars jq-stars " data-rating="5">
+                            <div class="stars jq-stars " data-rating="2">
                             </div>
-                            <span class="rating-mark-word">Əla</span>
+                            <span class="rating-mark-word">Pis</span>
                             <span>
-                                <div class="progress"></div>
+                                <div id="m-bar-2" class="progress"></div>
+                                <script>
+
+                                            var a =@Model.CommentTwoCount;
+
+                                            var b =@Model.Item.Comments.Count;
+
+                                            var c = a / b;
+                                            $('#m-bar-2').jsRapBar({
+
+                                                position: c,
+                                                 height: '12px',
+                                                barColor: '#fec56f',
+                                                enabled: false,
+                                                width: '40%',
+
+                                            });</script>
                             </span>
-                            <span class="rating-rate-count">81 nəfər</span>
+                            <span class="rating-rate-count">@Model.CommentTwoCount nəfər</span>
                         </div>
                     </div>
                     <div class="star-rating-overall">
                         <div class="rating-line d-inline">
-                            <div class="stars jq-stars " data-rating="5">
+                            <div class="stars jq-stars " data-rating="1">
                             </div>
-                            <span class="rating-mark-word">Əla</span>
+                            <span class="rating-mark-word">Çox pis</span>
                             <span>
-                                <div class="progress"></div>
+                                <div id="m-bar-1" class="progress"></div>
+                                <script>
+
+                                            var a =@Model.CommentOneCount;
+
+                                            var b =@Model.Item.Comments.Count;
+
+                                            var c = a / b;
+                                            $('#m-bar-1').jsRapBar({
+
+                                                position: c,
+                                                 height: '12px',
+                                                barColor: '#fec56f',
+                                                enabled: false,
+                                                width: '40%',
+
+                                            });</script>
                             </span>
-                            <span class="rating-rate-count">81 nəfər</span>
+                            <span class="rating-rate-count">@Model.CommentOneCount nəfər</span>
                         </div>
                     </div>
                 </div>
@@ -1784,413 +1862,23 @@
             </div>
             <br>
             <div class="row white comments">
-                <div class="col-lg-12">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
+                @foreach (var comment in Model.Item.Comments)
+                {
+                    <div class="col-lg-12">
+                        <div class="comment">
+                            <div class="comment-header">
+                                <div class="stars jq-stars" data-rating="@comment.Rating"></div>
+                                <span class="comment-date">@comment.PublishDate.ToString("dd.MM.yyyy HH:mm")</span>
+                            </div>
+                            <div class="comment-text">
+                                <p>
+                                    @comment.Text
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment d-none">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment d-none">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment d-none">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment d-none">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment d-none">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment d-none">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment d-none">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment d-none">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment d-none">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="comment d-none">
-                        <div class="comment-header">
-                            <div class="stars jq-stars"></div>
-                            <span class="comment-date">12.01.2019 07:37</span>
-                        </div>
-                        <div class="comment-text">
-                            <p>
-                                Huawei çok iyi iş çıkarmış bu modelle fiyat performans olarak harika bir orana
-                                sahip bence tasarım açısından da bu ekran şekli bir çok telefonda kullanılıyor
-                                ancak hepsine de yakışıyor hem de ekranı bu şekilde kullanmak çok da mantıklı
-                                bence özellikleri açısından çok dolu bir telefon 64 gb hafızası çok iyi ve
-                                güçlü bir ram belleği bunun yanı sıra çok kaliteli ekran teknolojisi ve harika
-                                kamera özellikleri yani kısacası ne ararsam var bu telefonda ve fiyatı da diğer
-                                yakın özelliklerde ki telefonlara göre daha uygun ve Huawei hepsinden de
-                                kaliteli bence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="d-flex justify-content-center mt-2">
-                        <button class="btn btn-more-comments d-flex align-self-center d-none">
-                            Daha çöx göstər <i class="fas fa-angle-down"></i>
-                        </button>
-                    </div>
-                </div>
+                }
+
             </div>
             <br>
         </div>

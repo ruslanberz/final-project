@@ -7,7 +7,6 @@ using System.Web.Helpers;
 using cimri.DAL;
 using cimri.Models;
 using System.Data.Entity;
-using System.Linq;
 using System.Globalization;
 using System.Data.Entity.Infrastructure;
 
@@ -1000,11 +999,11 @@ int ItemHasFilterValue2 = 0;
                         current.Items.AddRange(current.Category.Items);
                         current.ItemsCount = current.Items.Count();
                     }
-                    current.PagesCount = (current.Items.Count - 1) / 4 + 1;
+                    current.PagesCount = (current.Items.Count - 1) / 36 + 1;
                     int itemstoskip = 0;
                     if (pageId != null)
                     {
-                        itemstoskip = (pageId - 1) * 4 ?? default(int);
+                        itemstoskip = (pageId - 1) * 36 ?? default(int);
                         current.CurrentPage = pageId ?? default(int);
 
                     }
@@ -1013,7 +1012,7 @@ int ItemHasFilterValue2 = 0;
                         current.CurrentPage = 1;
                     }
 
-                    current.Items = current.Items.Skip(itemstoskip).Take(4).OrderByDescending(x => x.ClickCount).ToList();
+                    current.Items = current.Items.Skip(itemstoskip).Take(36).OrderByDescending(x => x.ClickCount).ToList();
                     
 
 
@@ -1237,7 +1236,7 @@ int ItemHasFilterValue2 = 0;
                 current.CommentTwoCount = current.Item.Comments.Where(x => x.Rating == 3).Count();
                 current.CommentFourCount = current.Item.Comments.Where(x => x.Rating == 4).Count();
                 current.CommentFiveCount = current.Item.Comments.Where(x => x.Rating == 5).Count();
-
+                current.SiteSelection = db.Items.Where(x => x.SiteSelection == true).OrderBy(x => x.ClickCount).ToList();
                 double OverrallRating = 0;
                 if (current.Item.Comments.Count>0)
                 {

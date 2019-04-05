@@ -19,5 +19,6 @@ namespace cimri.Models
         public double OverrallRating { get; set; }
         public List<Item> RelatedItems { get; set; }
         public List<VwItemSpec> ItemSpecs { get; set; }
+        public List<Item> SiteSelection { get; set; }
     }
 }

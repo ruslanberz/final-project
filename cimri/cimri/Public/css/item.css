@@ -242,7 +242,7 @@
         .m-best-price
         {
             flex: 1 0 30%;
-            font-size: 30px;
+          font-size: 20px;
             font-weight: bold;
             text-align: right;
             padding-right: 15px;
@@ -1380,8 +1380,7 @@ width: 100%;
     display: inline-block;
 }
 
-.rating-mark-word
-{
+.rating-mark-word {
     font-size: 12px;
     font-weight: 600;
     text-align: left;
@@ -1389,6 +1388,7 @@ width: 100%;
     display: inline-block;
     width: 53px;
     margin: 5px 12px 0px 7px;
+    margin-right: 7px !important;
     flex: 1 0 auto;
 }
 
