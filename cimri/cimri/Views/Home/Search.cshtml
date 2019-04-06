@@ -877,32 +877,21 @@
 
     <div class="row m-white">
         <div class="col-12 allcat-header">
-            <h2>Bla Bla text</h2>
+            <h2>Axtardığınız sorğu üçün uyğun kategoriyalar</h2>
         </div>
-        <div class="col-6">
-            <a href="" class="m-cat-wrapper">
-                <img style="margin: 0px auto" src="~/Public/img/mobile/category1/1.png" alt="">
-                <h6>Bilgisayar & Yazılımlar</h6>
-            </a>
-        </div>
-        <div class="col-6">
-            <a href="" class="m-cat-wrapper">
-                <img style="margin: 0px auto" src="~/Public/img/mobile/category1/2.png" alt="">
-                <h6>Bilgisayar & Yazılımlar</h6>
-            </a>
-        </div>
-        <div class="col-6">
-            <a href="" class="m-cat-wrapper">
-                <img style="margin: 0px auto" src="~/Public/img/mobile/category1/3.png" alt="">
-                <h6>Bilgisayar & Yazılımlar</h6>
-            </a>
-        </div>
-        <div class="col-6">
-            <a href="" class="m-cat-wrapper">
-                <img style="margin: 0px auto" src="~/Public/img/mobile/category1/4.png" alt="">
-                <h6>Bilgisayar & Yazılımlar</h6>
-            </a>
-        </div>
+        @if (Model.Subcategories.Count > 0)
+        {
+            foreach (var item in Model.Subcategories)
+            {
+                <div class="col-6">
+                    <a href="@Url.Action("category","home",new {id=item.SubCategory.id ,q=Model.SearchQuery })" class="m-cat-wrapper">
+                        <img style="margin: 0px auto" src="~/Public/img/content/CategoryPhotos/small/@item.SubCategory.CategoryPhotos.FirstOrDefault().SmallPhoto" alt="">
+                        <h6>@item.SubCategory.Name</h6>
+                    </a>
+                </div>
+            }
+        }
+
 
 
     </div>

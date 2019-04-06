@@ -6,6 +6,7 @@
 
     });
 
+    
 
     $("#btn-search").click(function (e) {
 
@@ -77,10 +78,18 @@
   $(".mobile-search").click(function(ex){
    ex.preventDefault();
    $(".stickynavbar").css("display", "none");
-   $("#search-form").css("display","block");
-   $("#search-form").css("opacity","1");
+      $("#search-form").css("display", "block");
+      $("#search-input").focus();
+      $("#search-form").css("opacity", "1");
+      FillMobileSearch();
   })
 
+    $("#search-form").submit(function (ex) {
+
+        ex.preventDefault();
+        SearchLocal();
+        window.location = "/home/search?q=" + $("#search-input").val();
+    });
     $('.main-carousel1').flickity({
         // options
         cellAlign: 'left',
@@ -750,6 +759,30 @@ function Local(obj)
 
     localStorage.setItem('items', JSON.stringify(result));
 }
+function SearchLocal() {
+
+    var oldItems = JSON.parse(localStorage.getItem('search')) || [];
+    console.log(oldItems);
+
+    var newItem =
+    {
+        'query': $("#search-input").val()
+    };
+    console.log(newItem);
+    oldItems.push(newItem);
+    //var result = []
+    //$.each(oldItems, function (i, e) {
+    //    var matchingItems = $.grep(result, function (item) {
+    //        return item.id === e.id
+    //    });
+    //    if (matchingItems.length === 0) {
+    //        result.push(e);
+    //    }
+    //});
+
+
+    localStorage.setItem('search', JSON.stringify(oldItems));
+}
 //this function first loads content to d-none row and then puts each item to owl carousel
 function LoadOwl() {
 
@@ -761,3 +794,12 @@ function LoadOwl() {
     });
 };
 
+function FillMobileSearch()
+{
+    var SearchQ = JSON.parse(localStorage.getItem('search')) || [];
+    console.log(SearchQ);
+    for (var i = SearchQ.length-1; i >= 0; i --) {
+        $("#srch-q").append("<li><a href='/home/search?q=" + SearchQ[i].query + "'>" + SearchQ[i].query + "</a></li>");
+
+    }
+};
