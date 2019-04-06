@@ -1304,25 +1304,25 @@
         </div>
         <div class="col-12">
             @*<div style="padding:0px 15px;">
-                <span class="m-other-choises-h">Digər seçimlər</span>
-            </div>
-            <a class="m-other-wrapper" href="">
-                <img src="~/Public/img/mobile/item/carousel/1.jpg" alt="">
-                <div class="m-other-choises">
-                    <div class="m-color">
-                        Qızıl
-                    </div>
-                    <div class="m-other-choises-price">
-                        2.062,00 AZN
-                    </div>
+                    <span class="m-other-choises-h">Digər seçimlər</span>
                 </div>
-                <div class="angle-down"> <i class="fas fa-angle-down"></i></div>
-            </a>*@
-            <br >
+                <a class="m-other-wrapper" href="">
+                    <img src="~/Public/img/mobile/item/carousel/1.jpg" alt="">
+                    <div class="m-other-choises">
+                        <div class="m-color">
+                            Qızıl
+                        </div>
+                        <div class="m-other-choises-price">
+                            2.062,00 AZN
+                        </div>
+                    </div>
+                    <div class="angle-down"> <i class="fas fa-angle-down"></i></div>
+                </a>*@
+            <br>
             <div class="test">
                 <div class="best-deal">
                     <span> Hal-hazırda internetdə ən ucuz qiymət</span>
-                    <p class="link-best-deal">@Model.Item.ItemMerches.OrderBy(x=>x.PriceNormal).FirstOrDefault().Merch.Link</p>
+                    <p class="link-best-deal">@Model.Item.ItemMerches.OrderBy(x => x.PriceNormal).FirstOrDefault().Merch.Link</p>
                 </div>
                 <span class="m-best-price">@Model.Item.ItemMerches.OrderBy(x => x.PriceNormal).FirstOrDefault().PriceNormal azn</span>
             </div>
@@ -1332,30 +1332,30 @@
     <div class="row m-white">
         @if (Model.Item.ItemMerches.Count == 1)
 
-        { <div class="col-12 m-offerr">
-            <a href="@Model.Item.ItemMerches.FirstOrDefault().LinkToOffer">
-                <span class="cheapest">Ən Ucuz</span>
-                <br>
-                <br>
-                <div class="m-offer-wrapper-1">
-                    <div class="left">
-                        <img src="~/Public/img/content/merch/@Model.Item.ItemMerches.FirstOrDefault().Merch.İmage" alt="">
+        {<div class="col-12 m-offerr">
+                <a href="@Model.Item.ItemMerches.FirstOrDefault().LinkToOffer">
+                    <span class="cheapest">Ən Ucuz</span>
+                    <br>
+                    <br>
+                    <div class="m-offer-wrapper-1">
+                        <div class="left">
+                            <img src="~/Public/img/content/merch/@Model.Item.ItemMerches.FirstOrDefault().Merch.İmage" alt="">
+                        </div>
+                        <div class="right">
+                            <h2>@Model.Item.ItemMerches.FirstOrDefault().Item.Name</h2>
+                            <p></p>
+                        </div>
                     </div>
-                    <div class="right">
-                        <h2>@Model.Item.ItemMerches.FirstOrDefault().Item.Name</h2>
-                        <p></p>
+                    <div class="m-offer-wrapper-2">
+                        <span class="published-by">@Model.Item.ItemMerches.FirstOrDefault().Merch.Link</span>
+                        <div class="merch-offer-price">@Model.Item.ItemMerches.FirstOrDefault().PriceNormal AZN</div>
                     </div>
-                </div>
-                <div class="m-offer-wrapper-2">
-                    <span class="published-by">@Model.Item.ItemMerches.FirstOrDefault().Merch.Link</span>
-                    <div class="merch-offer-price">@Model.Item.ItemMerches.FirstOrDefault().PriceNormal AZN</div>
-                </div>
-                <div class="m-offer-wrapper-3">
-                    <div class="shipping"><i class="fas fa-truck"></i>@Model.Item.ItemMerches.FirstOrDefault().ShippiingType.Description</div>
-                    <span class="go-button">Mağazaya keç</span>
-                </div>
-            </a>
-        </div>}
+                    <div class="m-offer-wrapper-3">
+                        <div class="shipping"><i class="fas fa-truck"></i>@Model.Item.ItemMerches.FirstOrDefault().ShippiingType.Description</div>
+                        <span class="go-button">Mağazaya keç</span>
+                    </div>
+                </a>
+            </div>}
 
         @if (Model.Item.ItemMerches.Count > 1)
         {
@@ -1418,274 +1418,233 @@
         <div class="col-12">
             <h2 class="customh2">Bəzi xarakteristikaları</h2>
         </div>
-     
-        
+        <div class="col-12" style="padding-bottom: 10px;">
+            <h2 class="customh2">Məhsulun xüsusiyyətləri</h2>
+            @foreach (var item in Model.Item.ItemSpecs)
+            {
+                <span class="m-item-specs">
+                    <span class="m-spec-name">@item.Filter.Name</span> <span class="m-spec-value">@item.FilterValue.SatrValue</span>
+                </span>
+            }
+
+            @*<a href="" class="m-show-all-specs">Bütün xüsusiyyətlərini göstər</a>*@
+        </div>
+
     </div>
     <!-- Comparison -->
-    <div class="row m-wite " style="background-color:white">
-        <div class="col-lg-12">
-            <h2 class="customh2">Bu Məhsulla Ən Çox Müqayisə Olunan Telefonlar</h2>
-            <br>
-            <div class="comparison">
-                <div class="compare-wrapper">
-                    <table class="compare-table">
-                        <thead>
-                            <tr>
-                                <th class="compare-item specifications">
-                                </th>
-                                <th class="  compare-item">
-                                    <a href="">
-                                        <img src="~/Public/img/compare/huaweiplitegbsiyah_75210374.jpg" alt="">
-                                        <span class="phone-name mt-4">Huawei P20 Lite 64GB Siyah</span>
-                                    </a>
-                                </th>
-                                <th class="   compare-item delete-item">
-                                    <a href="">
-                                        <img src="~/Public/img/compare/huaweiplitegbsiyah_75210374.jpg" alt="">
-                                        <span class="phone-name mt-4">Huawei P20 Lite 64GB Siyah</span>
-                                    </a>
-                                </th>
-                                <th class="  compare-item delete-item">
-                                    <a href="">
-                                        <img src="~/Public/img/compare/3.jpg" alt="">
-                                        <span class="phone-name mt-4">Huawei Mate 10 Lite 64GB Siyah</span>
-                                    </a>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="compare-body">
-                            <tr>
-                                <td class=" first">Ekran Ölçüsü</td>
-                                <td class="  full">5.84 duym</td>
-                                <td class="  full">6.26 duym</td>
-                                <td class="  full">5.9 duym</td>
-                            </tr>
-                            <tr>
-                                <td class="first">Screen resolution</td>
-                                <td class="  empty">—</td>
-                                <td class="  empty">—</td>
-                                <td class="  empty">—</td>
-                            </tr>
-                            <tr>
-                                <td class="first">Arxa kamera</td>
-                                <td class="   full"></td>
-                                <td class="  full"></td>
-                                <td class="  full"></td>
-                            </tr>
-                            <tr>
-                                <td class="first">Ön kamera</td>
-                                <td class="  full">16 MP</td>
-                                <td class="  full">12 MP</td>
-                                <td class="  full">16 MP</td>
-                            </tr>
-                            <tr>
-                                <td class="first">Daxili yaddaş</td>
-                                <td class=" full">16 MP</td>
-                                <td class=" full">24 MP</td>
-                                <td class=" full">13 MP</td>
-                            </tr>
-                            <tr>
-                                <td class=" first">RAM</td>
-                                <td class=" full">4 GB RAM</td>
-                                <td class=" full">4 GB RAM</td>
-                                <td class=" full">4 GB RAM</td>
-                            </tr>
-                            <tr>
-                                <td class="first">Video Recording Resolution</td>
-                                <td class=" empty">—</td>
-                                <td class=" empty">—</td>
-                                <td class=" empty">—</td>
-                            </tr>
-                            <tr>
-                                <td class="first">Batareya</td>
-                                <td class=" full">3000 mAh</td>
-                                <td class=" full">3350 mAh</td>
-                                <td class=" full">3340 mAh</td>
-                            </tr>
-                        </tbody>
-                        <tfoot class="compare-footer">
-                            <tr>
-                                <td class="first"></td>
-                                <td>
-                                    <br>
-                                    <a class="link-merch-c" href="">
-                                        <div class="source">amazon.com.tr</div>
-                                        <div class="merch-price-c">
-                                            3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                    <a class="link-merch-c" href="">
-                                        <div class="source">amazon.com.tr</div>
-                                        <div class="merch-price-c">
-                                            3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                    <a class="link-merch-c" href="">
-                                        <div class="source">amazon.com.tr</div>
-                                        <div class="merch-price-c">
-                                            3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                    <br>
-                                    <a href="#" class="gotoitem">Hamısına bax</a>
-                                    <br>
-                                </td>
-                                <td>
-                                    <a class="link-merch-c" href="">
-                                        <div class="source">amazon.com.tr</div>
-                                        <div class="merch-price-c">
-                                            3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                    <a class="link-merch-c" href="">
-                                        <div class="source">amazon.com.tr</div>
-                                        <div class="merch-price-c">
-                                            3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                    <a class="link-merch-c" href="">
-                                        <div class="source">amazon.com.tr</div>
-                                        <div class="merch-price-c">
-                                            3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                    <br>
-                                    <a href="#" class="gotoitem">Hamısına bax</a>
-                                </td>
-                                <td>
-                                    <a class="link-merch-c" href="">
-                                        <div class="source">amazon.com.tr</div>
-                                        <div class="merch-price-c">
-                                            3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                    <a class="link-merch-c" href="">
-                                        <div class="source">amazon.com.tr</div>
-                                        <div class="merch-price-c">
-                                            3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                    <a class="link-merch-c" href="">
-                                        <div class="source">amazon.com.tr</div>
-                                        <div class="merch-price-c">
-                                            3.184,24 ₼<i class="fas fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                    <br>
-                                    <a href="#" class="gotoitem">Hamısına bax</a>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+    @if (Model.Item.RelatedItem1 != null || Model.Item.RelatedItem2 != null || Model.Item.RelatedItem3 != null || Model.Item.RelatedItem4 != null || Model.Item.RelatedItem5 != null)
+    {
+        <div class="row white">
+            <div class="col-lg-12">
+                <h2 class="customh2">Bu Məhsulla Ən Çox Müqayisə Olunan Telefonlar</h2>
+                <div class="comparison">
+                    <div class="compare-wrapper">
+                        <table class="compare-table">
+                            <thead>
+                                <tr>
+                                    <th class="compare-item specifications">
+                                    </th>
+                                    <th class="  compare-item">
+                                        <a href="">
+                                            <img class="img-compare" src="~/Public/img/content/item/@Model.Item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                                            <span class="phone-name mt-4">@Model.Item.Name</span>
+                                        </a>
+                                    </th>
+                                    @foreach (var item in Model.RelatedItems.Take(2))
+                                    {
+                                        <th class="   compare-item delete-item act" data-id="@item.id">
+                                            <a href="">
+                                                <button class="remove" data-id="@item.id"></button>
+                                                <img class="img-compare" src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                                                <span class="phone-name mt-4">@item.Name</span>
+                                            </a>
+                                        </th>
+
+                                    }
+                                    @foreach (var item in Model.RelatedItems.Skip(2))
+                                    {
+                                        <th class="compare-item delete-item d-none" data-id="@item.id">
+                                            <a href="">
+                                                <button class="remove" data-id="@item.id"></button>
+                                                <img class="img-compare" src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                                                <span class="phone-name mt-4">@item.Name</span>
+                                            </a>
+                                        </th>
+
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody class="compare-body">
+
+                                @foreach (var spec in Model.Item.Category.Filters.Where(x => x.IsComparable == true))
+                                {
+                                    <tr>
+                                        <td class=" first">@spec.Name</td>
+                                        @if (Model.Item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault() != null)
+                                        {
+                                            <td class="  full">@Model.Item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault().FilterValue.SatrValue</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="  empty">—</td>
+                                        }
+
+                                        @foreach (var item in Model.RelatedItems.Take(2))
+                                        {
+
+                                            if (item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault() != null)
+                                            {
+                                                <td class="full tb act" data-id="@item.id">@item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault().FilterValue.SatrValue</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="empty tb act" data-id="@item.id">—</td>
+                                            }
+                                        }
+                                        @foreach (var item in Model.RelatedItems.Skip(2))
+                                        {
+
+                                            if (item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault() != null)
+                                            {
+                                                <td class="full d-none tb " data-id="@item.id">@item.ItemSpecs.Where(x => x.Filter.id == spec.id).FirstOrDefault().FilterValue.SatrValue</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="empty d-none tb " data-id="@item.id">—</td>
+                                            }
+                                        }
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                            <tfoot class="compare-footer">
+                                <tr>
+                                    <td class="first"></td>
+                                    <td>
+                                        <br>
+                                        @foreach (var item in Model.Item.ItemMerches.OrderBy(x => x.PriceNormal).Take(3))
+                                        {
+
+                                            <a class="link-merch-c" href="@Url.Action(item.LinkToOffer)">
+                                                <div class="source">@item.Merch.Link</div>
+                                                <div class="merch-price-c">
+                                                    @item.PriceNormal AZN<i class="fas fa-angle-right"></i>
+                                                </div>
+                                            </a>
+
+                                        }
+                                        <br>
+                                        <a href="#merch" class="gotoitem go-to">Bax</a>
+                                        <br>
+                                    </td>
+                                    @foreach (var item in Model.RelatedItems.Take(2))
+                                    {
+                                        <td data-id="@item.id" class="tf act">
+                                            <br>
+                                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(3))
+                                            {
+
+                                                <a class="link-merch-c" href="@Url.Action(merch.LinkToOffer)">
+                                                    <div class="source">@merch.Merch.Link</div>
+                                                    <div class="merch-price-c">
+                                                        @merch.PriceNormal AZN<i class="fas fa-angle-right"></i>
+                                                    </div>
+                                                </a>
+
+                                            }
+                                            <br>
+                                            <a href="@Url.Action("item", "index", new {id=item.id })" class="gotoitem">Bax</a>
+                                            <br>
+                                        </td>
+                                    }
+                                    @foreach (var item in Model.RelatedItems.Skip(2))
+                                    {
+                                        <td class="tf d-none" data-id="@item.id">
+                                            <br>
+                                            @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(3))
+                                            {
+
+                                                <a class="link-merch-c" href="@Url.Action(merch.LinkToOffer)">
+                                                    <div class="source">@merch.Merch.Link</div>
+                                                    <div class="merch-price-c">
+                                                        @merch.PriceNormal AZN<i class="fas fa-angle-right"></i>
+                                                    </div>
+                                                </a>
+
+                                            }
+                                            <br>
+                                            <a href="@Url.Action("item", "index", new {id=item.id })" class="gotoitem">Bax</a>
+                                            <br>
+                                        </td>
+                                    }
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                   
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="compare-item-wrapper">
+                    <h5>Müqayisə üçün əlavə məhsullar </h5>
+                    <ol class="add-to-compare">
+                        @foreach (var item in Model.RelatedItems.Take(2))
+                        {
+                            <li class="d-none" data-id="@item.id">
+                                <img class="compare-img" src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                                @item.Name
+                                <div class="add-to-comparison" data-id="@item.id" onclick="AddCompare(this)">
+                                    <i class="fas fa-check-square"></i>
+                                    Müqayisə üçün əlavə et
+                                </div>
+                            </li>
+                        }
+                        @foreach (var item in Model.RelatedItems.Skip(2))
+                        {
+                            <li data-id="@item.id">
+                                <img class="compare-img" src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" alt="">
+                                @item.Name
+                                <div class="add-to-comparison" data-id="@item.id" onclick="AddCompare(this)">
+                                    <i class="fas fa-check-square"></i>
+                                    Müqayisə üçün əlavə et
+                                </div>
+                            </li>
+                        }
+
+                    </ol>
                 </div>
             </div>
         </div>
-    </div>
+    }
+    <br>
     <!-- Viewed with this item -->
     <div class="row m-white">
+        <h3 style="padding-left:10px;" class="section-header text-center">Saytın Seçimi</h3>
         <div class="m-viewed-with-this-carousel owl-carousel">
-            <div class="custom5">
-                <div class="card card-item" style="margin-right:0;">
-                    <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
+            @foreach (var item in Model.SiteSelection)
+            {
+                <div class="custom5">
+                    <a class="go-to-item" onclick="Local(this)" data-id="@item.id" href="@Url.Action("item", "home", new {id=item.id })">
+                        <div class="card card-item" style="margin-right:0;">
+                            <img src="~/Public/img/content/item/@item.ItemPhotos.FirstOrDefault().Photo" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                @foreach (var merch in item.ItemMerches.OrderBy(x => x.PriceNormal).Take(2))
+                                {
+                                    <a class="link-merch" href="">
+                                        <div class="source">@merch.Merch.Link</div>
+                                        <div class="merch-price">@merch.PriceNormal AZN<i class="fas fa-angle-right"></i> </div>
+                                    </a>
+                                }
+
+                                <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="custom5">
-                <div class="card card-item" style="margin-right:0;">
-                    <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
-                </div>
-            </div>
-            <div class="custom5">
-                <div class="card card-item" style="margin-right:0;">
-                    <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
-                </div>
-            </div>
-            <div class="custom5">
-                <div class="card card-item" style="margin-right:0;">
-                    <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
-                </div>
-            </div>
-            <div class="custom5">
-                <div class="card card-item" style="margin-right:0;">
-                    <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
-                </div>
-            </div>
-            <div class="custom5">
-                <div class="card card-item" style="margin-right:0;">
-                    <img src="~/Public/img/items/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Apple iPhone 7 32 GB 4.7 İnç 12 MP Akıllı Cep Telefonu</h5>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a class="link-merch" href="">
-                            <div class="source">amazon.com.tr</div>
-                            <div class="merch-price">3.184,24 ₼<i class="fas fa-angle-right"></i> </div>
-                        </a>
-                        <a href="#" class="btn btn-primary more-offers">Hamısına bax</a>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
     <!-- Site selection -->

@@ -26,7 +26,9 @@
     outline: 0px;
 }
 
-
+    .add-to-compare li {
+        width: 93%!important;
+    }
 .custom5
     {
         display: block;
@@ -67,6 +69,7 @@
     {
         line-height: 24px!important;
         padding: 10px 15px!important;
+        text-align:center!important;
     }
 
   
